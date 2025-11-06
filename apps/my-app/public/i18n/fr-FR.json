@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "dashboard": "tableau de bord"
+  },
+  "misc": {
+    "id": "identifiant",
+    "createdAt": "date de création",
+    "actions": "actions",
+    "update": "mettre à jour",
+    "delete": "supprimer",
+    "refresh": "rafraîchir",
+    "reset": "réinitialiser",
+    "noData": "aucune donnée",
+    "login": "connexion",
+    "register": "inscription",
+    "logout": "déconnexion",
+    "profile": "profile",
+    "error": {
+      "error": "erreur",
+      "name": "nom",
+      "message": "message"
+    }
+  },
+  "pages": {
+    "landing": {
+      "title": "my-app"
+    }
+  }
+}

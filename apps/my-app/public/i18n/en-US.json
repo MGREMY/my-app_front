@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "dashboard": "dashboard"
+  },
+  "misc": {
+    "id": "id",
+    "createdAt": "created at",
+    "actions": "actions",
+    "update": "update",
+    "delete": "delete",
+    "refresh": "refresh",
+    "reset": "reset",
+    "noData": "no data",
+    "login": "log in",
+    "register": "register",
+    "logout": "log out",
+    "profile": "profile",
+    "error": {
+      "error": "error",
+      "name": "name",
+      "message": "message"
+    }
+  },
+  "pages": {
+    "landing": {
+      "title": "my-app"
+    }
+  }
+}
