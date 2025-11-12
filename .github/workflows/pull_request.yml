@@ -31,4 +31,4 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Lint & build the code
-        run: pnpm exec nx affected -t lint build
+        run: pnpm exec nx affected -t lint test build --base=origin/main
