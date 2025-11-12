@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, filter, from, map, Observable, of, switchMap, tap } from 'rxjs';
+import { AccessToken } from '@app-core/models/access-token.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -22,7 +24,9 @@ export class AuthService {
   };
   private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/auth`;
 
-  private readonly _isAuthenticated$ = new BehaviorSubject<boolean>(this._authService.hasValidAccessToken());
+  private readonly _isAuthenticated$ = new BehaviorSubject<boolean>(
+    this._authService.hasValidAccessToken()
+  );
 
   constructor() {
     this._authService.configure(inject(APP_AUTH_CONFIG));
@@ -61,6 +65,17 @@ export class AuthService {
 
   getAccessToken(): string {
     return this._authService.getAccessToken();
+  }
+
+  getDecodedAccessToken(): AccessToken | undefined {
+    const accessToken = this.getAccessToken();
+
+    try {
+      return jwtDecode<AccessToken>(accessToken);
+    } catch (error) {
+      console.warn(error);
+      return undefined;
+    }
   }
 
   login(): void {
