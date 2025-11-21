@@ -6,6 +6,6 @@ export interface MinimalUserResponse {
 }
 
 export const ZMinimalUserResponse: z.ZodType<MinimalUserResponse> = z.object({
-  id: z.string(),
+  id: z.guid(),
   createdAtUtc: z.coerce.date(),
 });
