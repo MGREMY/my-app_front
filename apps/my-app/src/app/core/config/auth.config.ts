@@ -19,7 +19,7 @@ export function provideAuthConfig(): (Provider | EnvironmentProviders)[] {
           clientId: configService.authClientId,
           responseType: 'code',
           scope: 'openid offline_access',
-          redirectUri: window.location.origin,
+          redirectUri: configService.appUrl,
           showDebugInformation: true,
         } as AuthConfig;
       },

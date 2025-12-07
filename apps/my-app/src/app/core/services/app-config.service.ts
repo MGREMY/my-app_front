@@ -12,6 +12,13 @@ export class AppConfigService implements IAppConfigService {
     return value !== undefined && value !== '' && !value.startsWith('${');
   }
 
+  get appUrl(): string {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const value = (window as any)[this._windowKey]?.APP_URL;
+
+    return this.isValidValue(value) ? value : environment.appUrl;
+  }
+
   get apiUrl(): string {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const value = (window as any)[this._windowKey]?.API_URL;
