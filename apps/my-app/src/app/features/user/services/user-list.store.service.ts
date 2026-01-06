@@ -1,5 +1,5 @@
-import { UserService } from '@app-core/api/user/user.service';
-import { paginationContainer } from '@app-shared/pagination-container';
+import { UserService } from '@my-app/core/api/user/user.service';
+import { paginationContainer } from '@my-app/shared/pagination-container';
 
 import { inject, Injectable } from '@angular/core';
 

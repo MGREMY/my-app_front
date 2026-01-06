@@ -11,10 +11,6 @@
     "isolatedModules": true,
     "emitDecoratorMetadata": false,
     "module": "preserve",
-    "paths": {
-      "@app-core/*": ["apps/my-app/src/app/core/*"],
-      "@app-shared/*": ["apps/my-app/src/app/shared/*"]
-    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

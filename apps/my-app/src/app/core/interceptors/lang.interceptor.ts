@@ -1,7 +1,7 @@
 import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { APP_TRANSLATION_SERVICE } from '@app-core/translation.service';
+import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
 
 export function langInterceptor(
   req: HttpRequest<unknown>,

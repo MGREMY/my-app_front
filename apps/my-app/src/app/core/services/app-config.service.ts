@@ -1,5 +1,5 @@
 import { environment } from '../../../environments/environment';
-import { IAppConfigService } from '@app-core/app-config.service';
+import { IAppConfigService } from '@my-app/core/app-config.service';
 
 import { Injectable } from '@angular/core';
 
@@ -12,44 +12,44 @@ export class AppConfigService implements IAppConfigService {
     return value !== undefined && value !== '' && !value.startsWith('${');
   }
 
-  get appUrl(): string {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private getValue(key: string): any {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (window as any)[this._windowKey]?.APP_URL;
+    return (window as any)[this._windowKey][key];
+  }
+
+  get appUrl(): string {
+    const value = this.getValue('APP_URL');
 
     return this.isValidValue(value) ? value : environment.appUrl;
   }
 
   get apiUrl(): string {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (window as any)[this._windowKey]?.API_URL;
+    const value = this.getValue('API_URL');
 
     return this.isValidValue(value) ? value : environment.apiUrl;
   }
 
   get defaultLanguage(): string {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (window as any)[this._windowKey]?.DEFAULT_LANGUAGE;
+    const value = this.getValue('DEFAULT_LANGUAGE');
 
     return this.isValidValue(value) ? value : environment.defaultLanguage;
   }
 
   get authUrl(): string {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (window as any)[this._windowKey]?.AUTH_URL;
+    const value = this.getValue('AUTH_URL');
 
     return this.isValidValue(value) ? value : environment.authUrl;
   }
 
   get authRealm(): string {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (window as any)[this._windowKey]?.AUTH_REALM;
+    const value = this.getValue('AUTH_REALM');
 
     return this.isValidValue(value) ? value : environment.authRealm;
   }
 
   get authClientId(): string {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (window as any)[this._windowKey]?.AUTH_CLIENT_ID;
+    const value = this.getValue('AUTH_CLIENT_ID');
 
     return this.isValidValue(value) ? value : environment.authClientId;
   }

@@ -3,8 +3,8 @@ import { PaginationResponse, ZPaginationResponse } from '../pagination/paginatio
 import { MinimalUserResponse, ZMinimalUserResponse } from './minimal-user.response';
 import { UserGetByIdRequest } from './user-get-by-id-dto/user-get-by-id.request';
 import { UserResponse, ZUserResponse } from './user.response';
-import { zParse } from '@app-core/api/zod';
-import { APP_CONFIG_SERVICE } from '@app-core/app-config.service';
+import { zParse } from '@my-app/core/api/zod';
+import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';

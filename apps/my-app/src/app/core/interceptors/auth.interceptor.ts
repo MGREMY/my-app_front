@@ -1,4 +1,4 @@
-import { AuthService } from '@app-core/api/auth/auth.service';
+import { AuthService } from '@my-app/core/api/auth/auth.service';
 
 import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';

@@ -1,0 +1,15 @@
+@reference "#ngp_tw.css";
+
+:host {
+  @apply fixed flex w-max flex-col p-1;
+  @apply rounded-lg border;
+  @apply border-(--ui-border) bg-(--ui-background) shadow-(--ui-shadow);
+
+  &[data-enter] {
+    @apply animate-fade-in;
+  }
+
+  &[data-exit] {
+    @apply animate-fade-out;
+  }
+}

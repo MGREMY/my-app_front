@@ -1,15 +1,18 @@
 import { UserListStoreService } from '../../services/user-list.store.service';
-import { BaseComponent } from '@app-shared/base.component';
-import { TableComponent } from '@app-shared/components/table/table.component';
-import { AppDatePipe } from '@app-shared/pipes/date.pipe';
+import { BaseComponent } from '@my-app/shared/base.component';
+import { TableComponent } from '@my-app/shared/components/table/table.component';
+import { LocalizedDatePipe } from '@my-app/shared/pipes/date.pipe';
+import { UiButton } from '@my-app/ui/button';
+import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
+import { UiTableBody, UiTableHeader } from '@my-app/ui/table';
 
-import { Button } from 'flowbite-angular/button';
-import { Dropdown, DropdownContent, DropdownItem } from 'flowbite-angular/dropdown';
-import { Icon } from 'flowbite-angular/icon';
-import { arrowDown, arrowUp, refresh } from 'flowbite-angular/icon/outline/arrows';
-import { dotsVertical, pen, trashBin } from 'flowbite-angular/icon/outline/general';
-import { TableBody, TableHead } from 'flowbite-angular/table';
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  heroArrowSmallDown,
+  heroArrowSmallUp,
+  heroEllipsisVertical,
+  heroTrash,
+} from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import {
@@ -25,22 +28,26 @@ import { NgpMenuTrigger } from 'ng-primitives/menu';
 
 @Component({
   imports: [
-    AppDatePipe,
-    Button,
+    LocalizedDatePipe,
+    UiButton,
     NgpMenuTrigger,
-    Icon,
-    Dropdown,
-    DropdownContent,
-    DropdownItem,
+    NgIcon,
+    UiMenu,
+    UiMenuItem,
     TranslatePipe,
     TableComponent,
-    TableHead,
-    TableBody,
+    UiTableHeader,
+    UiTableBody,
   ],
   templateUrl: './user-list-page.component.html',
   providers: [
     UserListStoreService,
-    provideIcons({ dotsVertical, pen, trashBin, refresh, arrowDown, arrowUp }),
+    provideIcons({
+      heroEllipsisVertical,
+      heroTrash,
+      heroArrowSmallDown,
+      heroArrowSmallUp,
+    }),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

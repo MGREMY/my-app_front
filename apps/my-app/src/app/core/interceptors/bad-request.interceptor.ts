@@ -1,6 +1,6 @@
 // This interceptor handles HTTP errors
 
-import { ZErrorResponse } from '@app-core/api/error/error.response';
+import { ZErrorResponse } from '@my-app/core/api/error/error.response';
 
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { catchError, EMPTY, Observable, throwError } from 'rxjs';

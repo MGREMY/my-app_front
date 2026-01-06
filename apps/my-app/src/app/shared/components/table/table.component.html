@@ -3,50 +3,46 @@
     @if (resourceRef().status() !== 'loading') {
       <div class="flex">
         <button
-          flowbiteButton
+          uiButton
           [ngpTooltipTrigger]="RefreshTooltip"
           [ngpTooltipTriggerContainer]="tooltipContainer"
           (click)="resourceRef().reload()">
           <span class="sr-only">Reload data</span>
-          <flowbite-icon
-            name="refresh"
-            class="size-4 stroke-2" />
+          <ng-icon
+            name="heroArrowPath" />
         </button>
         <ng-template #RefreshTooltip>
-          <div flowbiteTooltip>{{ 'misc.refresh' | translate }}</div>
+          <ui-tooltip>{{ 'misc.refresh' | translate }}</ui-tooltip>
         </ng-template>
 
         <div #tooltipContainer></div>
       </div>
 
       <button
-        flowbiteButton
+        uiButton
         [ngpMenuTrigger]="pageSizeDropdown"
-        class="data-open:*:[flowbite-icon]:rotate-180">
+        class="data-open:*:[ng-icon]:rotate-180">
         {{ pageSize() }}
-        <flowbite-icon
-          name="chevronDown"
-          class="ml-2 size-4 stroke-2 transition-transform duration-150 ease-in-out" />
+        <ng-icon
+          name="heroChevronDown"
+          class="ml-2 transition-transform duration-150 ease-in-out" />
       </button>
       <ng-template #pageSizeDropdown>
-        <div flowbiteDropdown>
-          <ul flowbiteDropdownContent>
-            @for (size of pageSizes; track $index) {
-              <li
-                role="none"
-                flowbiteDropdownItem
-                (click)="pageSize.set(size)">
-                {{ size }}
-              </li>
-            }
-          </ul>
-        </div>
+        <ui-menu>
+          @for (size of pageSizes; track $index) {
+            <button
+              uiMenuItem
+              (click)="pageSize.set(size)">
+              {{ size }}
+            </button>
+          }
+        </ui-menu>
       </ng-template>
     }
   </div>
   <div class="flex flex-col gap-2">
     @if (resourceRef().isLoading()) {
-      <app-loader />
+      <ui-loader />
     } @else if (resourceRef().error()) {
       <div class="flex flex-col gap-2">
         <div class="flex flex-col gap-2">
@@ -67,17 +63,16 @@
 
       @if (value !== undefined && value.data.length > 0) {
         <table
-          flowbiteTable
-          [tableHead]="header()"
+          uiTable
+          [tableHeader]="header()"
           [tableBody]="body()"
-          [tableFoot]="footer()"
+          [tableFooter]="footer()"
           [data]="value.data"></table>
 
-        <nav
-          flowbitePagination
+        <ui-pagination
           class="self-end"
-          [(page)]="pageNumber"
-          [pageCount]="value.totalPages"></nav>
+          [pageCount]="value.totalPages"
+          [(page)]="pageNumber" />
       } @else {
         <p class="font-medium">{{ 'misc:noData' | translate }}</p>
       }

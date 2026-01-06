@@ -1,21 +1,12 @@
-import { AuthService } from '@app-core/api/auth/auth.service';
-import { APP_TRANSLATION_SERVICE } from '@app-core/translation.service';
+import { AuthService } from '@my-app/core/api/auth/auth.service';
+import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
+import { UiButton } from '@my-app/ui/button';
+import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
+import { UiNavbar, UiNavbarContent, UiNavbarItem } from '@my-app/ui/navbar';
 
-import { Button } from 'flowbite-angular/button';
-import { Dropdown, DropdownContent, DropdownItem } from 'flowbite-angular/dropdown';
-import { Icon } from 'flowbite-angular/icon';
-import { bars } from 'flowbite-angular/icon/outline/general';
-import { userCircle } from 'flowbite-angular/icon/outline/user';
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarToggle,
-} from 'flowbite-angular/navbar';
-import { Theme, ThemeToggle } from 'flowbite-angular/theme-toggle';
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
 import { flagCp, flagUs } from '@ng-icons/flag-icons';
+import { heroUserCircle } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { TitleCasePipe } from '@angular/common';
@@ -33,28 +24,23 @@ import { NgpMenuTrigger } from 'ng-primitives/menu';
 @Component({
   selector: 'app-root',
   imports: [
+    UiNavbar,
+    UiNavbarContent,
+    UiNavbarItem,
+    UiButton,
+    UiMenu,
+    UiMenuItem,
+    NgIcon,
+    NgpMenuTrigger,
     RouterOutlet,
     RouterLink,
     TranslatePipe,
-    Navbar,
-    NavbarBrand,
-    NavbarToggle,
-    NavbarContent,
-    NavbarItem,
-    Icon,
-    ThemeToggle,
-    NgpMenuTrigger,
-    Button,
-    Dropdown,
-    DropdownContent,
-    DropdownItem,
     TitleCasePipe,
   ],
   templateUrl: './app.component.html',
-  providers: [provideIcons({ bars, flagCp, flagUs, userCircle })],
+  providers: [provideIcons({ flagCp, flagUs, heroUserCircle })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  hostDirectives: [Theme],
 })
 export class AppComponent {
   private readonly _translationService = inject(APP_TRANSLATION_SERVICE);

@@ -1,78 +1,47 @@
-<nav
-  flowbiteNavbar
-  fixed
-  color="info">
+<nav uiNavbar>
   <div class="flex flex-1 flex-row items-center gap-2">
     <a
-      flowbiteNavbarBrand
+      class="flex cursor-pointer items-center space-x-3"
       [routerLink]="['/']">
       <span class="sr-only">Brand</span>
       <span class="self-center text-2xl font-semibold whitespace-nowrap">my-app</span>
     </a>
   </div>
 
-  <div flowbiteNavbarContent>
+  <ui-navbar-content>
     @if (_isLoggedIn()) {
       <li>
         <a
-          flowbiteNavbarItem
+          uiNavbarItem
           [routerLink]="['/', 'app']">
           {{ 'nav.dashboard' | translate | titlecase }}
         </a>
       </li>
     }
-  </div>
+  </ui-navbar-content>
 
   <div class="flex flex-row items-center justify-start md:order-2">
-    <button
-      flowbiteThemeToggle
-      type="button"
-      color="info">
-      <span class="sr-only">Theme toggle</span>
-    </button>
-
-    <button
-      type="button"
-      flowbiteNavbarToggle
-      color="info">
-      <span class="sr-only">Navbar toggle</span>
-      <flowbite-icon
-        name="bars"
-        class="size-5 stroke-2" />
-    </button>
-
-    <button
-      flowbiteButton
-      [ngpMenuTrigger]="langDropdown">
-      <span class="sr-only">LangDropdown toggle</span>
-      <flowbite-icon
-        [name]="_currentLanguageIcon()"
-        class="size-3 stroke-2" />
-    </button>
+    <ng-icon
+      [ngpMenuTrigger]="langDropdown"
+      [name]="_currentLanguageIcon()"
+      class="hover:cursor-pointer" />
     <ng-template #langDropdown>
-      <div
-        flowbiteDropdown
-        class="z-100">
-        <ul flowbiteDropdownContent>
-          @for (lang of _availableLanguages; track lang.code) {
-            <li
-              role="none"
-              flowbiteDropdownItem
-              (click)="onSetLang(lang.code)">
-              <flowbite-icon
-                [name]="lang.icon"
-                class="size-3 stroke-2" />
-              <span class="ml-2">{{ lang.name }}</span>
-            </li>
-          }
-        </ul>
-      </div>
+      <ui-menu class="z-100">
+        @for (lang of _availableLanguages; track lang.code) {
+          <button
+            uiMenuItem
+            (click)="onSetLang(lang.code)">
+            <ng-icon [name]="lang.icon" />
+            <span>{{ lang.name }}</span>
+          </button>
+        }
+      </ui-menu>
     </ng-template>
 
     @if (_isLoggedIn()) {
       <img
         [ngpMenuTrigger]="loggedInUserDropdown"
-        [src]="_authService.getIdToken()['picture'] ?? 'https://avatar.iran.liara.run/public'"
+        [src]="_authService.getIdToken()['picture'] ?? '/icons/avatar.svg'"
         fetchpriority="high"
         class="ml-5 size-10 rounded-full object-cover hover:cursor-pointer"
         width="480"
@@ -80,40 +49,31 @@
         alt="#"
         priority />
       <ng-template #loggedInUserDropdown>
-        <div
-          flowbiteDropdown
-          class="z-100">
-          <ul flowbiteDropdownContent>
-            <li
-              role="none"
-              flowbiteDropdownItem
-              (click)="_authService.logout()">
-              <span>{{ 'misc.logout' | translate | titlecase }}</span>
-            </li>
-          </ul>
-        </div>
+        <ui-menu class="z-100">
+          <button
+            uiMenuItem
+            (click)="_authService.logout()">
+            <span>{{ 'misc.logout' | translate | titlecase }}</span>
+          </button>
+        </ui-menu>
       </ng-template>
     } @else {
-      <flowbite-icon
+      <ng-icon
         [ngpMenuTrigger]="notLoggedInUserDropdown"
-        name="userCircle"
-        class="ml-5 size-10 rounded-full stroke-1 hover:cursor-pointer" />
+        name="heroUserCircle"
+        size="40px"
+        class="ml-5 rounded-full stroke-1 hover:cursor-pointer" />
       <ng-template #notLoggedInUserDropdown>
-        <div
-          flowbiteDropdown
-          class="z-100">
-          <ul flowbiteDropdownContent>
-            <li
-              role="none"
-              flowbiteDropdownItem
-              (click)="_authService.login()">
-              <span>
-                {{ 'misc.login' | translate | titlecase }} /
-                {{ 'misc.register' | translate | titlecase }}
-              </span>
-            </li>
-          </ul>
-        </div>
+        <ui-menu class="z-100">
+          <button
+            uiMenuItem
+            (click)="_authService.login()">
+            <span>
+              {{ 'misc.login' | translate | titlecase }} /
+              {{ 'misc.register' | translate | titlecase }}
+            </span>
+          </button>
+        </ui-menu>
       </ng-template>
     }
   </div>

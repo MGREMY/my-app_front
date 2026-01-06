@@ -1,5 +1,5 @@
-import { PaginationRequest, SortRequest } from '@app-core/api/pagination/pagination.request';
-import { PaginationResponse } from '@app-core/api/pagination/pagination.response';
+import { PaginationRequest, SortRequest } from '@my-app/core/api/pagination/pagination.request';
+import { PaginationResponse } from '@my-app/core/api/pagination/pagination.response';
 
 import { computed, ResourceRef, signal } from '@angular/core';
 import { rxResource, RxResourceOptions } from '@angular/core/rxjs-interop';

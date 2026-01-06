@@ -29,6 +29,9 @@ importers:
       '@angular/router':
         specifier: ~20.3.0
         version: 20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2)
+      '@ng-icons/heroicons':
+        specifier: ^33.0.0
+        version: 33.0.0
       '@ngx-translate/core':
         specifier: ^16.0.4
         version: 16.0.4(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))
@@ -41,9 +44,6 @@ importers:
       angular-oauth2-oidc:
         specifier: ^20.0.2
         version: 20.0.2(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))
-      flowbite-angular:
-        specifier: 20.1.1
-        version: 20.1.1(35b53a5fe674a2e3eb3348ad46329f01)
       jwt-decode:
         specifier: ^4.0.0
         version: 4.0.0
@@ -2186,10 +2186,8 @@ packages:
   '@ng-icons/flag-icons@32.3.0':
     resolution: {integrity: sha512-LGhto2fH/3xfQ22oSJg/hiI9Pze8BcwR24PMvelWxSeJRr4DfzZZ2K7uEzq2GB3fVT1IWAEq6VsBkcXLEpCrpA==}
 
-  '@ng-primitives/state@0.78.0':
-    resolution: {integrity: sha512-qj1tU7gd3OzCv+PssfWhf8CdFqwhUnB1/3a9WA/oo+7TwDTYygXvvKjPsTjoBzi5LIDwVit3Ul+m5kxsCphZPA==}
-    peerDependencies:
-      '@angular/core': '>=19.0.0'
+  '@ng-icons/heroicons@33.0.0':
+    resolution: {integrity: sha512-sIAtcxJM/qy3P4GHTjSJ8ZHZsrTTAsYqV/lZ1sEJZuKHTSiJLXhpudd8GEvnqCKn6yaSuo7foFTl/UdexqE/1A==}
 
   '@ngtools/webpack@20.3.9':
     resolution: {integrity: sha512-3h5laY9+kP7Tzociy3Lg5sMfpTTKMU+XbLQAHxnIvywHLD6r/fgVkwRli8GZf5JFMTwAkul0AQPKom9SCSWJLg==}
@@ -4295,19 +4293,6 @@ packages:
   flatted@3.3.3:
     resolution: {integrity: sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==}
 
-  flowbite-angular@20.1.1:
-    resolution: {integrity: sha512-UNiRXFDuzw3vrTl9gJdAEkrF84+MVzg3DtU+Msc3FGNSFoNjGTcoi4uzCCnvbYrTe7rv+kPkCCXYj4FLcqN4aA==}
-    peerDependencies:
-      '@angular/cdk': '>=20.0.0 < 21.0.0'
-      '@angular/core': '>=20.0.0 < 21.0.0'
-      '@ng-icons/core': ^31.3.0
-      '@ng-primitives/state': '>=0.57.0'
-      '@tailwindcss/postcss': ^4.0.0
-      ng-primitives: '>=0.57.0'
-      rxjs: ^7.4.0
-      tailwind-merge: 2.5.5
-      tailwindcss: ^4.0.0
-
   follow-redirects@1.15.11:
     resolution: {integrity: sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==}
     engines: {node: '>=4.0'}
@@ -5402,20 +5387,6 @@ packages:
 
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
-
-  ng-primitives@0.78.0:
-    resolution: {integrity: sha512-LyqLiRlvvFUmCn007STvp7bTnh9JdlXSj+niEGAH0YK71PmpXi7Gd/Px4rxQWWyWSohIxoReWB1LLtk9/5H9xw==}
-    peerDependencies:
-      '@angular/cdk': '>=19.0.0'
-      '@angular/common': '>=19.0.0'
-      '@angular/core': '>=19.0.0'
-      '@angular/forms': '>=19.0.0'
-      '@floating-ui/dom': '>=1.6.0'
-      luxon: '*'
-      rxjs: '>=6.6.0'
-    peerDependenciesMeta:
-      luxon:
-        optional: true
 
   ng-primitives@0.87.0:
     resolution: {integrity: sha512-sA2trGecmaBHT/1514iHO2L4gwSRKyC8wkMB767kqevqXgMTVXW7xRrfQ9zl1rp820/Tq3WIAinBe0iO2yOg0g==}
@@ -6744,9 +6715,6 @@ packages:
   synckit@0.11.11:
     resolution: {integrity: sha512-MeQTA1r0litLUf0Rp/iisCaL8761lKAZHaimlbGK4j0HysC4PLfqygQj9srcs0m2RdtDYnF8UuYyKpbjHYp7Jw==}
     engines: {node: ^14.18.0 || >=16.0.0}
-
-  tailwind-merge@2.5.5:
-    resolution: {integrity: sha512-0LXunzzAZzo0tEPxV3I297ffKZPlKDrjj7NXphC8V5ak9yHC5zRmxnOe2m/Rd/7ivsOMJe3JZ2JVocoDdQTRBA==}
 
   tailwindcss@4.1.17:
     resolution: {integrity: sha512-j9Ee2YjuQqYT9bbRTfTZht9W/ytp5H+jJpZKiYdP/bpnXARAuELt9ofP0lPnmHjbga7SNQIxdTAXCmtKVYjN+Q==}
@@ -10195,19 +10163,9 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@ng-primitives/state@0.78.0(@angular/cdk@20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/forms@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2))(@floating-ui/dom@1.7.4)(rxjs@7.8.2)(typescript@5.9.3)':
+  '@ng-icons/heroicons@33.0.0':
     dependencies:
-      '@angular/core': 20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)
-      ng-primitives: 0.78.0(@angular/cdk@20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/forms@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2))(@floating-ui/dom@1.7.4)(rxjs@7.8.2)(typescript@5.9.3)
       tslib: 2.8.1
-    transitivePeerDependencies:
-      - '@angular/cdk'
-      - '@angular/common'
-      - '@angular/forms'
-      - '@floating-ui/dom'
-      - luxon
-      - rxjs
-      - typescript
 
   '@ngtools/webpack@20.3.9(@angular/compiler-cli@20.3.10(@angular/compiler@20.3.10)(typescript@5.9.3))(typescript@5.9.3)(webpack@5.101.2(@swc/core@1.5.29(@swc/helpers@0.5.17))(esbuild@0.25.9))':
     dependencies:
@@ -12742,19 +12700,6 @@ snapshots:
 
   flatted@3.3.3: {}
 
-  flowbite-angular@20.1.1(35b53a5fe674a2e3eb3348ad46329f01):
-    dependencies:
-      '@angular/cdk': 20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2)
-      '@angular/core': 20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)
-      '@ng-icons/core': 31.4.0(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2)
-      '@ng-primitives/state': 0.78.0(@angular/cdk@20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/forms@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2))(@floating-ui/dom@1.7.4)(rxjs@7.8.2)(typescript@5.9.3)
-      '@tailwindcss/postcss': 4.1.17
-      ng-primitives: 0.87.0(@angular/cdk@20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/forms@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2))(@floating-ui/dom@1.7.4)(rxjs@7.8.2)(typescript@5.9.3)
-      rxjs: 7.8.2
-      tailwind-merge: 2.5.5
-      tailwindcss: 4.1.17
-      tslib: 2.8.1
-
   follow-redirects@1.15.11(debug@4.4.3):
     optionalDependencies:
       debug: 4.4.3
@@ -13844,19 +13789,6 @@ snapshots:
   negotiator@1.0.0: {}
 
   neo-async@2.6.2: {}
-
-  ng-primitives@0.78.0(@angular/cdk@20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/forms@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2))(@floating-ui/dom@1.7.4)(rxjs@7.8.2)(typescript@5.9.3):
-    dependencies:
-      '@angular/cdk': 20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2)
-      '@angular/common': 20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2)
-      '@angular/core': 20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)
-      '@angular/forms': 20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2)
-      '@floating-ui/dom': 1.7.4
-      '@phenomnomnominal/tsquery': 6.1.3(typescript@5.9.3)
-      rxjs: 7.8.2
-      tslib: 2.8.1
-    transitivePeerDependencies:
-      - typescript
 
   ng-primitives@0.87.0(@angular/cdk@20.2.11(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/forms@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(@angular/platform-browser@20.3.10(@angular/common@20.3.10(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@20.3.10(@angular/compiler@20.3.10)(rxjs@7.8.2)))(rxjs@7.8.2))(@floating-ui/dom@1.7.4)(rxjs@7.8.2)(typescript@5.9.3):
     dependencies:
@@ -15233,8 +15165,6 @@ snapshots:
   synckit@0.11.11:
     dependencies:
       '@pkgr/core': 0.2.9
-
-  tailwind-merge@2.5.5: {}
 
   tailwindcss@4.1.17: {}
 

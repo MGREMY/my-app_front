@@ -1,21 +1,13 @@
-import { PaginationResponse } from '@app-core/api/pagination/pagination.response';
-import { LoaderComponent } from '@app-shared/components/loader/loader.component';
+import { PaginationResponse } from '@my-app/core/api/pagination/pagination.response';
+import { UiButton } from '@my-app/ui/button';
+import { UiLoader } from '@my-app/ui/loader';
+import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
+import { UiPagination } from '@my-app/ui/pagination';
+import { UiTable, UiTableBody, UiTableFooter, UiTableHeader } from '@my-app/ui/table';
+import { UiTooltip } from '@my-app/ui/tooltip';
 
-import { Button } from 'flowbite-angular/button';
-import { Dropdown, DropdownContent, DropdownItem } from 'flowbite-angular/dropdown';
-import { Icon } from 'flowbite-angular/icon';
-import { chevronDown, refresh } from 'flowbite-angular/icon/outline/arrows';
-import { dotsVertical, home, pen, trashBin } from 'flowbite-angular/icon/outline/general';
-import { Pagination } from 'flowbite-angular/pagination';
-import {
-  provideFlowbiteTableState,
-  Table,
-  TableBody,
-  TableFoot,
-  TableHead,
-} from 'flowbite-angular/table';
-import { Tooltip } from 'flowbite-angular/tooltip';
-import { provideIcons } from '@ng-icons/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroArrowPath, heroChevronDown } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import {
@@ -33,25 +25,21 @@ import { NgpTooltipTrigger } from 'ng-primitives/tooltip';
 @Component({
   selector: 'app-table',
   imports: [
-    LoaderComponent,
-    Button,
-    Icon,
-    Pagination,
+    UiLoader,
+    UiTable,
+    UiButton,
+    UiPagination,
+    UiMenu,
+    UiMenuItem,
+    UiTooltip,
     NgpMenuTrigger,
-    Dropdown,
-    DropdownContent,
-    DropdownItem,
-    Tooltip,
     NgpTooltipTrigger,
+    NgIcon,
     TranslatePipe,
-    Table,
   ],
   standalone: true,
   templateUrl: './table.component.html',
-  providers: [
-    provideIcons({ dotsVertical, pen, trashBin, refresh, home, chevronDown }),
-    provideFlowbiteTableState(),
-  ],
+  providers: [provideIcons({ heroArrowPath, heroChevronDown })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
@@ -59,11 +47,11 @@ export class TableComponent<T> {
   readonly pageSizes = [5, 15, 25, 50, 100];
 
   readonly resourceRef = input.required<ResourceRef<PaginationResponse<T> | undefined>>();
-  readonly header = input.required<TemplateRef<TableHead>>();
-  readonly body = input.required<TemplateRef<TableBody>>();
+  readonly header = input.required<TemplateRef<UiTableHeader>>();
+  readonly body = input.required<TemplateRef<UiTableBody>>();
 
   readonly pageNumber = model.required<number>();
   readonly pageSize = model.required<number>();
 
-  readonly footer = input<TemplateRef<TableFoot>>();
+  readonly footer = input<TemplateRef<UiTableFooter>>();
 }

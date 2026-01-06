@@ -1,8 +1,8 @@
-import { APP_CONFIG_SERVICE } from '@app-core/app-config.service';
-import { APP_AUTH_CONFIG } from '@app-core/config/auth.config';
-import { AccessToken } from '@app-core/models/access-token.interface';
-import { IdToken } from '@app-core/models/id-token.interface';
-import { APP_STORAGE_SERVICE } from '@app-core/storage.service';
+import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
+import { APP_AUTH_CONFIG } from '@my-app/core/config/auth.config';
+import { AccessToken } from '@my-app/core/models/access-token.interface';
+import { IdToken } from '@my-app/core/models/id-token.interface';
+import { APP_STORAGE_SERVICE } from '@my-app/core/storage.service';
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';

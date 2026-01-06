@@ -15,9 +15,8 @@ const config = {
   importOrder: [
     '^~/(.*)$',
     '^[.]',
-    '^@app-.*',
+    '^@my-app.*',
     '',
-    '(flowbite-angular)',
     '(@ng-icon)',
     '(@ngx-translate)',
     '',

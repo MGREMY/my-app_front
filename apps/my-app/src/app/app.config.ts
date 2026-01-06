@@ -1,14 +1,15 @@
 import { routes } from './app.routes';
-import { provideApplicationConfig } from '@app-core/config/app.config';
-import { provideAuthConfig } from '@app-core/config/auth.config';
-import { provideDefaultDatePipeConfig } from '@app-core/config/pipe.config';
-import { provideStorageConfig } from '@app-core/config/storage.config';
-import { provideTranslationConfig } from '@app-core/config/translation.config';
-import { authInterceptor } from '@app-core/interceptors/auth.interceptor';
-import { badResponseInterceptor } from '@app-core/interceptors/bad-request.interceptor';
-import { langInterceptor } from '@app-core/interceptors/lang.interceptor';
+import { provideApplicationThemeConfig } from './core/config/app-theme.config';
+import { provideApplicationConfig } from '@my-app/core/config/app.config';
+import { provideAuthConfig } from '@my-app/core/config/auth.config';
+import { provideDefaultDatePipeConfig } from '@my-app/core/config/pipe.config';
+import { provideStorageConfig } from '@my-app/core/config/storage.config';
+import { provideTranslationConfig } from '@my-app/core/config/translation.config';
+import { authInterceptor } from '@my-app/core/interceptors/auth.interceptor';
+import { badResponseInterceptor } from '@my-app/core/interceptors/bad-request.interceptor';
+import { langInterceptor } from '@my-app/core/interceptors/lang.interceptor';
 
-import { provideFlowbiteThemeConfig } from 'flowbite-angular/theme-toggle';
+import { provideNgIconsConfig } from '@ng-icons/core';
 
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
@@ -19,9 +20,10 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(withInterceptors([authInterceptor, langInterceptor, badResponseInterceptor])),
     provideRouter(routes, withComponentInputBinding()),
-    provideFlowbiteThemeConfig({
-      type: { type: 'attr', name: 'data-theme' },
+    provideNgIconsConfig({
+      size: '16px',
     }),
+    provideApplicationThemeConfig(),
     provideDefaultDatePipeConfig(),
     provideApplicationConfig(),
     provideStorageConfig(),

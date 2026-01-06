@@ -1,8 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-@import 'tailwindcss';
+@import '../../../../libs/ui/src/theme/ngp_tw.css';
 
-@import './app.css';
+@font-face {
+  font-family: inter;
+  src: url('../fonts/inter.ttf') format('truetype');
+}
 
-@source "../../../../node_modules/flowbite-angular";
+@font-face {
+  font-family: roboto;
+  src: url('../fonts/roboto.ttf') format('truetype');
+}
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@theme {
+  --default-font-family: 'roboto', 'inter';
+}

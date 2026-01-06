@@ -1,5 +1,5 @@
-import { NgxTranslationService } from '@app-core/services/ngx-translation.service';
-import { APP_TRANSLATION_SERVICE } from '@app-core/translation.service';
+import { NgxTranslationService } from '@my-app/core/services/ngx-translation.service';
+import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
 
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
