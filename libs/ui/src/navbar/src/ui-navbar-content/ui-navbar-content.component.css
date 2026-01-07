@@ -1,0 +1,27 @@
+@reference "#ngp_tw.css";
+
+:host {
+  @apply collapse flex-col items-center;
+
+  @variant max-md {
+    &[data-enter] {
+      @apply visible order-last flex-none basis-full;
+      @apply rounded-lg box-border shadow-(--ui-shadow-lg);
+      @apply animate-fade-in;
+
+      ul {
+        @apply flex w-full flex-col gap-2 p-4;
+        @apply rounded-lg;
+        @apply bg-(--ui-background-secondary) font-medium;
+      }
+    }
+  }
+
+  @variant md {
+    @apply visible order-0 m-auto flex-1 flex-row;
+
+    ul {
+      @apply mt-0 flex flex-row gap-4 space-x-4;
+    }
+  }
+}

@@ -1,84 +1,94 @@
-<nav uiNavbar>
-  <div class="flex flex-1 flex-row items-center gap-2">
-    <a
-      class="flex cursor-pointer items-center space-x-3"
-      [routerLink]="['/']">
-      <span class="sr-only">Brand</span>
-      <span class="self-center text-2xl font-semibold whitespace-nowrap">my-app</span>
-    </a>
-  </div>
+<header>
+  <nav uiNavbar>
+    <div class="my-auto gap-2">
+      <a
+        class="flex cursor-pointer space-x-3"
+        [routerLink]="['/']">
+        <span class="sr-only">Brand</span>
+        <span class="text-2xl font-semibold whitespace-nowrap">my-app</span>
+      </a>
+    </div>
 
-  <ui-navbar-content>
-    @if (_isLoggedIn()) {
-      <li>
-        <a
-          uiNavbarItem
-          [routerLink]="['/', 'app']">
-          {{ 'nav.dashboard' | translate | titlecase }}
-        </a>
-      </li>
-    }
-  </ui-navbar-content>
+    <ui-navbar-content #navbarContent>
+      @if (_isLoggedIn()) {
+        <li>
+          <a
+            uiNavbarItem
+            [routerLink]="['/', 'app']"
+            routerLinkActive="page"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ariaCurrentWhenActive="page">
+            {{ 'nav.dashboard' | translate | titlecase }}
+          </a>
+        </li>
+      }
+    </ui-navbar-content>
 
-  <div class="flex flex-row items-center justify-start md:order-2">
-    <ng-icon
-      [ngpMenuTrigger]="langDropdown"
-      [name]="_currentLanguageIcon()"
-      class="hover:cursor-pointer" />
-    <ng-template #langDropdown>
-      <ui-menu class="z-100">
-        @for (lang of _availableLanguages; track lang.code) {
-          <button
-            uiMenuItem
-            (click)="onSetLang(lang.code)">
-            <ng-icon [name]="lang.icon" />
-            <span>{{ lang.name }}</span>
-          </button>
-        }
-      </ui-menu>
-    </ng-template>
-
-    @if (_isLoggedIn()) {
-      <img
-        [ngpMenuTrigger]="loggedInUserDropdown"
-        [src]="_authService.getIdToken()['picture'] ?? '/icons/avatar.svg'"
-        fetchpriority="high"
-        class="ml-5 size-10 rounded-full object-cover hover:cursor-pointer"
-        width="480"
-        height="480"
-        alt="#"
-        priority />
-      <ng-template #loggedInUserDropdown>
-        <ui-menu class="z-100">
-          <button
-            uiMenuItem
-            (click)="_authService.logout()">
-            <span>{{ 'misc.logout' | translate | titlecase }}</span>
-          </button>
-        </ui-menu>
-      </ng-template>
-    } @else {
+    <div class="my-auto flex flex-row items-center justify-start">
       <ng-icon
-        [ngpMenuTrigger]="notLoggedInUserDropdown"
-        name="heroUserCircle"
-        size="40px"
-        class="ml-5 rounded-full stroke-1 hover:cursor-pointer" />
-      <ng-template #notLoggedInUserDropdown>
+        [ngpMenuTrigger]="langDropdown"
+        [name]="_currentLanguageIcon()"
+        class="hover:cursor-pointer" />
+      <ng-template #langDropdown>
         <ui-menu class="z-100">
-          <button
-            uiMenuItem
-            (click)="_authService.login()">
-            <span>
-              {{ 'misc.login' | translate | titlecase }} /
-              {{ 'misc.register' | translate | titlecase }}
-            </span>
-          </button>
+          @for (lang of _availableLanguages; track lang.code) {
+            <button
+              uiMenuItem
+              (click)="onSetLang(lang.code)">
+              <ng-icon [name]="lang.icon" />
+              <span>{{ lang.name }}</span>
+            </button>
+          }
         </ui-menu>
       </ng-template>
-    }
-  </div>
-</nav>
 
-<div class="mt-20 p-4">
+      @if (_isLoggedIn()) {
+        <img
+          [ngpMenuTrigger]="loggedInUserDropdown"
+          [src]="_authService.getIdToken()['picture'] ?? '/icons/avatar.svg'"
+          fetchpriority="high"
+          class="ml-5 size-10 rounded-full object-cover hover:cursor-pointer"
+          width="480"
+          height="480"
+          alt="#"
+          priority />
+        <ng-template #loggedInUserDropdown>
+          <ui-menu class="z-100">
+            <button
+              uiMenuItem
+              (click)="_authService.logout()">
+              <span>{{ 'misc.logout' | translate | titlecase }}</span>
+            </button>
+          </ui-menu>
+        </ng-template>
+      } @else {
+        <ng-icon
+          [ngpMenuTrigger]="notLoggedInUserDropdown"
+          name="heroUserCircle"
+          size="40px"
+          class="ml-5 rounded-full hover:cursor-pointer" />
+        <ng-template #notLoggedInUserDropdown>
+          <ui-menu class="z-100">
+            <button
+              uiMenuItem
+              (click)="_authService.login()">
+              <span>
+                {{ 'misc.login' | translate | titlecase }} /
+                {{ 'misc.register' | translate | titlecase }}
+              </span>
+            </button>
+          </ui-menu>
+        </ng-template>
+      }
+
+      <ng-icon
+        name="heroBars4"
+        class="ml-5 rounded-full hover:cursor-pointer md:hidden!"
+        (click)="navbarContent.toggle()" />
+    </div>
+  </nav>
+</header>
+
+<main class="overflow-hidden p-4">
   <router-outlet />
-</div>
+</main>

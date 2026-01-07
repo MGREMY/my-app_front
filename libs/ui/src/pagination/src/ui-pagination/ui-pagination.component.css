@@ -1,8 +1,7 @@
+@reference "#ngp_tw.css";
+
 ul {
-  display: flex;
-  align-items: center;
-  column-gap: 0.5rem;
-  list-style: none;
+  @apply flex items-center gap-2;
 }
 
 [ngpPaginationFirst],
@@ -11,42 +10,30 @@ ul {
 [ngpPaginationNext],
 [ngpPaginationLast] {
   all: unset;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.5rem;
-  color: var(--ui-text-primary);
-  outline: none;
-  font-size: 14px;
-  font-weight: 500;
-  background-color: var(--ui-background);
-  box-shadow: var(--ui-button-shadow);
-  cursor: pointer;
-  transition: background-color 0.2s;
+
+  @apply flex size-8 cursor-pointer items-center justify-center;
+  @apply rounded-lg outline-none;
+  @apply bg-(--ui-background) text-sm font-medium text-(--ui-text-primary) shadow-(--ui-button-shadow);
+
+  transition: background-color 0.2s ease-in-out;
 
   &[data-hover]:not([data-disabled]):not([data-selected]) {
-    background-color: var(--ui-background-hover);
+    @apply bg-(----ui-background-hover);
   }
-  
+
   &[data-focus-visible]:not([data-disabled]) {
-    outline: 2px solid var(--ui-focus-ring);
+    @apply outline-2 outline-(--ui-focus-ring);
   }
-  
+
   &[data-press]:not([data-disabled]):not([data-selected]) {
-    background-color: var(--ui-background-active);
+    @apply bg-(--ui-background-active);
   }
-  
+
   &[data-disabled] {
-    color: rgb(210 210 210);
-    background-color: var(--ui-background-disabled);
-    cursor: not-allowed;
-    box-shadow: none;
+    @apply cursor-not-allowed bg-(--ui-background-disabled) text-[#d2d2d2] shadow-none;
   }
-  
+
   &[data-selected] {
-    background-color: var(--ui-background-inverse);
-    color: var(--ui-text-inverse);
+    @apply bg-(--ui-background-inverse) text-(--ui-text-inverse);
   }
 }

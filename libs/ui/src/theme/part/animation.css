@@ -6,10 +6,12 @@
     0% {
       opacity: 0;
       transform: scale(0.9);
+      visibility: hidden;
     }
     100% {
       opacity: 1;
       transform: scale(1);
+      visibility: visible;
     }
   }
 
@@ -17,10 +19,12 @@
     0% {
       opacity: 1;
       transform: scale(1);
+      visibility: visible;
     }
     100% {
       opacity: 0;
       transform: scale(0.9);
+      visibility: hidden;
     }
   }
 }

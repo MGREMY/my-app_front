@@ -1,0 +1,13 @@
+@reference "#ngp_tw.css";
+
+:host {
+  @apply place-self-center;
+}
+
+span {
+  @apply sr-only;
+}
+
+svg {
+  @apply size-8 animate-spin fill-(--ui-text-primary) text-(--ui-background);
+}

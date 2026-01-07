@@ -1,42 +1,16 @@
+@reference "#ngp_tw.css";
+
 :host {
-  position: absolute;
-  max-width: 16rem;
-  border-radius: 0.5rem;
-  background-color: var(--ui-background-inverse);
-  padding: 0.5rem 0.75rem;
-  border: none;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--ui-text-inverse);
-  transform-origin: var(--ui-tooltip-transform-origin);
-}
+  @apply absolute max-w-64 px-3 py-2;
+  @apply rounded-lg;
+  @apply bg-(--ui-background-inverse) text-xs font-medium text-(--ui-text-inverse);
+  @apply origin-(--ui-tooltip-transform-origin);
 
-:host[data-enter] {
-  animation: tooltip-show 200ms ease-in-out;
-}
-
-:host[data-exit] {
-  animation: tooltip-hide 200ms ease-in-out;
-}
-
-@keyframes tooltip-show {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
+  &[data-enter] {
+    @apply animate-fade-in;
   }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 
-@keyframes tooltip-hide {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.9);
+  &[data-exit] {
+    @apply animate-fade-out;
   }
 }

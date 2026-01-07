@@ -20,7 +20,7 @@ export function provideAuthConfig(): (Provider | EnvironmentProviders)[] {
           responseType: 'code',
           scope: 'openid offline_access',
           redirectUri: configService.appUrl,
-          showDebugInformation: true,
+          showDebugInformation: false,
         } as AuthConfig;
       },
       deps: [APP_CONFIG_SERVICE],

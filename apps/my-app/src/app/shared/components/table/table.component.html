@@ -8,8 +8,7 @@
           [ngpTooltipTriggerContainer]="tooltipContainer"
           (click)="resourceRef().reload()">
           <span class="sr-only">Reload data</span>
-          <ng-icon
-            name="heroArrowPath" />
+          <ng-icon name="heroArrowPath" />
         </button>
         <ng-template #RefreshTooltip>
           <ui-tooltip>{{ 'misc.refresh' | translate }}</ui-tooltip>
@@ -62,12 +61,14 @@
       @let value = resourceRef().value();
 
       @if (value !== undefined && value.data.length > 0) {
-        <table
-          uiTable
-          [tableHeader]="header()"
-          [tableBody]="body()"
-          [tableFooter]="footer()"
-          [data]="value.data"></table>
+        <div class="overflow-scroll">
+          <table
+            uiTable
+            [tableHeader]="header()"
+            [tableBody]="body()"
+            [tableFooter]="footer()"
+            [data]="value.data"></table>
+        </div>
 
         <ui-pagination
           class="self-end"

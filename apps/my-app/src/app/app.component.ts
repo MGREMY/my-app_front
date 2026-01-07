@@ -1,12 +1,11 @@
 import { AuthService } from '@my-app/core/api/auth/auth.service';
 import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
-import { UiButton } from '@my-app/ui/button';
 import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
 import { UiNavbar, UiNavbarContent, UiNavbarItem } from '@my-app/ui/navbar';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { flagCp, flagUs } from '@ng-icons/flag-icons';
-import { heroUserCircle } from '@ng-icons/heroicons/outline';
+import { heroBars4, heroUserCircle } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { TitleCasePipe } from '@angular/common';
@@ -18,7 +17,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgpMenuTrigger } from 'ng-primitives/menu';
 
 @Component({
@@ -27,18 +26,18 @@ import { NgpMenuTrigger } from 'ng-primitives/menu';
     UiNavbar,
     UiNavbarContent,
     UiNavbarItem,
-    UiButton,
     UiMenu,
     UiMenuItem,
     NgIcon,
     NgpMenuTrigger,
     RouterOutlet,
     RouterLink,
+    RouterLinkActive,
     TranslatePipe,
     TitleCasePipe,
   ],
   templateUrl: './app.component.html',
-  providers: [provideIcons({ flagCp, flagUs, heroUserCircle })],
+  providers: [provideIcons({ flagCp, flagUs, heroUserCircle, heroBars4 })],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
