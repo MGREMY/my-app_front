@@ -22,7 +22,7 @@ import { ActivatedRouteSnapshot, CanActivateFn } from '@angular/router';
     data: {
       hasRoleGuard: {
         mode: 'any',
-        roles: [Roles.Admin],
+        roles: [roles.Admin],
       },
     },
   },
