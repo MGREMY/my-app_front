@@ -1,6 +1,7 @@
 import { PaginationRequest, toURLSearchParams } from '../pagination/pagination.request';
 import { PaginationResponse, ZPaginationResponse } from '../pagination/pagination.response';
 import { MinimalUserResponse, ZMinimalUserResponse } from './minimal-user.response';
+import { UserDeleteRequest } from './user-delete-dto/user-delete.request';
 import { UserGetByIdRequest } from './user-get-by-id-dto/user-get-by-id.request';
 import { UserResponse, ZUserResponse } from './user.response';
 import { zParse } from '@my-app/core/api/zod';
@@ -25,5 +26,9 @@ export class UserService {
 
   getById(request: UserGetByIdRequest): Observable<UserResponse> {
     return this._http.get(`${this._prefix}/${request.id}`).pipe(zParse(ZUserResponse));
+  }
+
+  delete(request: UserDeleteRequest): Observable<unknown> {
+    return this._http.delete(`${this._prefix}/${request.id}`);
   }
 }

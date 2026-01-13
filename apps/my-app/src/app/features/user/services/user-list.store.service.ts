@@ -10,4 +10,8 @@ export class UserListStoreService {
   public usersResource = paginationContainer({
     stream: ({ params }) => this._userService.get(params),
   });
+
+  public deleteUser(id: string): void {
+    this._userService.delete({ id: id }).subscribe();
+  }
 }

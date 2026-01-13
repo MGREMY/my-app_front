@@ -16,11 +16,9 @@
           {{ 'misc.id' | translate }}
           @if (userResource.sortRequest()['id'] !== undefined) {
             @if (userResource.sortRequest()['id'] === true) {
-              <ng-icon
-                name="heroArrowSmallUp" />
+              <ng-icon name="heroArrowSmallUp" />
             } @else {
-              <ng-icon
-                name="heroArrowSmallDown" />
+              <ng-icon name="heroArrowSmallDown" />
             }
           }
         </span>
@@ -33,11 +31,9 @@
           {{ 'misc.createdAt' | translate }}
           @if (userResource.sortRequest()['createdAtUtc'] !== undefined) {
             @if (userResource.sortRequest()['createdAtUtc'] === true) {
-              <ng-icon
-                name="heroArrowSmallUp" />
+              <ng-icon name="heroArrowSmallUp" />
             } @else {
-              <ng-icon
-                name="heroArrowSmallDown" />
+              <ng-icon name="heroArrowSmallDown" />
             }
           }
         </span>
@@ -64,16 +60,15 @@
           uiButton
           [ngpMenuTrigger]="userActionsDropdown">
           <span class="sr-only">Actions menu toggle</span>
-          <ng-icon
-            name="heroEllipsisVertical" />
+          <ng-icon name="heroEllipsisVertical" />
         </button>
         <ng-template #userActionsDropdown>
           <ui-menu>
             <button
               uiMenuItem
-              color="failure">
-              <ng-icon
-                name="heroTrash" />
+              color="failure"
+              (click)="_service.deleteUser(record.id)">
+              <ng-icon name="heroTrash" />
               {{ 'misc.delete' | translate }}
             </button>
           </ui-menu>
