@@ -11,6 +11,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { jwtDecode } from 'jwt-decode';
 import { filter, from, map, Observable, of, tap } from 'rxjs';
+import { MiscService } from '../misc/misc.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ import { filter, from, map, Observable, of, tap } from 'rxjs';
 export class AuthService {
   private readonly _http = inject(HttpClient);
   private readonly _authService = inject(OAuthService);
+  private readonly _miscService = inject(MiscService);
   private readonly _storageService = inject(APP_STORAGE_SERVICE);
 
   private readonly _storageKeys = {
@@ -57,6 +59,7 @@ export class AuthService {
 
       if (isAuthenticated) {
         this.syncUser().subscribe();
+        this._miscService.antiForgeryToken().subscribe();
       } else {
         this._storageService.removeItem(this._storageKeys.sync);
       }

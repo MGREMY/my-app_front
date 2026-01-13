@@ -12,6 +12,7 @@ export function authInterceptor(
 
   if (authService.isAuthenticated()) {
     const clone = req.clone({
+      withCredentials: true,
       headers: req.headers.append('Authorization', `Bearer ${authService.getAccessToken()}`),
     });
 
