@@ -16,7 +16,6 @@ import {
   inject,
   ViewEncapsulation,
 } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgpMenuTrigger } from 'ng-primitives/menu';
 
@@ -63,8 +62,6 @@ export class AppComponent {
       this._availableLanguages.find((x) => x.code === this._translationService.currentLanguage())
         ?.icon ?? ''
   );
-
-  protected readonly _isLoggedIn = toSignal(this._authService.isLoggedIn());
 
   onSetLang(code: string): void {
     this._translationService.setLanguage(code);

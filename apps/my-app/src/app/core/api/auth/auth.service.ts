@@ -1,15 +1,16 @@
 import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
 import { APP_AUTH_CONFIG } from '@my-app/core/config/auth.config';
+import ROLES from '@my-app/core/constants/role.constant';
 import { AccessToken } from '@my-app/core/models/access-token.interface';
 import { IdToken } from '@my-app/core/models/id-token.interface';
 import { APP_STORAGE_SERVICE } from '@my-app/core/storage.service';
 
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { jwtDecode } from 'jwt-decode';
-import { BehaviorSubject, filter, from, map, Observable, of, switchMap, tap } from 'rxjs';
+import { filter, from, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,32 +25,22 @@ export class AuthService {
   };
   private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/auth`;
 
-  private readonly _isAuthenticated$ = new BehaviorSubject<boolean>(
-    this._authService.hasValidAccessToken()
+  private readonly _isAuthenticated = signal(this._authService.hasValidAccessToken());
+  public readonly isAuthenticated = this._isAuthenticated.asReadonly();
+
+  public readonly isAdmin = computed(
+    () => this._isAuthenticated() === false || this.hasRoles(ROLES.ADMIN)
   );
 
   constructor() {
     this._authService.configure(inject(APP_AUTH_CONFIG));
     this._authService.setupAutomaticSilentRefresh();
 
-    this._isAuthenticated$
-      .pipe(
-        takeUntilDestroyed(),
-        switchMap((isAuthenticated) => {
-          if (isAuthenticated) {
-            return this.syncUser();
-          } else {
-            return of(this._storageService.removeItem(this._storageKeys.sync));
-          }
-        })
-      )
-      .subscribe();
-
     this._authService.events
       .pipe(
         takeUntilDestroyed(),
         filter((event) => event.type == 'token_received'),
-        tap(() => this._isAuthenticated$.next(true))
+        tap(() => this._isAuthenticated.set(true))
       )
       .subscribe();
 
@@ -57,17 +48,23 @@ export class AuthService {
       .pipe(
         takeUntilDestroyed(),
         filter((event) => event.type == 'logout' || event.type == 'token_expires'),
-        tap(() => this._isAuthenticated$.next(false))
+        tap(() => this._isAuthenticated.set(false))
       )
       .subscribe();
+
+    effect(() => {
+      const isAuthenticated = this._isAuthenticated();
+
+      if (isAuthenticated) {
+        this.syncUser().subscribe();
+      } else {
+        this._storageService.removeItem(this._storageKeys.sync);
+      }
+    });
   }
 
   init(): Observable<void> {
     return from(this._authService.loadDiscoveryDocumentAndTryLogin()).pipe(map(() => void 0));
-  }
-
-  isLoggedIn(): Observable<boolean> {
-    return this._isAuthenticated$;
   }
 
   getIdToken(): IdToken {
@@ -86,6 +83,26 @@ export class AuthService {
     } catch (error) {
       console.warn(error);
       return undefined;
+    }
+  }
+
+  hasRoles(roles: string): boolean;
+  hasRoles(roles: string[], mode: 'any' | 'all'): boolean;
+  hasRoles(roles: string | string[], mode: 'any' | 'all' = 'any'): boolean {
+    if (this._isAuthenticated() === false) return false;
+
+    const accessToken = this.getDecodedAccessToken();
+
+    if (accessToken?.roles == undefined) return false;
+
+    if (Array.isArray(roles)) {
+      if (mode === 'any') {
+        return accessToken.roles.some((role) => roles.includes(role));
+      } else {
+        return accessToken.roles.filter((role) => roles.includes(role)).length === roles.length;
+      }
+    } else {
+      return accessToken.roles.includes(roles);
     }
   }
 

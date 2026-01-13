@@ -1,7 +1,7 @@
 @reference "#ngp_tw.css";
 
 :host {
-  @apply flex min-w-28 py-1.5 pr-2 pl-3.5 gap-2;
+  @apply flex min-w-28 gap-2 py-1.5 pr-2 pl-3.5;
   @apply items-center rounded-sm border-none;
   @apply cursor-pointer text-start text-sm font-normal;
 
@@ -13,5 +13,9 @@
 
   &[data-focus-visible] {
     @apply z-1 outline-2 outline-(--ui-focus-ring);
+  }
+
+  &[data-disabled] {
+    @apply cursor-not-allowed opacity-50;
   }
 }

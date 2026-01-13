@@ -10,7 +10,7 @@ export function authInterceptor(
 ): Observable<HttpEvent<unknown>> {
   const authService = inject(AuthService);
 
-  if (authService.isLoggedIn()) {
+  if (authService.isAuthenticated()) {
     const clone = req.clone({
       headers: req.headers.append('Authorization', `Bearer ${authService.getAccessToken()}`),
     });

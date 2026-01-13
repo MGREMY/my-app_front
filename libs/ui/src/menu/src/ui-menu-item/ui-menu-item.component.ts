@@ -12,7 +12,7 @@ import { NgpMenuItem } from 'ng-primitives/menu';
   hostDirectives: [
     {
       directive: NgpMenuItem,
-      inputs: [],
+      inputs: ['ngpMenuItemDisabled:disabled'],
       outputs: [],
     },
   ],

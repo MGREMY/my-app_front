@@ -1,4 +1,5 @@
 import { UserListStoreService } from '../../services/user-list.store.service';
+import { AuthService } from '@my-app/core/api/auth/auth.service';
 import { BaseComponent } from '@my-app/shared/base.component';
 import { TableComponent } from '@my-app/shared/components/table/table.component';
 import { LocalizedDatePipe } from '@my-app/shared/pipes/date.pipe';
@@ -54,6 +55,7 @@ import { NgpMenuTrigger } from 'ng-primitives/menu';
 })
 export class UserListPageComponent extends BaseComponent implements OnInit {
   protected readonly _service = inject(UserListStoreService);
+  protected readonly _authService = inject(AuthService);
 
   public readonly pageNumber = model.required<number>();
   public readonly pageSize = model.required<number>();

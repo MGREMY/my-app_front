@@ -1,1 +1,1 @@
-export default { Admin: 'admin' };
+export default { ADMIN: 'admin' };

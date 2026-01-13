@@ -67,7 +67,8 @@
             <button
               uiMenuItem
               color="failure"
-              (click)="_service.deleteUser(record.id)">
+              (click)="_service.deleteUser(record.id)"
+              [disabled]="_authService.isAdmin() === false">
               <ng-icon name="heroTrash" />
               {{ 'misc.delete' | translate }}
             </button>

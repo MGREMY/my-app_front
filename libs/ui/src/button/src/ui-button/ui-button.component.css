@@ -101,7 +101,7 @@
     @apply decoration-2;
   }
 
-  &[disabled] {
+  &[data-disabled] {
     @apply cursor-not-allowed opacity-50;
   }
 }

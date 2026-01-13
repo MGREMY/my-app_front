@@ -10,7 +10,7 @@
     </div>
 
     <ui-navbar-content #navbarContent>
-      @if (_isLoggedIn()) {
+      @if (_authService.isAuthenticated()) {
         <li>
           <a
             uiNavbarItem
@@ -42,7 +42,7 @@
         </ui-menu>
       </ng-template>
 
-      @if (_isLoggedIn()) {
+      @if (_authService.isAuthenticated()) {
         <img
           [ngpMenuTrigger]="loggedInUserDropdown"
           [src]="_authService.getIdToken()['picture'] ?? '/icons/avatar.svg'"
@@ -54,6 +54,9 @@
           priority />
         <ng-template #loggedInUserDropdown>
           <ui-menu class="z-100">
+            <span class="border-b border-(--ui-border) px-4 py-2">
+              {{ _authService.getIdToken().email }}
+            </span>
             <button
               uiMenuItem
               (click)="_authService.logout()">
