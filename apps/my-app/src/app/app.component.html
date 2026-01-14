@@ -59,6 +59,11 @@
             </span>
             <button
               uiMenuItem
+              (click)="_authService.openAccountPage()">
+              <span>{{ 'misc.profile' | translate | titlecase }}</span>
+            </button>
+            <button
+              uiMenuItem
               (click)="_authService.logout()">
               <span>{{ 'misc.logout' | translate | titlecase }}</span>
             </button>

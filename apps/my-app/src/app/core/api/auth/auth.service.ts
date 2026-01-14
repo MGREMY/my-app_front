@@ -1,3 +1,4 @@
+import { ZErrorResponse } from '@my-app/core/api/error/error.response';
 import { MiscService } from '@my-app/core/api/misc/misc.service';
 import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
 import { APP_AUTH_CONFIG } from '@my-app/core/config/auth.config';
@@ -11,7 +12,7 @@ import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { jwtDecode } from 'jwt-decode';
-import { filter, from, map, Observable, of, tap } from 'rxjs';
+import { catchError, EMPTY, filter, from, map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -121,11 +122,29 @@ export class AuthService {
     const isSync = this._storageService.getItem(this._storageKeys.sync);
 
     if (isSync === undefined || isSync !== 'true') {
-      return this._http
-        .post<void>(`${this._prefix}/sync-user`, {})
-        .pipe(tap(() => this._storageService.setItem(this._storageKeys.sync, 'true')));
+      return this._http.post<void>(`${this._prefix}/sync-user`, {}).pipe(
+        tap(() => this._storageService.setItem(this._storageKeys.sync, 'true')),
+        catchError((error: unknown) => {
+          const zodParsedResult = ZErrorResponse.safeParse(error);
+
+          if (zodParsedResult.success) {
+            const parsedError = zodParsedResult.data;
+            if (parsedError.statusCode === 403) {
+              this.logout();
+            }
+          }
+
+          return EMPTY;
+        })
+      );
     }
 
-    return of(void 0);
+    return EMPTY;
+  }
+
+  openAccountPage(): void {
+    if (this._isAuthenticated() === true) {
+      window.open(`${this._authService.issuer}/account`, '_blank');
+    }
   }
 }

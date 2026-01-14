@@ -1,5 +1,5 @@
 @reference "#ngp_tw.css";
 
 :host {
-  @apply w-full text-left text-sm;
+  @apply w-full text-left text-sm table-auto;
 }

@@ -10,7 +10,7 @@
     <tr uiTableHeader>
       <th
         scope="col"
-        class="px-6 py-3"
+        class="cursor-pointer px-6 py-3"
         (click)="userResource.onSortChange('id')">
         <span class="flex flex-row">
           {{ 'misc.id' | translate }}
@@ -25,12 +25,42 @@
       </th>
       <th
         scope="col"
-        class="px-6 py-3"
+        class="cursor-pointer px-6 py-3"
         (click)="userResource.onSortChange('createdAtUtc')">
         <span class="flex flex-row">
           {{ 'misc.createdAt' | translate }}
           @if (userResource.sortRequest()['createdAtUtc'] !== undefined) {
             @if (userResource.sortRequest()['createdAtUtc'] === true) {
+              <ng-icon name="heroArrowSmallUp" />
+            } @else {
+              <ng-icon name="heroArrowSmallDown" />
+            }
+          }
+        </span>
+      </th>
+      <th
+        scope="col"
+        class="cursor-pointer px-6 py-3"
+        (click)="userResource.onSortChange('userName')">
+        <span class="flex flex-row">
+          {{ 'misc.user_name' | translate }}
+          @if (userResource.sortRequest()['userName'] !== undefined) {
+            @if (userResource.sortRequest()['userName'] === true) {
+              <ng-icon name="heroArrowSmallUp" />
+            } @else {
+              <ng-icon name="heroArrowSmallDown" />
+            }
+          }
+        </span>
+      </th>
+      <th
+        scope="col"
+        class="cursor-pointer px-6 py-3"
+        (click)="userResource.onSortChange('email')">
+        <span class="flex flex-row">
+          {{ 'misc.email' | translate }}
+          @if (userResource.sortRequest()['email'] !== undefined) {
+            @if (userResource.sortRequest()['email'] === true) {
               <ng-icon name="heroArrowSmallUp" />
             } @else {
               <ng-icon name="heroArrowSmallDown" />
@@ -56,6 +86,12 @@
         {{ record.createdAtUtc | localizedDate }}
       </td>
       <td class="px-6 py-4">
+        {{ record.userName }}
+      </td>
+      <td class="px-6 py-4">
+        {{ record.email }}
+      </td>
+      <td class="px-6 py-4">
         <button
           uiButton
           [ngpMenuTrigger]="userActionsDropdown">
@@ -68,10 +104,15 @@
               uiMenuItem
               color="failure"
               (click)="_service.deleteUser(record.id)"
-              [disabled]="_authService.isAdmin() === false">
+              [disabled]="_authService.isAdmin() === false"
+              [ngpTooltipTrigger]="needAdminTooltip"
+              [ngpTooltipTriggerDisabled]="_authService.isAdmin()">
               <ng-icon name="heroTrash" />
               {{ 'misc.delete' | translate }}
             </button>
+            <ng-template #needAdminTooltip>
+              <ui-tooltip>{{ 'tooltip.need_role.admin' | translate }}</ui-tooltip>
+            </ng-template>
           </ui-menu>
         </ng-template>
       </td>

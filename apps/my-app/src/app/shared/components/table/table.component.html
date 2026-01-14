@@ -75,7 +75,13 @@
           [pageCount]="value.totalPages"
           [(page)]="pageNumber" />
       } @else {
-        <p class="font-medium">{{ 'misc:noData' | translate }}</p>
+        <div class="flex flex-col gap-2 place-self-center">
+          <div class="flex flex-col gap-2">
+            <div>
+              <span class="font-semibold">{{ 'misc:noData' | translate }}</span>
+            </div>
+          </div>
+        </div>
       }
     }
   </div>

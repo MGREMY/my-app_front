@@ -16,18 +16,14 @@ class HttpNoNetworkConnectionError extends Error {
 function checkNoNetworkConnection(error: unknown): boolean {
   if (!(error instanceof HttpErrorResponse)) return false;
 
-  return (
-    error.status === 0 ||
-    error.error instanceof ProgressEvent ||
-    (error.status === 0 && error.statusText === 'Unknown Error')
-  );
+  return error.status === 0 || error.error instanceof ProgressEvent;
 }
 
 // Handles the case where the user does not have access to the resource
-function noAccessToResource(error: unknown): Observable<never> {
-  //TODO: Handle with notification
+function noAccessToResource(error: HttpErrorResponse): Observable<never> {
   console.warn("You don't have access to this resource");
-  return throwError(() => error);
+
+  return throwError(() => error.error);
 }
 
 // Main interceptor function
@@ -43,21 +39,20 @@ export function badResponseInterceptor(
         throw new HttpNoNetworkConnectionError();
       }
 
-      // If the error is 401 Unauthorized
-      if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
-        return noAccessToResource(error);
+      if (error instanceof HttpErrorResponse) {
+        if (error.status === 401 || error.status === 403) {
+          return noAccessToResource(error);
+        }
+
+        const parsedError = ZErrorResponse.safeParse(error.error);
+
+        if (parsedError.success) {
+          // TODO: Handle with notification
+          return EMPTY;
+        }
       }
 
-      try {
-        const parsedError = ZErrorResponse.parse(error.error);
-
-        console.error(parsedError);
-
-        return EMPTY;
-      } catch (error) {
-        // For all other errors, just throw the error
-        return throwError(() => error);
-      }
+      return throwError(() => error);
     })
   );
 }

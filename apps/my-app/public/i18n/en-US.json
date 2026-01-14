@@ -5,6 +5,8 @@
   "misc": {
     "id": "id",
     "createdAt": "created at",
+    "user_name": "Username",
+    "email": "Email",
     "actions": "actions",
     "update": "update",
     "delete": "delete",
@@ -19,6 +21,11 @@
       "error": "error",
       "name": "name",
       "message": "message"
+    }
+  },
+  "tooltip": {
+    "need_role": {
+      "admin": "You need to be an Administrator"
     }
   },
   "pages": {

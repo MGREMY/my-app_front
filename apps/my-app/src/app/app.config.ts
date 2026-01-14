@@ -11,14 +11,20 @@ import { langInterceptor } from '@my-app/core/interceptors/lang.interceptor';
 
 import { provideNgIconsConfig } from '@ng-icons/core';
 
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withXsrfConfiguration } from '@angular/common/http';
 import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
-    provideHttpClient(withInterceptors([authInterceptor, langInterceptor, badResponseInterceptor])),
+    provideHttpClient(
+      withXsrfConfiguration({
+        headerName: 'X-XSRF-TOKEN',
+        cookieName: 'XSRF-TOKEN',
+      }),
+      withInterceptors([authInterceptor, langInterceptor, badResponseInterceptor])
+    ),
     provideRouter(routes, withComponentInputBinding()),
     provideNgIconsConfig({
       size: '16px',
