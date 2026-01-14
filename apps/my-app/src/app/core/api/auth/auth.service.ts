@@ -1,3 +1,4 @@
+import { MiscService } from '@my-app/core/api/misc/misc.service';
 import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
 import { APP_AUTH_CONFIG } from '@my-app/core/config/auth.config';
 import ROLES from '@my-app/core/constants/role.constant';
@@ -11,7 +12,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { jwtDecode } from 'jwt-decode';
 import { filter, from, map, Observable, of, tap } from 'rxjs';
-import { MiscService } from '../misc/misc.service';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +31,7 @@ export class AuthService {
   public readonly isAuthenticated = this._isAuthenticated.asReadonly();
 
   public readonly isAdmin = computed(
-    () => this._isAuthenticated() === false || this.hasRoles(ROLES.ADMIN)
+    () => this._isAuthenticated() === true && this.hasRoles(ROLES.ADMIN)
   );
 
   constructor() {
