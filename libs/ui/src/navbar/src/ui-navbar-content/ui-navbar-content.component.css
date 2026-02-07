@@ -7,7 +7,6 @@
     &[data-enter] {
       @apply visible order-last flex-none basis-full;
       @apply rounded-lg box-border shadow-(--ui-shadow-lg);
-      @apply animate-fade-in;
 
       ul {
         @apply flex w-full flex-col gap-2 p-4;

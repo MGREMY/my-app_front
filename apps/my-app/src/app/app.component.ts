@@ -17,7 +17,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { NgpMenuTrigger } from 'ng-primitives/menu';
+import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +27,10 @@ import { NgpMenuTrigger } from 'ng-primitives/menu';
     UiNavbarItem,
     UiMenu,
     UiMenuItem,
-    NgIcon,
+    NgpMenu,
+    NgpMenuItem,
     NgpMenuTrigger,
+    NgIcon,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,

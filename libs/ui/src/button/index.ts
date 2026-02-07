@@ -1,1 +1,1 @@
-export * from './src/ui-button/ui-button.component';
+export * from './src/ui-button/ui-button.directive';

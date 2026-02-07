@@ -62,7 +62,7 @@
     "eslint-config-prettier": "^10.0.0",
     "husky": "^9.1.7",
     "jsonc-eslint-parser": "^2.1.0",
-    "ng-primitives": "0.87.0",
+    "ng-primitives": "0.108.1",
     "nx": "22.3.3",
     "postcss-url": "~10.1.3",
     "prettier": "3.6.2",

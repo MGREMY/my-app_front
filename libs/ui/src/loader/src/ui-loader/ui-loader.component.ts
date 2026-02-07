@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   providers: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    role: 'status'
+    role: 'status',
   },
 })
 export class UiLoader {}

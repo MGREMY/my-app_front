@@ -4,7 +4,7 @@ import { UiLoader } from '@my-app/ui/loader';
 import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
 import { UiPagination } from '@my-app/ui/pagination';
 import { UiTable, UiTableBody, UiTableFooter, UiTableHeader } from '@my-app/ui/table';
-import { UiTooltip } from '@my-app/ui/tooltip';
+import { UiTooltip, UiTooltipArrow } from '@my-app/ui/tooltip';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroArrowPath, heroChevronDown } from '@ng-icons/heroicons/outline';
@@ -19,8 +19,9 @@ import {
   TemplateRef,
   ViewEncapsulation,
 } from '@angular/core';
-import { NgpMenuTrigger } from 'ng-primitives/menu';
-import { NgpTooltipTrigger } from 'ng-primitives/tooltip';
+import { NgpButton } from 'ng-primitives/button';
+import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
+import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
 
 @Component({
   selector: 'app-table',
@@ -32,7 +33,13 @@ import { NgpTooltipTrigger } from 'ng-primitives/tooltip';
     UiMenu,
     UiMenuItem,
     UiTooltip,
+    UiTooltipArrow,
+    NgpButton,
+    NgpMenu,
+    NgpMenuItem,
     NgpMenuTrigger,
+    NgpTooltip,
+    NgpTooltipArrow,
     NgpTooltipTrigger,
     NgIcon,
     TranslatePipe,

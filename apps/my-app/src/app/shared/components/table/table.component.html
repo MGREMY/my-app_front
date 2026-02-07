@@ -3,6 +3,7 @@
     @if (resourceRef().status() !== 'loading') {
       <div class="flex">
         <button
+          ngpButton
           uiButton
           [ngpTooltipTrigger]="RefreshTooltip"
           [ngpTooltipTriggerContainer]="tooltipContainer"
@@ -11,7 +12,14 @@
           <ng-icon name="heroArrowPath" />
         </button>
         <ng-template #RefreshTooltip>
-          <ui-tooltip>{{ 'misc.refresh' | translate }}</ui-tooltip>
+          <div
+            ngpTooltip
+            uiTooltip>
+            {{ 'misc.refresh' | translate }}
+            <div
+              ngpTooltipArrow
+              uiTooltipArrow></div>
+          </div>
         </ng-template>
 
         <div #tooltipContainer></div>
@@ -27,15 +35,18 @@
           class="ml-2 transition-transform duration-150 ease-in-out" />
       </button>
       <ng-template #pageSizeDropdown>
-        <ui-menu>
+        <div
+          ngpMenu
+          uiMenu>
           @for (size of pageSizes; track $index) {
             <button
+              ngpMenuItem
               uiMenuItem
               (click)="pageSize.set(size)">
               {{ size }}
             </button>
           }
-        </ui-menu>
+        </div>
       </ng-template>
     }
   </div>

@@ -6,7 +6,7 @@ import { LocalizedDatePipe } from '@my-app/shared/pipes/date.pipe';
 import { UiButton } from '@my-app/ui/button';
 import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
 import { UiTableBody, UiTableHeader } from '@my-app/ui/table';
-import { UiTooltip } from '@my-app/ui/tooltip';
+import { UiTooltip, UiTooltipArrow } from '@my-app/ui/tooltip';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -26,23 +26,28 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { NgpMenuTrigger } from 'ng-primitives/menu';
-import { NgpTooltipTrigger } from 'ng-primitives/tooltip';
+import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
+import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
 
 @Component({
   imports: [
-    LocalizedDatePipe,
+    TableComponent,
     UiButton,
-    NgpMenuTrigger,
-    NgIcon,
     UiMenu,
     UiMenuItem,
-    TranslatePipe,
-    TableComponent,
     UiTableHeader,
     UiTableBody,
-    NgpTooltipTrigger,
     UiTooltip,
+    UiTooltipArrow,
+    NgpTooltip,
+    NgpTooltipArrow,
+    NgpTooltipTrigger,
+    NgpMenu,
+    NgpMenuItem,
+    NgpMenuTrigger,
+    NgIcon,
+    TranslatePipe,
+    LocalizedDatePipe,
   ],
   templateUrl: './user-list-page.component.html',
   providers: [

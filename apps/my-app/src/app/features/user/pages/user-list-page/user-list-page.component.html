@@ -99,8 +99,11 @@
           <ng-icon name="heroEllipsisVertical" />
         </button>
         <ng-template #userActionsDropdown>
-          <ui-menu>
+          <div
+            ngpMenu
+            uiMenu>
             <button
+              ngpMenuItem
               uiMenuItem
               color="failure"
               (click)="_service.deleteUser(record.id)"
@@ -111,9 +114,16 @@
               {{ 'misc.delete' | translate }}
             </button>
             <ng-template #needAdminTooltip>
-              <ui-tooltip>{{ 'tooltip.need_role.admin' | translate }}</ui-tooltip>
+              <div
+                ngpTooltip
+                uiTooltip>
+                {{ 'tooltip.need_role.admin' | translate }}
+                <div
+                  ngpTooltipArrow
+                  uiTooltipArrow></div>
+              </div>
             </ng-template>
-          </ui-menu>
+          </div>
         </ng-template>
       </td>
     </tr>

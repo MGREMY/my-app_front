@@ -30,16 +30,20 @@
         [name]="_currentLanguageIcon()"
         class="hover:cursor-pointer" />
       <ng-template #langDropdown>
-        <ui-menu class="z-100">
+        <div
+          ngpMenu
+          uiMenu
+          class="z-100">
           @for (lang of _availableLanguages; track lang.code) {
             <button
+              ngpMenuItem
               uiMenuItem
               (click)="onSetLang(lang.code)">
               <ng-icon [name]="lang.icon" />
               <span>{{ lang.name }}</span>
             </button>
           }
-        </ui-menu>
+        </div>
       </ng-template>
 
       @if (_authService.isAuthenticated()) {
@@ -53,21 +57,26 @@
           alt="#"
           priority />
         <ng-template #loggedInUserDropdown>
-          <ui-menu class="z-100">
+          <div
+            ngpMenu
+            uiMenu
+            class="z-100">
             <span class="border-b border-(--ui-border) px-4 py-2">
               {{ _authService.getIdToken().email }}
             </span>
             <button
+              ngpMenuItem
               uiMenuItem
               (click)="_authService.openAccountPage()">
               <span>{{ 'misc.profile' | translate | titlecase }}</span>
             </button>
             <button
+              ngpMenuItem
               uiMenuItem
               (click)="_authService.logout()">
               <span>{{ 'misc.logout' | translate | titlecase }}</span>
             </button>
-          </ui-menu>
+          </div>
         </ng-template>
       } @else {
         <ng-icon
@@ -76,8 +85,12 @@
           size="40px"
           class="ml-5 rounded-full hover:cursor-pointer" />
         <ng-template #notLoggedInUserDropdown>
-          <ui-menu class="z-100">
+          <div
+            ngpMenu
+            uiMenu
+            class="z-100">
             <button
+              ngpMenuItem
               uiMenuItem
               (click)="_authService.login()">
               <span>
@@ -85,7 +98,7 @@
                 {{ 'misc.register' | translate | titlecase }}
               </span>
             </button>
-          </ui-menu>
+          </div>
         </ng-template>
       }
 
