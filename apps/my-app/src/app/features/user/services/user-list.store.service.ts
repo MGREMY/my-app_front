@@ -1,3 +1,4 @@
+import { MinimalUserResponse } from '@my-app/core/api/user/minimal-user.response';
 import { UserService } from '@my-app/core/api/user/user.service';
 import { paginationContainer } from '@my-app/shared/pagination-container';
 
@@ -7,7 +8,15 @@ import { inject, Injectable } from '@angular/core';
 export class UserListStoreService {
   private readonly _userService = inject(UserService);
 
-  public usersResource = paginationContainer({
+  public readonly userResourceFilterProperties: (keyof MinimalUserResponse)[] = [
+    'id',
+    'userName',
+    'email',
+    'createdAtUtc',
+  ];
+  public readonly userResourceFilterDefaultProperty: keyof MinimalUserResponse = 'id';
+
+  public usersResource = paginationContainer<MinimalUserResponse>({
     stream: ({ params }) => this._userService.get(params),
   });
 

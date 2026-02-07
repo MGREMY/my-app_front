@@ -12,11 +12,12 @@
     "delete": "supprimer",
     "refresh": "rafraîchir",
     "reset": "réinitialiser",
-    "noData": "aucune donnée",
+    "no_data": "aucune donnée",
     "login": "connexion",
     "register": "inscription",
     "logout": "déconnexion",
     "profile": "profile",
+    "value": "valeur",
     "error": {
       "error": "erreur",
       "name": "nom",
@@ -31,6 +32,24 @@
   "pages": {
     "landing": {
       "title": "my-app"
+    }
+  },
+  "enum": {
+    "filter_request_operator": {
+      "0": "=",
+      "1": "!=",
+      "2": "<",
+      "3": "<=",
+      "4": ">",
+      "5": ">=",
+      "6": "contient",
+      "7": "ne contient pas",
+      "8": "commence par",
+      "9": "fini par"
+    },
+    "filter_request_logic": {
+      "0": "and",
+      "1": "or"
     }
   }
 }

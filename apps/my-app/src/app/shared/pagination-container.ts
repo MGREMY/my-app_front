@@ -1,4 +1,8 @@
-import { PaginationRequest, SortRequest } from '@my-app/core/api/pagination/pagination.request';
+import {
+  FilterRequest,
+  PaginationRequest,
+  SortRequest,
+} from '@my-app/core/api/pagination/pagination.request';
 import { PaginationResponse } from '@my-app/core/api/pagination/pagination.response';
 
 import { computed, ResourceRef, signal } from '@angular/core';
@@ -12,21 +16,23 @@ export class PaginationContainer<TResult> {
   /**
    * Value is computed each time pageNumber | pageSize | sortRequest (is not undefined) is updated.
    */
-  private readonly _paginationRequest = computed<PaginationRequest | undefined>(() => {
+  private readonly _paginationRequest = computed<PaginationRequest<TResult> | undefined>(() => {
     const pageNumber = this.pageNumber();
     const pageSize = this.pageSize();
     const sortRequest = this.sortRequest();
+    const filterRequest = this.filterRequest();
 
     if (pageNumber === -1 || pageSize === -1) {
       return undefined;
     }
 
-    const paginationRequest: PaginationRequest = {
+    const paginationRequest: PaginationRequest<TResult> = {
       pageNumber: pageNumber,
       pageSize: pageSize,
       sortRequests: Object.entries(sortRequest)
         .filter(([, v]) => v !== undefined)
-        .map(([k, v]) => ({ propertyName: k, isDescending: v }) as SortRequest),
+        .map(([k, v]) => ({ propertyName: k, isDescending: v }) as SortRequest<TResult>),
+      filterRequest: filterRequest,
     };
 
     return paginationRequest;
@@ -37,18 +43,24 @@ export class PaginationContainer<TResult> {
   public readonly sortRequest = signal<Record<keyof TResult, boolean | undefined>>(
     {} as Record<keyof TResult, boolean | undefined>
   );
+  public readonly filterRequest = signal<FilterRequest<TResult>[]>([], {
+    debugName: 'filterRequest',
+    equal: () => false,
+  });
   public readonly resource: ResourceRef<PaginationResponse<TResult> | undefined>;
 
   constructor(
     resourceOpts: Omit<
-      RxResourceOptions<PaginationResponse<TResult>, PaginationRequest | undefined>,
+      RxResourceOptions<PaginationResponse<TResult>, PaginationRequest<TResult> | undefined>,
       'params'
     >
   ) {
-    this.resource = rxResource<PaginationResponse<TResult>, PaginationRequest | undefined>({
-      ...resourceOpts,
-      params: () => this._paginationRequest(),
-    });
+    this.resource = rxResource<PaginationResponse<TResult>, PaginationRequest<TResult> | undefined>(
+      {
+        ...resourceOpts,
+        params: () => this._paginationRequest(),
+      }
+    );
   }
 
   /**
@@ -75,7 +87,7 @@ export class PaginationContainer<TResult> {
 
 export function paginationContainer<TResult>(
   resourceOpts: Omit<
-    RxResourceOptions<PaginationResponse<TResult>, PaginationRequest | undefined>,
+    RxResourceOptions<PaginationResponse<TResult>, PaginationRequest<TResult> | undefined>,
     'params'
   >
 ): PaginationContainer<TResult> {

@@ -4,6 +4,9 @@
   [resourceRef]="userResource.resource"
   [header]="tableHeader"
   [body]="tableBody"
+  [filterProperties]="_service.userResourceFilterProperties"
+  [defaultFilterProperty]="_service.userResourceFilterDefaultProperty"
+  [(filters)]="userResource.filterRequest"
   [(pageNumber)]="userResource.pageNumber"
   [(pageSize)]="userResource.pageSize">
   <ng-template #tableHeader>
@@ -14,8 +17,8 @@
         (click)="userResource.onSortChange('id')">
         <span class="flex flex-row">
           {{ 'misc.id' | translate }}
-          @if (userResource.sortRequest()['id'] !== undefined) {
-            @if (userResource.sortRequest()['id'] === true) {
+          @if (userResource.sortRequest().id !== undefined) {
+            @if (userResource.sortRequest().id === true) {
               <ng-icon name="heroArrowSmallUp" />
             } @else {
               <ng-icon name="heroArrowSmallDown" />
@@ -29,8 +32,8 @@
         (click)="userResource.onSortChange('createdAtUtc')">
         <span class="flex flex-row">
           {{ 'misc.createdAt' | translate }}
-          @if (userResource.sortRequest()['createdAtUtc'] !== undefined) {
-            @if (userResource.sortRequest()['createdAtUtc'] === true) {
+          @if (userResource.sortRequest().createdAtUtc !== undefined) {
+            @if (userResource.sortRequest().createdAtUtc === true) {
               <ng-icon name="heroArrowSmallUp" />
             } @else {
               <ng-icon name="heroArrowSmallDown" />
@@ -44,8 +47,8 @@
         (click)="userResource.onSortChange('userName')">
         <span class="flex flex-row">
           {{ 'misc.user_name' | translate }}
-          @if (userResource.sortRequest()['userName'] !== undefined) {
-            @if (userResource.sortRequest()['userName'] === true) {
+          @if (userResource.sortRequest().userName !== undefined) {
+            @if (userResource.sortRequest().userName === true) {
               <ng-icon name="heroArrowSmallUp" />
             } @else {
               <ng-icon name="heroArrowSmallDown" />
@@ -59,8 +62,8 @@
         (click)="userResource.onSortChange('email')">
         <span class="flex flex-row">
           {{ 'misc.email' | translate }}
-          @if (userResource.sortRequest()['email'] !== undefined) {
-            @if (userResource.sortRequest()['email'] === true) {
+          @if (userResource.sortRequest().email !== undefined) {
+            @if (userResource.sortRequest().email === true) {
               <ng-icon name="heroArrowSmallUp" />
             } @else {
               <ng-icon name="heroArrowSmallDown" />

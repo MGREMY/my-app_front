@@ -12,11 +12,12 @@
     "delete": "delete",
     "refresh": "refresh",
     "reset": "reset",
-    "noData": "no data",
+    "no_data": "no data",
     "login": "log in",
     "register": "register",
     "logout": "log out",
     "profile": "profile",
+    "value": "value",
     "error": {
       "error": "error",
       "name": "name",
@@ -31,6 +32,24 @@
   "pages": {
     "landing": {
       "title": "my-app"
+    }
+  },
+  "enum": {
+    "filter_request_operator": {
+      "0": "=",
+      "1": "!=",
+      "2": "<",
+      "3": "<=",
+      "4": ">",
+      "5": ">=",
+      "6": "contains",
+      "7": "not contains",
+      "8": "start with",
+      "9": "end with"
+    },
+    "filter_request_logic": {
+      "0": "and",
+      "1": "or"
     }
   }
 }

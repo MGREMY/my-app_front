@@ -18,7 +18,7 @@ export class UserService {
   private readonly _http = inject(HttpClient);
   private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/users`;
 
-  get(request: PaginationRequest): Observable<PaginationResponse<MinimalUserResponse>> {
+  get(request: PaginationRequest<MinimalUserResponse>): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
       .get(`${this._prefix}?${toURLSearchParams(request)}`)
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
