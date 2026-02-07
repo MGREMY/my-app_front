@@ -1,5 +1,5 @@
-@reference "#ngp_tw.css";
+@reference "#ui.css";
 
 :host {
-  @apply border-b border-b-(--ui-border-secondary);
+  @apply border-b border-b-(--border-secondary);
 }

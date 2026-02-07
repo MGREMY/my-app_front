@@ -1,4 +1,4 @@
-@reference "#ngp_tw.css";
+@reference "#ui.css";
 
 :host {
   @apply collapse flex-col items-center;
@@ -6,12 +6,12 @@
   @variant max-md {
     &[data-enter] {
       @apply visible order-last flex-none basis-full;
-      @apply rounded-lg box-border shadow-(--ui-shadow-lg);
+      @apply rounded-lg box-border shadow-ui;
 
       ul {
         @apply flex w-full flex-col gap-2 p-4;
         @apply rounded-lg;
-        @apply bg-(--ui-background-secondary) font-medium;
+        @apply bg-secondary font-medium;
       }
     }
   }

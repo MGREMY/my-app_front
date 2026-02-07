@@ -1,83 +1,41 @@
-@import 'tailwindcss';
-@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --ngp-background: var(--bg-ui);
+  --ngp-background-secondary: var(--bg-secondary);
+  --ngp-background-hover: var(--bg-hover);
+  --ngp-background-active: var(--bg-active);
+  --ngp-background-inverse: var(--bg-inverse);
+  --ngp-background-disabled: var(--bg-disabled);
+  --ngp-background-blue: var(--bg-blue);
+  --ngp-background-success: var(--bg-success);
 
-@layer base {
-  :root {
-    --ngp-background: var(--color-white);
-    --ngp-background-secondary: var(--color-gray-300);
-    --ngp-background-hover: var(--color-gray-50);
-    --ngp-background-active: var(--color-gray-100);
-    --ngp-background-inverse: var(--color-black);
-    --ngp-background-disabled: var(--color-gray-100);
-    --ngp-background-blue: var(--color-blue-200);
-    --ngp-background-success: var(--color-lime-400);
+  --ngp-border: var(--border-ui);
+  --ngp-border-secondary: var(--border-secondary);
+  --ngp-border-blue: var(--border-blue);
+  --ngp-border-inverse: var(--border-inverse);
 
-    --ngp-border: var(--color-gray-300);
-    --ngp-border-secondary: var(--color-gray-200);
-    --ngp-border-blue: var(--color-blue-500);
-    --ngp-border-inverse: var(--color-black);
+  --ngp-text-active: var(--text-active);
+  --ngp-text-emphasis: var(--text-emphasis);
+  --ngp-text-primary: var(--text-primary);
+  --ngp-text-secondary: var(--text-secondary);
+  --ngp-text-tertiary: var(--text-tertiary);
+  --ngp-text-disabled: var(--text-disabled);
+  --ngp-text-placeholder: var(--text-placeholder);
+  --ngp-text-inverse: var(--text-inverse);
+  --ngp-text-blue: var(--text-blue);
+  --ngp-text-red: var(--text-red);
 
-    --ngp-text-active: var(--color-blue-400);
-    --ngp-text-emphasis: var(--color-black);
-    --ngp-text-primary: var(--color-gray-900);
-    --ngp-text-secondary: var(--color-gray-600);
-    --ngp-text-tertiary: var(--color-gray-500);
-    --ngp-text-disabled: var(--color-gray-400);
-    --ngp-text-placeholder: var(--color-gray-400);
-    --ngp-text-inverse: var(--color-white);
-    --ngp-text-blue: var(--color-blue-400);
-    --ngp-text-red: var(--color-red-500);
+  --ngp-shadow: var(--shadow-ui);
+  --ngp-shadow-lg: var(--shadow-lg);
+  --ngp-shadow-border: var(--shadow-border);
 
-    --ngp-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.051);
-    --ngp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.102), 0 4px 6px -4px rgba(0, 0, 0, 0.102);
-    --ngp-shadow-border: inset 0 0 0 1px rgba(0, 0, 0, 0.102);
+  --ngp-focus-ring: var(--focus-ring-ui);
 
-    --ngp-focus-ring: rgb(59, 130, 246);
+  --ngp-avatar-background: var(--avatar-background);
+  --ngp-avatar-border: var(--avatar-border);
 
-    --ngp-avatar-background: rgb(186, 230, 253);
-    --ngp-avatar-border: rgb(255, 255, 255);
+  --ngp-button-shadow: var(--button-shadow);
 
-    --ngp-button-shadow:
-      0 1px 3px 0 rgba(0, 0, 0, 0.102), 0 1px 2px -1px rgba(0, 0, 0, 0.102),
-      0 0 0 1px rgba(0, 0, 0, 0.051);
-
-    --ngp-input-shadow: 0 1px 2px rgba(0, 0, 0, 0.051), 0 0 0 1px rgba(0, 0, 0, 0.102);
-
-    @variant dark {
-      --ngp-background: var(--color-gray-950);
-      --ngp-background-secondary: var(--color-gray-700);
-      --ngp-background-hover: var(--color-gray-900);
-      --ngp-background-active: var(--color-gray-800);
-      --ngp-background-inverse: var(--color-white);
-      --ngp-background-disabled: var(--color-gray-900);
-      --ngp-background-blue: var(--color-blue-200);
-
-      --ngp-border: var(--color-gray-800);
-      --ngp-border-secondary: var(--color-gray-700);
-      --ngp-border-blue: var(--color-blue-500);
-      --ngp-border-inverse: var(--color-white);
-
-      --ngp-text-active: var(--color-blue-600);
-      --ngp-text-emphasis: var(--color-white);
-      --ngp-text-primary: var(--color-gray-100);
-      --ngp-text-secondary: var(--color-gray-300);
-      --ngp-text-tertiary: var(--color-gray-400);
-      --ngp-text-disabled: var(--color-gray-500);
-      --ngp-text-inverse: var(--color-black);
-      --ngp-text-blue: var(--color-blue-600);
-      --ngp-text-red: var(--color-red-500);
-
-      --ngp-avatar-background: rgb(24, 24, 27);
-      --ngp-avatar-border: rgb(63, 63, 70);
-
-      --ngp-shadow-border: inset 0 0 0 1px rgba(255, 255, 255, 0.102);
-      --ngp-input-shadow: 0 1px 2px rgba(255, 255, 255, 0.008), 0 0 0 1px rgba(255, 255, 255, 0.1);
-
-      --ngp-button-shadow:
-        0 1px 3px 0 rgba(255, 255, 255, 0.102), 0 1px 2px -1px rgba(255, 255, 255, 0.102),
-        0 0 0 1px rgba(255, 255, 255, 0.051);
-    }
-  }
+  --ngp-input-shadow: var(--input-shadow);
 }
 
 @import './components/button.css';

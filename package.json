@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "imports": {
-    "#ngp_tw.css": "./libs/ui/src/theme/ngp_tw.css"
+    "#ui.css": "./libs/ui/src/theme/ui.css"
   },
   "scripts": {
     "all:build": "pnpm exec nx run-many --target build --all",

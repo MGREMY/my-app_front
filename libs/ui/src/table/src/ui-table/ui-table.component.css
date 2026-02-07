@@ -1,4 +1,4 @@
-@reference "#ngp_tw.css";
+@reference "#ui.css";
 
 :host {
   @apply w-full text-left text-sm table-auto;
