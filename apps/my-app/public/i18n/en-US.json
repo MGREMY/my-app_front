@@ -3,10 +3,6 @@
     "dashboard": "dashboard"
   },
   "misc": {
-    "id": "id",
-    "createdAt": "created at",
-    "user_name": "Username",
-    "email": "Email",
     "actions": "actions",
     "update": "update",
     "delete": "delete",
@@ -38,6 +34,14 @@
   "pages": {
     "landing": {
       "title": "my-app"
+    }
+  },
+  "object": {
+    "minimal_user_response": {
+      "id": "id",
+      "createdAtUtc": "created at",
+      "userName": "user name",
+      "email": "email"
     }
   },
   "enum": {

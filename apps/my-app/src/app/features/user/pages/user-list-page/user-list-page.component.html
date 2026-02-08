@@ -15,7 +15,7 @@
         class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('id')">
         <span class="flex flex-row">
-          {{ 'misc.id' | translate }}
+          {{ 'object.minimal_user_response.id' | translate }}
           @if (userResource.sortRequest().id !== undefined) {
             @if (userResource.sortRequest().id === true) {
               <ng-icon name="heroArrowSmallUp" />
@@ -30,7 +30,7 @@
         class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('createdAtUtc')">
         <span class="flex flex-row">
-          {{ 'misc.createdAt' | translate }}
+          {{ 'object.minimal_user_response.createdAtUtc' | translate }}
           @if (userResource.sortRequest().createdAtUtc !== undefined) {
             @if (userResource.sortRequest().createdAtUtc === true) {
               <ng-icon name="heroArrowSmallUp" />
@@ -45,7 +45,7 @@
         class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('userName')">
         <span class="flex flex-row">
-          {{ 'misc.user_name' | translate }}
+          {{ 'object.minimal_user_response.userName' | translate }}
           @if (userResource.sortRequest().userName !== undefined) {
             @if (userResource.sortRequest().userName === true) {
               <ng-icon name="heroArrowSmallUp" />
@@ -60,7 +60,7 @@
         class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('email')">
         <span class="flex flex-row">
-          {{ 'misc.email' | translate }}
+          {{ 'object.minimal_user_response.email' | translate }}
           @if (userResource.sortRequest().email !== undefined) {
             @if (userResource.sortRequest().email === true) {
               <ng-icon name="heroArrowSmallUp" />

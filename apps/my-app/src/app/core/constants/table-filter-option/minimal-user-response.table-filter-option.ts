@@ -5,6 +5,7 @@ import { TableFilterOption } from '@my-app/shared/components/table/table.compone
 export default {
   defaultFilterProperty: 'id',
   defaultFilterValue: '',
+  objectTranslationKey: 'minimal_user_response',
   possibleFilters: [
     {
       property: 'id',

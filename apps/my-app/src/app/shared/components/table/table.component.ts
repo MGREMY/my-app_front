@@ -68,6 +68,20 @@ function mapFilterToTableFilter<T>(
   }));
 }
 
+function mapTableFilterToFilter<T>(
+  filters: TableFilterRequest<T>[] | undefined
+): FilterRequest<T>[] {
+  if (filters === undefined) return [];
+
+  return filters.map((x) => ({
+    propertyName: x.propertyName,
+    value: x.value.toString(),
+    filterLogic: x.filterLogic,
+    filterOperator: x.filterOperator,
+    filters: mapTableFilterToFilter(x.filters),
+  }));
+}
+
 function removeFilterRecursive<T>(
   filterToRemove: TableFilterRequest<T>,
   filters: TableFilterRequest<T>[] | undefined
@@ -85,6 +99,7 @@ function removeFilterRecursive<T>(
 export type TableFilterOption<T> = {
   defaultFilterProperty: keyof T;
   defaultFilterValue: string;
+  objectTranslationKey: string;
   possibleFilters: PossibleFilter<T>[];
 };
 
@@ -194,7 +209,7 @@ export class TableComponent<T> {
   protected applyFilters(): void {
     const filters = this._filters();
 
-    this.filters.set([...filters]);
+    this.filters.set(mapTableFilterToFilter([...filters]));
     this._areFilterSync.set(true);
   }
 }

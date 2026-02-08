@@ -210,7 +210,7 @@
         <button
           ngpComboboxButton
           uiButton>
-          {{ filter.propertyName }}
+          {{ `object.${filterOption()?.objectTranslationKey}.${filter.propertyName}` | translate }}
         </button>
 
         @if (possibleFilters !== undefined) {
@@ -219,11 +219,13 @@
             ngpComboboxDropdown
             uiComboboxDropdown>
             @for (possibleFilter of possibleFilters; track $index) {
+              @let propertyName = possibleFilter.property.toString();
+
               <span
                 ngpComboboxOption
                 uiComboboxOption
                 [ngpComboboxOptionValue]="possibleFilter.property">
-                {{ possibleFilter.property }}
+                {{ `object.${filterOption()?.objectTranslationKey}.${propertyName}` | translate }}
               </span>
             }
           </div>
