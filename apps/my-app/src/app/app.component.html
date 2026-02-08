@@ -38,7 +38,8 @@
             <button
               ngpMenuItem
               uiMenuItem
-              (click)="onSetLang(lang.code)">
+              (click)="onSetLang(lang.code)"
+              class="flex gap-2">
               <ng-icon [name]="lang.icon" />
               <span>{{ lang.name }}</span>
             </button>
@@ -61,7 +62,7 @@
             ngpMenu
             uiMenu
             class="z-100">
-            <span class="border-b border-ui px-4 py-2">
+            <span class="border-ui border-b px-4 py-2">
               {{ _authService.getIdToken().email }}
             </span>
             <button

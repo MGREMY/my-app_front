@@ -4,8 +4,7 @@
   [resourceRef]="userResource.resource"
   [header]="tableHeader"
   [body]="tableBody"
-  [filterProperties]="_service.userResourceFilterProperties"
-  [defaultFilterProperty]="_service.userResourceFilterDefaultProperty"
+  [filterOption]="_service.userFilterOption"
   [(filters)]="userResource.filterRequest"
   [(pageNumber)]="userResource.pageNumber"
   [(pageSize)]="userResource.pageSize">
@@ -13,7 +12,7 @@
     <tr uiTableHeader>
       <th
         scope="col"
-        class="cursor-pointer px-6 py-3"
+        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('id')">
         <span class="flex flex-row">
           {{ 'misc.id' | translate }}
@@ -28,7 +27,7 @@
       </th>
       <th
         scope="col"
-        class="cursor-pointer px-6 py-3"
+        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('createdAtUtc')">
         <span class="flex flex-row">
           {{ 'misc.createdAt' | translate }}
@@ -43,7 +42,7 @@
       </th>
       <th
         scope="col"
-        class="cursor-pointer px-6 py-3"
+        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('userName')">
         <span class="flex flex-row">
           {{ 'misc.user_name' | translate }}
@@ -58,7 +57,7 @@
       </th>
       <th
         scope="col"
-        class="cursor-pointer px-6 py-3"
+        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('email')">
         <span class="flex flex-row">
           {{ 'misc.email' | translate }}
@@ -110,7 +109,7 @@
               uiMenuItem
               color="failure"
               (click)="_service.deleteUser(record.id)"
-              [disabled]="_authService.isAdmin() === false"
+              [ngpMenuItemDisabled]="_authService.isAdmin() === false"
               [ngpTooltipTrigger]="needAdminTooltip"
               [ngpTooltipTriggerDisabled]="_authService.isAdmin()">
               <ng-icon name="heroTrash" />

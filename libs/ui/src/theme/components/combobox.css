@@ -92,6 +92,10 @@
   @variant data-active {
     background-color: var(--ngp-background-active);
   }
+
+  @variant data-disabled {
+    opacity: 50%;
+  }
 }
 
 @layer base {

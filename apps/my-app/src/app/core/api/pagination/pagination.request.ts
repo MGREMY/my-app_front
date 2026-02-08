@@ -42,11 +42,11 @@ export function toURLSearchParams<T>(request: PaginationRequest<T>) {
     pageSize: request.pageSize.toString(),
   });
 
-  if (request.sortRequests !== undefined && request.sortRequests.length > 0) {
+  if (request.sortRequests?.length) {
     urlSearchParams.append('sortRequests', JSON.stringify(request.sortRequests));
   }
 
-  if (request.filterRequest !== undefined && request.filterRequest.length > 0) {
+  if (request.filterRequest?.length) {
     urlSearchParams.append('filterRequests', JSON.stringify(request.filterRequest));
   }
 

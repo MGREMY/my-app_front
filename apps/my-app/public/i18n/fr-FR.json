@@ -18,6 +18,12 @@
     "logout": "déconnexion",
     "profile": "profile",
     "value": "valeur",
+    "boolean": {
+      "true": "vrai",
+      "1": "vrai",
+      "false": "faux",
+      "0": "faux"
+    },
     "error": {
       "error": "erreur",
       "name": "nom",
@@ -36,12 +42,12 @@
   },
   "enum": {
     "filter_request_operator": {
-      "0": "=",
-      "1": "!=",
-      "2": "<",
-      "3": "<=",
-      "4": ">",
-      "5": ">=",
+      "0": "égal",
+      "1": "pas égal",
+      "2": "inférieur",
+      "3": "inférieur ou égal",
+      "4": "supérieur",
+      "5": "supérieur ou égal",
       "6": "contient",
       "7": "ne contient pas",
       "8": "commence par",

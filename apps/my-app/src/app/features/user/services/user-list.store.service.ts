@@ -1,5 +1,6 @@
 import { MinimalUserResponse } from '@my-app/core/api/user/minimal-user.response';
 import { UserService } from '@my-app/core/api/user/user.service';
+import MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION from '@my-app/core/constants/table-filter-option/minimal-user-response.table-filter-option';
 import { paginationContainer } from '@my-app/shared/pagination-container';
 
 import { inject, Injectable } from '@angular/core';
@@ -8,13 +9,7 @@ import { inject, Injectable } from '@angular/core';
 export class UserListStoreService {
   private readonly _userService = inject(UserService);
 
-  public readonly userResourceFilterProperties: (keyof MinimalUserResponse)[] = [
-    'id',
-    'userName',
-    'email',
-    'createdAtUtc',
-  ];
-  public readonly userResourceFilterDefaultProperty: keyof MinimalUserResponse = 'id';
+  public readonly userFilterOption = MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION;
 
   public usersResource = paginationContainer<MinimalUserResponse>({
     stream: ({ params }) => this._userService.get(params),
