@@ -4,6 +4,7 @@ export const APP_CONFIG_SERVICE = new InjectionToken<IAppConfigService>('APP_CON
 
 export interface IAppConfigService {
   get appUrl(): string;
+  get appBaseHref(): string;
   get apiUrl(): string;
   get defaultLanguage(): string;
   get authUrl(): string;

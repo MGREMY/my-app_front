@@ -24,6 +24,12 @@ export class AppConfigService implements IAppConfigService {
     return this.isValidValue(value) ? value : environment.appUrl;
   }
 
+  get appBaseHref(): string {
+    const value = this.getValue('APP_BASE_HREF');
+
+    return this.isValidValue(value) ? value : environment.appBaseHref;
+  }
+
   get apiUrl(): string {
     const value = this.getValue('API_URL');
 
