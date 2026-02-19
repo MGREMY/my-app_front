@@ -146,7 +146,8 @@
             <div
               ngpCombobox
               uiCombobox
-              [(ngpComboboxValue)]="filter.filterLogic">
+              [(ngpComboboxValue)]="filter.filterLogic"
+              (ngpComboboxValueChange)="_areFilterSync.set(false)">
               <button
                 ngpComboboxButton
                 uiButton>
