@@ -1,8 +1,7 @@
 import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
 
-import { EnvironmentProviders, inject, InjectionToken, provideAppInitializer, Provider } from '@angular/core';
+import { EnvironmentProviders, inject, InjectionToken, Provider } from '@angular/core';
 import { AuthConfig, provideOAuthClient } from 'angular-oauth2-oidc';
-import { AuthService } from '@my-app/core/api/auth/auth.service';
 
 export const APP_AUTH_CONFIG = new InjectionToken<AuthConfig>('APP_AUTH_CONFIG');
 
@@ -25,6 +24,5 @@ export function provideAuthConfig(): (Provider | EnvironmentProviders)[] {
       },
       deps: [APP_CONFIG_SERVICE],
     },
-    provideAppInitializer(() => inject(AuthService).init())
   ];
 }

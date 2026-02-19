@@ -4,6 +4,8 @@ import {
   FilterRequestOperator,
 } from '@my-app/core/api/pagination/pagination.request';
 import { PaginationResponse } from '@my-app/core/api/pagination/pagination.response';
+import { PossibleFilter } from '@my-app/core/models/possible-filter.interface';
+import { TableFilterOption } from '@my-app/core/models/table-filter-option.interface';
 import { ArrayFilterPipe } from '@my-app/shared/pipes/array-filter.pipe';
 import { EnumKeyValuePairPipe } from '@my-app/shared/pipes/enum-key-value-pair.pipe';
 import { uniqueId } from '@my-app/shared/unique-id';
@@ -50,12 +52,6 @@ interface TableFilterRequest<T> extends FilterRequest<T> {
   filters: TableFilterRequest<T>[];
 }
 
-type PossibleFilter<T> = {
-  property: keyof T;
-  operators: FilterRequestOperator[];
-  type: 'text' | 'number' | 'date' | 'boolean';
-};
-
 function mapFilterToTableFilter<T>(
   filters: FilterRequest<T>[] | undefined
 ): TableFilterRequest<T>[] {
@@ -95,13 +91,6 @@ function removeFilterRecursive<T>(
       filters: removeFilterRecursive(filterToRemove, x.filters),
     }));
 }
-
-export type TableFilterOption<T> = {
-  defaultFilterProperty: keyof T;
-  defaultFilterValue: string;
-  objectTranslationKey: string;
-  possibleFilters: PossibleFilter<T>[];
-};
 
 @Component({
   selector: 'app-table',

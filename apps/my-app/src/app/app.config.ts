@@ -1,5 +1,8 @@
+import { environment } from '../environments/environment';
 import { routes } from './app.routes';
+import { AuthService } from './core/api/auth/auth.service';
 import { provideApplicationThemeConfig } from './core/config/app-theme.config';
+import { APP_ENVIRONMENT_SERVICE } from './core/environment.service';
 import { provideApplicationConfig } from '@my-app/core/config/app.config';
 import { provideAuthConfig } from '@my-app/core/config/auth.config';
 import { provideDefaultDatePipeConfig } from '@my-app/core/config/pipe.config';
@@ -12,7 +15,12 @@ import { langInterceptor } from '@my-app/core/interceptors/lang.interceptor';
 import { provideNgIconsConfig } from '@ng-icons/core';
 
 import { provideHttpClient, withInterceptors, withXsrfConfiguration } from '@angular/common/http';
-import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
@@ -29,11 +37,16 @@ export const appConfig: ApplicationConfig = {
     provideNgIconsConfig({
       size: '16px',
     }),
+    {
+      provide: APP_ENVIRONMENT_SERVICE,
+      useValue: environment,
+    },
     provideApplicationThemeConfig(),
     provideDefaultDatePipeConfig(),
     provideApplicationConfig(),
     provideStorageConfig(),
     provideTranslationConfig(), // Internationalization
     provideAuthConfig(),
+    provideAppInitializer(() => inject(AuthService).init()),
   ],
 };

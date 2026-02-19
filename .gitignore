@@ -355,3 +355,6 @@ $RECYCLE.BIN/
 .angular
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
+
+# Dependency graph generation
+dependency-graph.svg

@@ -6,6 +6,7 @@
     "#ui.css": "./libs/ui/src/theme/ui.css"
   },
   "scripts": {
+    "_:dependency-graph": "npx depcruise --config dependency-cruiser.mjs --include-only '^[apps|libs]' --ts-pre-compilation-deps --progress --no-cache --output-type dot . | dot -T svg > dependency-graph.svg",
     "all:build": "pnpm exec nx run-many --target build --all",
     "all:lint": "pnpm exec nx run-many --target lint --all",
     "my-app:build": "pnpm exec nx run my-app:build",
@@ -58,6 +59,7 @@
     "@typescript-eslint/utils": "^8.40.0",
     "angular-eslint": "21.1.0",
     "autoprefixer": "^10.4.0",
+    "dependency-cruiser": "^17.3.8",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "husky": "^9.1.7",

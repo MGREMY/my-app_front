@@ -1,10 +1,11 @@
-import { environment } from '../../../environments/environment';
 import { IAppConfigService } from '@my-app/core/app-config.service';
+import { APP_ENVIRONMENT_SERVICE } from '@my-app/core/environment.service';
 
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class AppConfigService implements IAppConfigService {
+  private readonly _environment = inject(APP_ENVIRONMENT_SERVICE);
   private readonly _windowKey = 'runtime_config';
 
   private isValidValue(value: string | undefined): boolean {
@@ -21,42 +22,42 @@ export class AppConfigService implements IAppConfigService {
   get appUrl(): string {
     const value = this.getValue('APP_URL');
 
-    return this.isValidValue(value) ? value : environment.appUrl;
+    return this.isValidValue(value) ? value : this._environment.appUrl;
   }
 
   get appBaseHref(): string {
     const value = this.getValue('APP_BASE_HREF');
 
-    return this.isValidValue(value) ? value : environment.appBaseHref;
+    return this.isValidValue(value) ? value : this._environment.appBaseHref;
   }
 
   get apiUrl(): string {
     const value = this.getValue('API_URL');
 
-    return this.isValidValue(value) ? value : environment.apiUrl;
+    return this.isValidValue(value) ? value : this._environment.apiUrl;
   }
 
   get defaultLanguage(): string {
     const value = this.getValue('DEFAULT_LANGUAGE');
 
-    return this.isValidValue(value) ? value : environment.defaultLanguage;
+    return this.isValidValue(value) ? value : this._environment.defaultLanguage;
   }
 
   get authUrl(): string {
     const value = this.getValue('AUTH_URL');
 
-    return this.isValidValue(value) ? value : environment.authUrl;
+    return this.isValidValue(value) ? value : this._environment.authUrl;
   }
 
   get authRealm(): string {
     const value = this.getValue('AUTH_REALM');
 
-    return this.isValidValue(value) ? value : environment.authRealm;
+    return this.isValidValue(value) ? value : this._environment.authRealm;
   }
 
   get authClientId(): string {
     const value = this.getValue('AUTH_CLIENT_ID');
 
-    return this.isValidValue(value) ? value : environment.authClientId;
+    return this.isValidValue(value) ? value : this._environment.authClientId;
   }
 }
