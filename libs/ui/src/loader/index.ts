@@ -1,1 +1,1 @@
-export * from './src/ui-loader/ui-loader.component'
+export * from './src/ui-loader/ui-loader.component';

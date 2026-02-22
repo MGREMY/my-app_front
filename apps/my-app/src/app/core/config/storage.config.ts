@@ -1,5 +1,6 @@
 import { LocalStorageService } from '@my-app/core/services/local-storage.service';
-import { APP_STORAGE_SERVICE } from '@my-app/core/storage.service';
+
+import { APP_STORAGE_SERVICE } from '@libs/core/storage.service';
 
 import { Provider } from '@angular/core';
 

@@ -1,11 +1,11 @@
-import { ZErrorResponse } from '@my-app/core/api/error/error.response';
-import { MiscService } from '@my-app/core/api/misc/misc.service';
-import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
-import { APP_AUTH_CONFIG } from '@my-app/core/config/auth.config';
-import ROLES from '@my-app/core/constants/role.constant';
-import { AccessToken } from '@my-app/core/models/access-token.interface';
-import { IdToken } from '@my-app/core/models/id-token.interface';
-import { APP_STORAGE_SERVICE } from '@my-app/core/storage.service';
+import { ZErrorResponse } from '@libs/core/api/error/error.response';
+import { MiscService } from '@libs/core/api/misc/misc.service';
+import { APP_AUTH_CONFIG } from '@libs/core/app-auth-config.service';
+import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
+import ROLES from '@libs/core/constants/role.constant';
+import { AccessToken } from '@libs/core/models/access-token.interface';
+import { IdToken } from '@libs/core/models/id-token.interface';
+import { APP_STORAGE_SERVICE } from '@libs/core/storage.service';
 
 import { HttpClient } from '@angular/common/http';
 import { computed, effect, inject, Injectable, signal } from '@angular/core';

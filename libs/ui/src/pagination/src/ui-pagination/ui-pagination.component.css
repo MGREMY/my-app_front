@@ -13,7 +13,7 @@ ul {
 
   @apply flex size-8 cursor-pointer items-center justify-center;
   @apply rounded-lg outline-none;
-  @apply bg-ui text-sm font-medium text-primary shadow-(--button-shadow);
+  @apply bg-ui text-primary text-sm font-medium shadow-(--button-shadow);
 
   transition: background-color 0.2s ease-in-out;
 
@@ -30,7 +30,7 @@ ul {
   }
 
   &[data-disabled] {
-    @apply cursor-not-allowed bg-disabled text-[#d2d2d2] shadow-none;
+    @apply bg-disabled cursor-not-allowed text-[#d2d2d2] shadow-none;
   }
 
   &[data-selected] {

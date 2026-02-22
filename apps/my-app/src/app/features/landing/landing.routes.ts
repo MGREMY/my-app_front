@@ -6,5 +6,5 @@ export default [
   {
     path: '',
     component: LandingPageComponent,
-  }
+  },
 ] as Routes;

@@ -6,7 +6,7 @@
   @variant max-md {
     &[data-enter] {
       @apply visible order-last flex-none basis-full;
-      @apply rounded-lg box-border shadow-ui;
+      @apply shadow-ui box-border rounded-lg;
 
       ul {
         @apply flex w-full flex-col gap-2 p-4;

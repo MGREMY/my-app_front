@@ -1,5 +1,5 @@
-import { AuthService } from '@my-app/core/api/auth/auth.service';
-import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
+import { AuthService } from '@libs/core/api/auth/auth.service';
+import { APP_TRANSLATION_SERVICE } from '@libs/core/translation.service';
 import { UiMenu, UiMenuItem } from '@libs/ui/menu';
 import { UiNavbar, UiNavbarContent, UiNavbarItem } from '@libs/ui/navbar';
 

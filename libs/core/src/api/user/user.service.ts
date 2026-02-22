@@ -4,8 +4,9 @@ import { MinimalUserResponse, ZMinimalUserResponse } from './minimal-user.respon
 import { UserDeleteRequest } from './user-delete-dto/user-delete.request';
 import { UserGetByIdRequest } from './user-get-by-id-dto/user-get-by-id.request';
 import { UserResponse, ZUserResponse } from './user.response';
-import { zParse } from '@my-app/core/api/zod';
-import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
+
+import { zParse } from '@libs/core/api/zod';
+import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
@@ -18,7 +19,9 @@ export class UserService {
   private readonly _http = inject(HttpClient);
   private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/users`;
 
-  get(request: PaginationRequest<MinimalUserResponse>): Observable<PaginationResponse<MinimalUserResponse>> {
+  get(
+    request: PaginationRequest<MinimalUserResponse>
+  ): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
       .get(`${this._prefix}?${toURLSearchParams(request)}`)
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));

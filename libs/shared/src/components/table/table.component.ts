@@ -2,13 +2,13 @@ import {
   FilterRequest,
   FilterRequestLogic,
   FilterRequestOperator,
-} from '@my-app/core/api/pagination/pagination.request';
-import { PaginationResponse } from '@my-app/core/api/pagination/pagination.response';
-import { PossibleFilter } from '@my-app/core/models/possible-filter.interface';
-import { TableFilterOption } from '@my-app/core/models/table-filter-option.interface';
-import { ArrayFilterPipe } from '@my-app/shared/pipes/array-filter.pipe';
-import { EnumKeyValuePairPipe } from '@my-app/shared/pipes/enum-key-value-pair.pipe';
-import { uniqueId } from '@my-app/shared/unique-id';
+} from '@libs/core/api/pagination/pagination.request';
+import { PaginationResponse } from '@libs/core/api/pagination/pagination.response';
+import { PossibleFilter } from '@libs/core/models/possible-filter.interface';
+import { TableFilterOption } from '@libs/core/models/table-filter-option.interface';
+import { ArrayFilterPipe } from '@libs/shared/pipes/array-filter.pipe';
+import { EnumKeyValuePairPipe } from '@libs/shared/pipes/enum-key-value-pair.pipe';
+import { uniqueId } from '@libs/shared/unique-id';
 import { UiButton } from '@libs/ui/button';
 import { UiCombobox, UiComboboxDropdown, UiComboboxOption } from '@libs/ui/combobox';
 import { UiInput } from '@libs/ui/input';
@@ -93,7 +93,7 @@ function removeFilterRecursive<T>(
 }
 
 @Component({
-  selector: 'app-table',
+  selector: 'shared-table',
   imports: [
     UiLoader,
     UiTable,

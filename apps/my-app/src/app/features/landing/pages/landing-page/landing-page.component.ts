@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   imports: [TranslatePipe],

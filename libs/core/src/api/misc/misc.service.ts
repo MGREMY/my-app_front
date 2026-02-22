@@ -1,4 +1,4 @@
-import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
+import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';

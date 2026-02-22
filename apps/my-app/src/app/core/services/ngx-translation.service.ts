@@ -1,6 +1,6 @@
-import { APP_CONFIG_SERVICE } from '@my-app/core/app-config.service';
-import { APP_STORAGE_SERVICE } from '@my-app/core/storage.service';
-import { ITranslationService } from '@my-app/core/translation.service';
+import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
+import { APP_STORAGE_SERVICE } from '@libs/core/storage.service';
+import { ITranslationService } from '@libs/core/translation.service';
 
 import { TranslateService } from '@ngx-translate/core';
 

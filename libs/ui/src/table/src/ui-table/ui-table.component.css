@@ -1,5 +1,5 @@
 @reference "#ui.css";
 
 :host {
-  @apply w-full text-left text-sm table-auto;
+  @apply w-full table-auto text-left text-sm;
 }

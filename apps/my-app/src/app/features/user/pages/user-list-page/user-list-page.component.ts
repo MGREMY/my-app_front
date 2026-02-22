@@ -1,8 +1,9 @@
 import { UserListStoreService } from '../../services/user-list.store.service';
-import { AuthService } from '@my-app/core/api/auth/auth.service';
-import { BaseComponent } from '@my-app/shared/base.component';
-import { TableComponent } from '@my-app/shared/components/table/table.component';
-import { LocalizedDatePipe } from '@my-app/shared/pipes/date.pipe';
+
+import { AuthService } from '@libs/core/api/auth/auth.service';
+import { BaseComponent } from '@libs/shared/base.component';
+import { TableComponent } from '@libs/shared/components/table/table.component';
+import { LocalizedDatePipe } from '@libs/shared/pipes/date.pipe';
 import { UiButton } from '@libs/ui/button';
 import { UiMenu, UiMenuItem } from '@libs/ui/menu';
 import { UiTableBody, UiTableHeader } from '@libs/ui/table';

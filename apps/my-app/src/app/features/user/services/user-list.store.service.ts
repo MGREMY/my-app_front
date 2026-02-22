@@ -1,7 +1,8 @@
-import { MinimalUserResponse } from '@my-app/core/api/user/minimal-user.response';
-import { UserService } from '@my-app/core/api/user/user.service';
 import MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION from '@my-app/core/constants/table-filter-option/minimal-user-response.table-filter-option';
-import { paginationContainer } from '@my-app/shared/pagination-container';
+
+import { MinimalUserResponse } from '@libs/core/api/user/minimal-user.response';
+import { UserService } from '@libs/core/api/user/user.service';
+import { paginationContainer } from '@libs/shared/pagination-container';
 
 import { inject, Injectable } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class UserListStoreService {
 
   public readonly userFilterOption = MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION;
 
-  public usersResource = paginationContainer<MinimalUserResponse>({
+  public readonly usersResource = paginationContainer<MinimalUserResponse>({
     stream: ({ params }) => this._userService.get(params),
   });
 

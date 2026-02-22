@@ -13,7 +13,7 @@ const error = new Error(`UiInput must be used with ${options.join(' / ')}`);
   },
 })
 export class UiInput {
-  protected readonly ngpInput = inject(NgpInput, {optional: true});
+  protected readonly ngpInput = inject(NgpInput, { optional: true });
 
   constructor() {
     if (!this.ngpInput) {

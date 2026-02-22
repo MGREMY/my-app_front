@@ -1,7 +1,8 @@
+import { APP_TRANSLATION_SERVICE } from '@libs/core/translation.service';
+
 import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
 
 export function langInterceptor(
   req: HttpRequest<unknown>,
@@ -11,7 +12,7 @@ export function langInterceptor(
 
   const clone = req.clone({
     headers: req.headers.append('Accept-Language', translationService.currentLanguage()),
-  })
+  });
 
   return next(clone);
 }

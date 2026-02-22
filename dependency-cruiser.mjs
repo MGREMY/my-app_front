@@ -16,7 +16,7 @@ export default {
     {
       name: 'no-core-to-not-core',
       from: { path: 'src/app/core' },
-      to: { pathNot: 'src/app/core' },
+      to: { pathNot: '[src/app/core|libs/core]' },
     },
     {
       name: 'no-all-to-environment',

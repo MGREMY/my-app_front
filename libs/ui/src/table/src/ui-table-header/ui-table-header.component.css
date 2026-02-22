@@ -1,5 +1,5 @@
 @reference "#ui.css";
 
 :host {
-  @apply text-xs uppercase bg-hover;
+  @apply bg-hover text-xs uppercase;
 }
