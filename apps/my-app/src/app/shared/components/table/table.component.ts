@@ -9,14 +9,14 @@ import { TableFilterOption } from '@my-app/core/models/table-filter-option.inter
 import { ArrayFilterPipe } from '@my-app/shared/pipes/array-filter.pipe';
 import { EnumKeyValuePairPipe } from '@my-app/shared/pipes/enum-key-value-pair.pipe';
 import { uniqueId } from '@my-app/shared/unique-id';
-import { UiButton } from '@my-app/ui/button';
-import { UiCombobox, UiComboboxDropdown, UiComboboxOption } from '@my-app/ui/combobox';
-import { UiInput } from '@my-app/ui/input';
-import { UiLoader } from '@my-app/ui/loader';
-import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
-import { UiPagination } from '@my-app/ui/pagination';
-import { UiTable, UiTableBody, UiTableFooter, UiTableHeader } from '@my-app/ui/table';
-import { UiTooltip, UiTooltipArrow } from '@my-app/ui/tooltip';
+import { UiButton } from '@libs/ui/button';
+import { UiCombobox, UiComboboxDropdown, UiComboboxOption } from '@libs/ui/combobox';
+import { UiInput } from '@libs/ui/input';
+import { UiLoader } from '@libs/ui/loader';
+import { UiMenu, UiMenuItem } from '@libs/ui/menu';
+import { UiPagination } from '@libs/ui/pagination';
+import { UiTable, UiTableBody, UiTableFooter, UiTableHeader } from '@libs/ui/table';
+import { UiTooltip, UiTooltipArrow } from '@libs/ui/tooltip';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroArrowPath, heroChevronDown, heroFunnel, heroTrash } from '@ng-icons/heroicons/outline';

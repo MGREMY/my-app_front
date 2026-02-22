@@ -1,7 +1,7 @@
 import { AuthService } from '@my-app/core/api/auth/auth.service';
 import { APP_TRANSLATION_SERVICE } from '@my-app/core/translation.service';
-import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
-import { UiNavbar, UiNavbarContent, UiNavbarItem } from '@my-app/ui/navbar';
+import { UiMenu, UiMenuItem } from '@libs/ui/menu';
+import { UiNavbar, UiNavbarContent, UiNavbarItem } from '@libs/ui/navbar';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { flagCp, flagUs } from '@ng-icons/flag-icons';

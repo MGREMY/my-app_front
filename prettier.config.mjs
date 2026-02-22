@@ -16,6 +16,7 @@ const config = {
     '^~/(.*)$',
     '^[.]',
     '^@my-app.*',
+    '^@libs/*',
     '',
     '(@ng-icon)',
     '(@ngx-translate)',

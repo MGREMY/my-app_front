@@ -3,10 +3,10 @@ import { AuthService } from '@my-app/core/api/auth/auth.service';
 import { BaseComponent } from '@my-app/shared/base.component';
 import { TableComponent } from '@my-app/shared/components/table/table.component';
 import { LocalizedDatePipe } from '@my-app/shared/pipes/date.pipe';
-import { UiButton } from '@my-app/ui/button';
-import { UiMenu, UiMenuItem } from '@my-app/ui/menu';
-import { UiTableBody, UiTableHeader } from '@my-app/ui/table';
-import { UiTooltip, UiTooltipArrow } from '@my-app/ui/tooltip';
+import { UiButton } from '@libs/ui/button';
+import { UiMenu, UiMenuItem } from '@libs/ui/menu';
+import { UiTableBody, UiTableHeader } from '@libs/ui/table';
+import { UiTooltip, UiTooltipArrow } from '@libs/ui/tooltip';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {

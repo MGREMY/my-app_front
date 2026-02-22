@@ -17,7 +17,7 @@
     "paths": {
       "@my-app/core/*": ["apps/my-app/src/app/core/*"],
       "@my-app/shared/*": ["apps/my-app/src/app/shared/*"],
-      "@my-app/ui/*": ["libs/ui/src/*"]
+      "@libs/ui/*": ["libs/ui/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

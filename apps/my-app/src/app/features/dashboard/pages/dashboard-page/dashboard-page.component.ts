@@ -1,4 +1,4 @@
-import { UiButton } from '@my-app/ui/button';
+import { UiButton } from '@libs/ui/button';
 
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
