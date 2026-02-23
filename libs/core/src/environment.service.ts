@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 
-export const APP_ENVIRONMENT_SERVICE = new InjectionToken<Environment>('APP_STORAGE_SERVICE');
+export const APP_ENVIRONMENT_SERVICE = new InjectionToken<Environment>('APP_ENVIRONMENT_SERVICE');
 
 export interface Environment {
   production: boolean;
