@@ -2,8 +2,8 @@ import {
   FilterRequest,
   FilterRequestLogic,
   FilterRequestOperator,
+  PaginationResponse,
 } from '@libs/core/api/pagination/pagination.request';
-import { PaginationResponse } from '@libs/core/api/pagination/pagination.response';
 import { PossibleFilter } from '@libs/core/models/possible-filter.interface';
 import { TableFilterOption } from '@libs/core/models/table-filter-option.interface';
 import { ArrayFilterPipe } from '@libs/shared/pipes/array-filter.pipe';

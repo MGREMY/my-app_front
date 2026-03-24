@@ -1,5 +1,5 @@
 import { FilterRequestOperator } from '@libs/core/api/pagination/pagination.request';
-import { MinimalUserResponse } from '@libs/core/api/user/minimal-user.response';
+import { MinimalUserResponse } from '@libs/core/api/user/user.response';
 import { TableFilterOption } from '@libs/core/models/table-filter-option.interface';
 
 export default {

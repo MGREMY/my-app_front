@@ -1,6 +1,6 @@
 import MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION from '@my-app/core/constants/table-filter-option/minimal-user-response.table-filter-option';
 
-import { MinimalUserResponse } from '@libs/core/api/user/minimal-user.response';
+import { MinimalUserResponse } from '@libs/core/api/user/user.response';
 import { UserService } from '@libs/core/api/user/user.service';
 import { paginationContainer } from '@libs/shared/pagination-container';
 
@@ -17,6 +17,6 @@ export class UserListStoreService {
   });
 
   public deleteUser(id: string): void {
-    this._userService.delete({ id: id }).subscribe();
+    this._userService.delete(id).subscribe();
   }
 }

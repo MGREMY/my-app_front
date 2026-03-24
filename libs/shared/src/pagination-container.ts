@@ -1,9 +1,9 @@
 import {
   FilterRequest,
   PaginationRequest,
+  PaginationResponse,
   SortRequest,
 } from '@libs/core/api/pagination/pagination.request';
-import { PaginationResponse } from '@libs/core/api/pagination/pagination.response';
 
 import { computed, ResourceRef, signal } from '@angular/core';
 import { rxResource, RxResourceOptions } from '@angular/core/rxjs-interop';

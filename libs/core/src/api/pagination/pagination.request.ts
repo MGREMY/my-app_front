@@ -1,3 +1,5 @@
+import z from 'zod';
+
 export enum FilterRequestOperator {
   Equal = 0,
   NotEqual = 1,
@@ -36,6 +38,15 @@ export interface PaginationRequest<T> {
   filterRequest?: FilterRequest<T>[] | undefined;
 }
 
+export interface PaginationResponse<T> {
+  pageNumber: number;
+  pageSize: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  totalPages: number;
+  data: T[];
+}
+
 export function toURLSearchParams<T>(request: PaginationRequest<T>) {
   const urlSearchParams = new URLSearchParams({
     pageNumber: request.pageNumber.toString(),
@@ -52,3 +63,14 @@ export function toURLSearchParams<T>(request: PaginationRequest<T>) {
 
   return urlSearchParams;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ZPaginationResponse = <T extends z.ZodType<any, any>>(itemSchema: T) =>
+  z.object({
+    pageNumber: z.number(),
+    pageSize: z.number(),
+    hasNextPage: z.boolean(),
+    hasPreviousPage: z.boolean(),
+    totalPages: z.number(),
+    data: z.array(itemSchema),
+  });
