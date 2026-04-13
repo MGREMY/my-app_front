@@ -5,30 +5,13 @@ import {
   FilterRequestLogic,
   FilterRequestOperator,
   PaginationResponse,
-} from '@libs/core/api/pagination/pagination.request';
-import { PossibleFilter } from '@libs/core/models/possible-filter.interface';
-import { TableFilterOption } from '@libs/core/models/table-filter-option.interface';
-import { ArrayFilterPipe } from '@libs/shared/pipes/array-filter.pipe';
-import { EnumKeyValuePairPipe } from '@libs/shared/pipes/enum-key-value-pair.pipe';
-import { uniqueId } from '@libs/shared/unique-id';
+} from '@/core/api/pagination/pagination.request';
+import { PossibleFilter } from '@/core/models/possible-filter.interface';
+import { TableFilterOption } from '@/core/models/table-filter-option.interface';
+import { ArrayFilterPipe } from '@/shared/pipes/array-filter.pipe';
+import { EnumKeyValuePairPipe } from '@/shared/pipes/enum-key-value-pair.pipe';
+import { uniqueId } from '@/shared/unique-id';
 
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { heroArrowPath, heroChevronDown, heroFunnel, heroTrash } from '@ng-icons/heroicons/outline';
-import { TranslatePipe } from '@ngx-translate/core';
-
-import { NgTemplateOutlet } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  input,
-  linkedSignal,
-  model,
-  ResourceRef,
-  signal,
-  TemplateRef,
-  ViewEncapsulation,
-} from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { MgnpLoader } from '@mgremy/ng-primitives-extended/loader';
 import {
   MgnpTable,
@@ -56,6 +39,24 @@ import {
 import { NgpInput } from 'ng-primitives/input';
 import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
 import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
+
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroArrowPath, heroChevronDown, heroFunnel, heroTrash } from '@ng-icons/heroicons/outline';
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { NgTemplateOutlet } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  linkedSignal,
+  model,
+  ResourceRef,
+  signal,
+  TemplateRef,
+  ViewEncapsulation,
+} from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 interface TableFilterRequest<T> extends FilterRequest<T> {
   tableFilterRequestId: string;

@@ -1,9 +1,16 @@
 import { UserListStoreService } from '../../services/user-list.store.service';
-
-import { AuthService } from '@libs/core/api/auth/auth.service';
-import { BaseComponent } from '@libs/shared/base.component';
 import { AppTable } from '@my-app/shared/components/table/table.component';
-import { LocalizedDatePipe } from '@libs/shared/pipes/date.pipe';
+
+import { AuthService } from '@/core/api/auth/auth.service';
+import { BaseComponent } from '@/shared/base.component';
+import { LocalizedDatePipe } from '@/shared/pipes/date.pipe';
+
+import { MgnpTableBody, MgnpTableHeader } from '@mgremy/ng-primitives-extended/table';
+import { MgnpButton } from '@mgremy/ng-primitives/button';
+import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
+import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
+import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
+import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -23,12 +30,6 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { MgnpTableBody, MgnpTableHeader } from '@mgremy/ng-primitives-extended/table';
-import { MgnpButton } from '@mgremy/ng-primitives/button';
-import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
-import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
-import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
-import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
 
 @Component({
   imports: [

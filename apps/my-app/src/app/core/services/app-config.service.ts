@@ -1,5 +1,5 @@
-import { IAppConfigService } from '@libs/core/app-config.service';
-import { APP_ENVIRONMENT_SERVICE } from '@libs/core/environment.service';
+import { IAppConfigService } from '@/core/app-config.service';
+import { APP_ENVIRONMENT_SERVICE } from '@/core/environment.service';
 
 import { inject, Injectable } from '@angular/core';
 

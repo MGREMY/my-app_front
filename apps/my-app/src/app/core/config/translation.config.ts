@@ -1,6 +1,6 @@
 import { NgxTranslationService } from '@my-app/core/services/ngx-translation.service';
 
-import { APP_TRANSLATION_SERVICE } from '@libs/core/translation.service';
+import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';
 
 import { provideTranslateService, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -20,7 +20,7 @@ export function provideTranslationConfig(): (Provider | EnvironmentProviders)[] 
       loader: {
         provide: TranslateLoader,
         useFactory: (handler: HttpBackend) =>
-          new TranslateHttpLoader(new HttpClient(handler), './i18n/', '.json'),
+          new TranslateHttpLoader(new HttpClient(handler), '/i18n/', '.json'),
         deps: [HttpBackend],
       },
     }),

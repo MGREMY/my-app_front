@@ -1,6 +1,6 @@
 import { UserListPageComponent } from './pages/user-list-page/user-list-page.component';
 
-import { paramResolver } from '@libs/shared/resolvers/param.resolver';
+import { paramResolver } from '@/shared/resolvers/param.resolver';
 
 import { Routes } from '@angular/router';
 

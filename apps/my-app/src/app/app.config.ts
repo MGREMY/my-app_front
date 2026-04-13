@@ -10,8 +10,8 @@ import { authInterceptor } from '@my-app/core/interceptors/auth.interceptor';
 import { badResponseInterceptor } from '@my-app/core/interceptors/bad-request.interceptor';
 import { langInterceptor } from '@my-app/core/interceptors/lang.interceptor';
 
-import { AuthService } from '@libs/core/api/auth/auth.service';
-import { APP_ENVIRONMENT_SERVICE } from '@libs/core/environment.service';
+import { AuthService } from '@/core/api/auth/auth.service';
+import { APP_ENVIRONMENT_SERVICE } from '@/core/environment.service';
 
 import { provideNgIconsConfig } from '@ng-icons/core';
 

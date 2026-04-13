@@ -1,8 +1,8 @@
 import { AppConfigService } from '@my-app/core/services/app-config.service';
 
-import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
+import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
 
-import { APP_BASE_HREF, PathLocationStrategy, LocationStrategy } from '@angular/common';
+import { APP_BASE_HREF, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { inject, Provider } from '@angular/core';
 
 export function provideApplicationConfig(): Provider[] {

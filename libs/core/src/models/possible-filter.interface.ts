@@ -1,4 +1,4 @@
-import { FilterRequestOperator } from '@libs/core/api/pagination/pagination.request';
+import { FilterRequestOperator } from '@/core/api/pagination/pagination.request';
 
 export interface PossibleFilter<T> {
   property: keyof T;

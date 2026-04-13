@@ -1,13 +1,3 @@
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import {
-  heroChevronDoubleLeft,
-  heroChevronDoubleRight,
-  heroChevronLeft,
-  heroChevronRight,
-} from '@ng-icons/heroicons/outline';
-
-import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
 import { MgnpPagination } from '@mgremy/ng-primitives/pagination';
 import {
   injectPaginationState,
@@ -19,6 +9,17 @@ import {
   NgpPaginationPrevious,
 } from 'ng-primitives/pagination';
 import { ChangeFn, provideValueAccessor, TouchedFn } from 'ng-primitives/utils';
+
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import {
+  heroChevronDoubleLeft,
+  heroChevronDoubleRight,
+  heroChevronLeft,
+  heroChevronRight,
+} from '@ng-icons/heroicons/outline';
+
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-pagination',

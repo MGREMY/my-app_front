@@ -1,4 +1,4 @@
-import { IStorageService } from '@libs/core/storage.service';
+import { IStorageService } from '@/core/storage.service';
 
 export class LocalStorageService implements IStorageService {
   getItem(key: string): string | undefined {

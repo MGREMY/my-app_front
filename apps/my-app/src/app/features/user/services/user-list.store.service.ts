@@ -1,8 +1,8 @@
 import MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION from '@my-app/core/constants/table-filter-option/minimal-user-response.table-filter-option';
 
-import { MinimalUserResponse } from '@libs/core/api/user/user.response';
-import { UserService } from '@libs/core/api/user/user.service';
-import { paginationContainer } from '@libs/shared/pagination-container';
+import { MinimalUserResponse } from '@/core/api/user/user.response';
+import { UserService } from '@/core/api/user/user.service';
+import { paginationContainer } from '@/shared/pagination-container';
 
 import { inject, Injectable } from '@angular/core';
 

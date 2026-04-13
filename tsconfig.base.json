@@ -17,8 +17,8 @@
     "paths": {
       "@my-app/core/*": ["apps/my-app/src/app/core/*"],
       "@my-app/shared/*": ["apps/my-app/src/app/shared/*"],
-      "@libs/core/*": ["libs/core/src/*"],
-      "@libs/shared/*": ["libs/shared/src/*"]
+      "@/core/*": ["libs/core/src/*"],
+      "@/shared/*": ["libs/shared/src/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]
