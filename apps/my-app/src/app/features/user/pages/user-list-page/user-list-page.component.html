@@ -1,5 +1,5 @@
 @let userResource = _service.usersResource;
-<shared-table
+<app-table
   #userTable
   [resourceRef]="userResource.resource"
   [header]="tableHeader"
@@ -9,10 +9,10 @@
   [(pageNumber)]="userResource.pageNumber"
   [(pageSize)]="userResource.pageSize">
   <ng-template #tableHeader>
-    <tr uiTableHeader>
+    <tr mgnpTableHeader>
       <th
         scope="col"
-        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
+        class="hover:bg-ui-hover cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('id')">
         <span class="flex flex-row">
           {{ 'object.minimal_user_response.id' | translate }}
@@ -27,7 +27,7 @@
       </th>
       <th
         scope="col"
-        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
+        class="hover:bg-ui-hover cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('createdAtUtc')">
         <span class="flex flex-row">
           {{ 'object.minimal_user_response.createdAtUtc' | translate }}
@@ -42,7 +42,7 @@
       </th>
       <th
         scope="col"
-        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
+        class="hover:bg-ui-hover cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('userName')">
         <span class="flex flex-row">
           {{ 'object.minimal_user_response.userName' | translate }}
@@ -57,7 +57,7 @@
       </th>
       <th
         scope="col"
-        class="hover:bg-secondary cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
+        class="hover:bg-ui-hover cursor-pointer px-6 py-3 transition-colors duration-150 ease-in-out"
         (click)="userResource.onSortChange('email')">
         <span class="flex flex-row">
           {{ 'object.minimal_user_response.email' | translate }}
@@ -80,7 +80,7 @@
   <ng-template
     #tableBody
     let-record>
-    <tr uiTableBody>
+    <tr mgnpTableBody>
       <td class="px-6 py-4 font-medium">
         {{ record.id }}
       </td>
@@ -95,7 +95,7 @@
       </td>
       <td class="px-6 py-4">
         <button
-          uiButton
+          mgnpButton
           [ngpMenuTrigger]="userActionsDropdown">
           <span class="sr-only">Actions menu toggle</span>
           <ng-icon name="heroEllipsisVertical" />
@@ -103,10 +103,10 @@
         <ng-template #userActionsDropdown>
           <div
             ngpMenu
-            uiMenu>
+            mgnpMenu>
             <button
               ngpMenuItem
-              uiMenuItem
+              mgnpMenuItem
               color="failure"
               (click)="_service.deleteUser(record.id)"
               [ngpMenuItemDisabled]="_authService.isAdmin() === false"
@@ -118,11 +118,11 @@
             <ng-template #needAdminTooltip>
               <div
                 ngpTooltip
-                uiTooltip>
+                mgnpTooltip>
                 {{ 'tooltip.need_role.admin' | translate }}
                 <div
                   ngpTooltipArrow
-                  uiTooltipArrow></div>
+                  mgnpTooltipArrow></div>
               </div>
             </ng-template>
           </div>
@@ -130,4 +130,4 @@
       </td>
     </tr>
   </ng-template>
-</shared-table>
+</app-table>

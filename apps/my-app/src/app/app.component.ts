@@ -1,7 +1,8 @@
 import { AuthService } from '@libs/core/api/auth/auth.service';
 import { APP_TRANSLATION_SERVICE } from '@libs/core/translation.service';
-import { UiMenu, UiMenuItem } from '@libs/ui/menu';
-import { UiNavbar, UiNavbarContent, UiNavbarItem } from '@libs/ui/navbar';
+import { AppNavbarContent } from '@my-app/shared/components/navbar/navbar-content.component';
+import { AppNavbarItem } from '@my-app/shared/components/navbar/navbar-item.component';
+import { AppNavbar } from '@my-app/shared/components/navbar/navbar.component';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { flagCp, flagUs } from '@ng-icons/flag-icons';
@@ -17,16 +18,17 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
 import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
 
 @Component({
   selector: 'app-root',
   imports: [
-    UiNavbar,
-    UiNavbarContent,
-    UiNavbarItem,
-    UiMenu,
-    UiMenuItem,
+    AppNavbar,
+    AppNavbarContent,
+    AppNavbarItem,
+    MgnpMenu,
+    MgnpMenuItem,
     NgpMenu,
     NgpMenuItem,
     NgpMenuTrigger,

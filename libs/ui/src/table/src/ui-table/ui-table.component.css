@@ -1,5 +1,0 @@
-@reference "#ui.css";
-
-:host {
-  @apply w-full table-auto text-left text-sm;
-}

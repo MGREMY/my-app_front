@@ -1,11 +1,10 @@
-import { UiButton } from '@libs/ui/button';
-
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { MgnpButton } from '@mgremy/ng-primitives/button';
 import { NgpButton } from 'ng-primitives/button';
 
 @Component({
-  imports: [UiButton, NgpButton, RouterLink],
+  imports: [MgnpButton, NgpButton, RouterLink],
   templateUrl: './dashboard-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,

@@ -1,5 +1,0 @@
-@reference "#ui.css";
-
-:host {
-  @apply font-semibold;
-}

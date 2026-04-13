@@ -1,5 +1,5 @@
 <header>
-  <nav uiNavbar>
+  <nav appNavbar>
     <div class="my-auto gap-2">
       <a
         class="flex cursor-pointer space-x-3"
@@ -9,11 +9,11 @@
       </a>
     </div>
 
-    <ui-navbar-content #navbarContent>
+    <app-navbar-content #navbarContent>
       @if (_authService.isAuthenticated()) {
         <li>
           <a
-            uiNavbarItem
+            appNavbarItem
             [routerLink]="['/', 'app']"
             routerLinkActive="page"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -22,7 +22,7 @@
           </a>
         </li>
       }
-    </ui-navbar-content>
+    </app-navbar-content>
 
     <div class="my-auto flex flex-row items-center justify-start">
       <ng-icon
@@ -32,12 +32,12 @@
       <ng-template #langDropdown>
         <div
           ngpMenu
-          uiMenu
+          mgnpMenu
           class="z-100">
           @for (lang of _availableLanguages; track lang.code) {
             <button
               ngpMenuItem
-              uiMenuItem
+              mgnpMenuItem
               (click)="onSetLang(lang.code)"
               class="flex gap-2">
               <ng-icon [name]="lang.icon" />
@@ -60,20 +60,20 @@
         <ng-template #loggedInUserDropdown>
           <div
             ngpMenu
-            uiMenu
+            mgnpMenu
             class="z-100">
             <span class="border-ui border-b px-4 py-2">
               {{ _authService.getIdToken().email }}
             </span>
             <button
               ngpMenuItem
-              uiMenuItem
+              mgnpMenuItem
               (click)="_authService.openAccountPage()">
               <span>{{ 'misc.profile' | translate | titlecase }}</span>
             </button>
             <button
               ngpMenuItem
-              uiMenuItem
+              mgnpMenuItem
               (click)="_authService.logout()">
               <span>{{ 'misc.logout' | translate | titlecase }}</span>
             </button>
@@ -88,11 +88,11 @@
         <ng-template #notLoggedInUserDropdown>
           <div
             ngpMenu
-            uiMenu
+            mgnpMenu
             class="z-100">
             <button
               ngpMenuItem
-              uiMenuItem
+              mgnpMenuItem
               (click)="_authService.login()">
               <span>
                 {{ 'misc.login' | translate | titlecase }} /

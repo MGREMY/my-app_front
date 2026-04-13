@@ -1,0 +1,331 @@
+<div class="flex flex-col gap-2 divide-y divide-gray-300 dark:divide-gray-700">
+  @if (resourceRef().status() !== 'loading') {
+    <div class="flex justify-between pb-2">
+      <div class="flex gap-2">
+        <button
+          ngpButton
+          mgnpButton
+          [ngpTooltipTrigger]="RefreshTooltip"
+          [ngpTooltipTriggerContainer]="refreshTooltipContainer"
+          (click)="resourceRef().reload()">
+          <span class="sr-only">Reload data</span>
+          <ng-icon name="heroArrowPath" />
+        </button>
+        <ng-template #RefreshTooltip>
+          <div
+            ngpTooltip
+            mgnpTooltip>
+            {{ 'misc.refresh' | translate }}
+            <div
+              ngpTooltipArrow
+              mgnpTooltipArrow></div>
+          </div>
+        </ng-template>
+
+        <div #refreshTooltipContainer></div>
+
+        @if (filterOption() !== undefined) {
+          @if (_filters().length === 0) {
+            <button
+              ngpButton
+              mgnpButton
+              (click)="addFilter()"
+              class="w-fit">
+              <ng-icon name="heroFunnel" />
+            </button>
+          }
+          @if (_areFilterSync() === false) {
+            <button
+              ngpButton
+              mgnpButton
+              (click)="applyFilters()">
+              Apply filters
+            </button>
+          }
+        }
+      </div>
+
+      <button
+        mgnpButton
+        [ngpMenuTrigger]="pageSizeDropdown"
+        class="data-open:*:[ng-icon]:rotate-180">
+        {{ pageSize() }}
+        <ng-icon
+          name="heroChevronDown"
+          class="ml-2 transition-transform duration-150 ease-in-out" />
+      </button>
+      <ng-template #pageSizeDropdown>
+        <div
+          ngpMenu
+          mgnpMenu>
+          @for (size of pageSizes; track $index) {
+            <button
+              ngpMenuItem
+              mgnpMenuItem
+              (click)="pageSize.set(size)">
+              {{ size }}
+            </button>
+          }
+        </div>
+      </ng-template>
+    </div>
+
+    @if (filterOption() !== undefined && _filters().length > 0) {
+      <div class="pb-4">
+        <div class="ml-8 flex flex-col gap-2">
+          <ng-container
+            [ngTemplateOutlet]="filtersDisplay"
+            [ngTemplateOutletContext]="{ $implicit: _filters() }" />
+        </div>
+      </div>
+    }
+  }
+  <div class="flex flex-col gap-2">
+    @if (resourceRef().isLoading()) {
+      <mgnp-loader />
+    } @else if (resourceRef().error()) {
+      <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2">
+          <div>
+            <span class="font-semibold">{{ 'misc.error.name' | translate }}</span>
+          </div>
+          <span>{{ resourceRef().error()?.name ?? '' }}</span>
+        </div>
+        <div class="flex flex-col gap-2">
+          <div>
+            <span class="font-semibold">{{ 'misc.error.message' | translate }}</span>
+          </div>
+          <span>{{ resourceRef().error()?.message ?? '' }}</span>
+        </div>
+      </div>
+    } @else if (resourceRef().hasValue()) {
+      @let value = resourceRef().value();
+
+      @if (value !== undefined && value.data.length > 0) {
+        <table
+          mgnpTable
+          [tableHeader]="header()"
+          [tableBody]="body()"
+          [tableFooter]="footer()"
+          [data]="value.data"></table>
+
+        <app-pagination
+          class="self-end"
+          [pageCount]="value.totalPages"
+          [(page)]="pageNumber" />
+      } @else {
+        <div class="flex flex-col gap-2 place-self-center">
+          <div class="flex flex-col gap-2">
+            <div>
+              <span class="font-semibold">{{ 'misc.no_data' | translate }}</span>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>
+
+<ng-template
+  #filtersDisplay
+  let-filters>
+  <div class="flex flex-col gap-3">
+    @for (filter of filters; track $index) {
+      <div class="flex flex-col">
+        <div class="flex gap-3">
+          <button
+            ngpButton
+            mgnpButton
+            (click)="removeFilter(filter)">
+            <ng-icon name="heroTrash" />
+          </button>
+
+          @if ($index > 0) {
+            <div
+              ngpCombobox
+              mgnpCombobox
+              [(ngpComboboxValue)]="filter.filterLogic"
+              (ngpComboboxValueChange)="_areFilterSync.set(false)">
+              <button
+                ngpComboboxButton
+                mgnpButton>
+                {{ filterRequestLogic[filter.filterLogic] }}
+              </button>
+
+              <div
+                *ngpComboboxPortal
+                ngpComboboxDropdown
+                mgnpComboboxDropdown>
+                @for (item of filterRequestLogic | enumKeyValuePair; track $index) {
+                  <div
+                    ngpComboboxOption
+                    mgnpComboboxOption
+                    [ngpComboboxOptionValue]="item.value">
+                    {{ item.key }}
+                  </div>
+                }
+              </div>
+            </div>
+          }
+
+          <ng-container
+            [ngTemplateOutlet]="filterDisplay"
+            [ngTemplateOutletContext]="{ $implicit: filter }" />
+
+          <button
+            ngpButton
+            mgnpButton
+            (click)="addFilter(filter)"
+            class="w-fit">
+            <ng-icon name="heroFunnel" />
+          </button>
+        </div>
+
+        @if ($index === filters.length - 1) {
+          <button
+            ngpButton
+            mgnpButton
+            (click)="addFilter(filters)"
+            class="w-fit">
+            <ng-icon name="heroFunnel" />
+          </button>
+        }
+      </div>
+    }
+  </div>
+</ng-template>
+
+<ng-template
+  #filterDisplay
+  let-filter>
+  @let possibleFilters = filterOption()?.possibleFilters;
+  <div class="flex flex-col gap-1.5">
+    <div class="flex items-center gap-3">
+      <div
+        ngpCombobox
+        mgnpCombobox
+        [(ngpComboboxValue)]="filter.propertyName"
+        (ngpComboboxValueChange)="_areFilterSync.set(false)">
+        <button
+          ngpComboboxButton
+          mgnpButton>
+          {{ `object.${filterOption()?.objectTranslationKey}.${filter.propertyName}` | translate }}
+        </button>
+
+        @if (possibleFilters !== undefined) {
+          <div
+            *ngpComboboxPortal
+            ngpComboboxDropdown
+            mgnpComboboxDropdown>
+            @for (possibleFilter of possibleFilters; track $index) {
+              @let propertyName = possibleFilter.property.toString();
+
+              <span
+                ngpComboboxOption
+                mgnpComboboxOption
+                [ngpComboboxOptionValue]="possibleFilter.property">
+                {{ `object.${filterOption()?.objectTranslationKey}.${propertyName}` | translate }}
+              </span>
+            }
+          </div>
+        }
+      </div>
+
+      @if (possibleFilters !== undefined) {
+        @let possibleFilter =
+          possibleFilters | arrayFilter: possibleFilterCallback(filter.propertyName) : 'single';
+
+        <div
+          ngpCombobox
+          mgnpCombobox
+          [(ngpComboboxValue)]="filter.filterOperator"
+          (ngpComboboxValueChange)="_areFilterSync.set(false)">
+          <button
+            ngpComboboxButton
+            mgnpButton>
+            {{ `enum.filter_request_operator.${filter.filterOperator}` | translate }}
+          </button>
+
+          <div
+            *ngpComboboxPortal
+            ngpComboboxDropdown
+            mgnpComboboxDropdown>
+            @for (item of possibleFilter.operators | enumKeyValuePair; track $index) {
+              <div
+                ngpComboboxOption
+                mgnpComboboxOption
+                [ngpComboboxOptionValue]="item.value">
+                {{ `enum.filter_request_operator.${item.value}` | translate }}
+              </div>
+            }
+          </div>
+        </div>
+
+        @switch (possibleFilter.type) {
+          @case ('text') {
+            <input
+              type="text"
+              ngpInput
+              mgnpInput
+              [(ngModel)]="filter.value"
+              (ngModelChange)="_areFilterSync.set(false)"
+              [placeholder]="'misc.value' | translate" />
+          }
+          @case ('number') {
+            <input
+              type="number"
+              ngpInput
+              mgnpInput
+              [(ngModel)]="filter.value"
+              (ngModelChange)="_areFilterSync.set(false)"
+              [placeholder]="'misc.value' | translate" />
+          }
+          @case ('date') {
+            <input
+              type="date"
+              ngpInput
+              mgnpInput
+              [(ngModel)]="filter.value"
+              (ngModelChange)="_areFilterSync.set(false)"
+              [placeholder]="'misc.value' | translate" />
+          }
+          @case ('boolean') {
+            <div
+              ngpCombobox
+              mgnpCombobox
+              [(ngpComboboxValue)]="filter.value"
+              (ngpComboboxValueChange)="_areFilterSync.set(false)">
+              <button
+                ngpComboboxButton
+                mgnpButton>
+                {{ `misc.boolean.${filter.value}` | translate }}
+              </button>
+
+              <div
+                *ngpComboboxPortal
+                ngpComboboxDropdown
+                mgnpComboboxDropdown>
+                <div
+                  ngpComboboxOption
+                  mgnpComboboxOption
+                  [ngpComboboxOptionValue]="'true'">
+                  {{ 'misc.boolean.true' | translate }}
+                </div>
+                <div
+                  ngpComboboxOption
+                  mgnpComboboxOption
+                  [ngpComboboxOptionValue]="'false'">
+                  {{ 'misc.boolean.false' | translate }}
+                </div>
+              </div>
+            </div>
+          }
+        }
+      }
+    </div>
+
+    <ng-container
+      [ngTemplateOutlet]="filtersDisplay"
+      [ngTemplateOutletContext]="{ $implicit: filter.filters }" />
+  </div>
+</ng-template>
