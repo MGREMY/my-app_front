@@ -1,5 +1,5 @@
-import { APP_AUTH_CONFIG } from '@libs/core/app-auth-config.service';
-import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
+import { APP_AUTH_CONFIG } from '@/core/app-auth-config.service';
+import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
 
 import { EnvironmentProviders, inject, Provider } from '@angular/core';
 import { AuthConfig, provideOAuthClient } from 'angular-oauth2-oidc';

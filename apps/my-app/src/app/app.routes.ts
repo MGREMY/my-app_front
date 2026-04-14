@@ -1,4 +1,4 @@
-import { authGuard } from '@libs/shared/guards/auth.guard';
+import { authGuard } from '@/shared/guards/auth.guard';
 
 import { Routes } from '@angular/router';
 

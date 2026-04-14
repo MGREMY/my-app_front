@@ -1,4 +1,4 @@
-import { Environment } from '@libs/core/environment.service';
+import { Environment } from '@/core/environment.service';
 
 export const environment: Environment = {
   production: true,

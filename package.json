@@ -2,9 +2,6 @@
   "name": "@my-app/source",
   "version": "0.0.0",
   "private": true,
-  "imports": {
-    "#ui.css": "./libs/ui/src/theme/ui.css"
-  },
   "scripts": {
     "_:dependency-graph": "npx depcruise --config dependency-cruiser.mjs --include-only '^[apps|libs]' --ts-pre-compilation-deps --progress --no-cache --output-type dot . | dot -T svg > dependency-graph.svg",
     "all:build": "pnpm exec nx run-many --target build --all",
@@ -44,6 +41,8 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.8.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.2",
+    "@mgremy/ng-primitives": "^0.7.2",
+    "@mgremy/ng-primitives-extended": "^0.7.2",
     "@ng-icons/core": "^31.3.0",
     "@ng-icons/flag-icons": "^32.0.0",
     "@nx/angular": "22.4.5",
@@ -64,7 +63,7 @@
     "eslint-config-prettier": "^10.0.0",
     "husky": "^9.1.7",
     "jsonc-eslint-parser": "^2.1.0",
-    "ng-primitives": "0.108.1",
+    "ng-primitives": "^0.114.1",
     "nx": "22.4.5",
     "postcss-url": "~10.1.3",
     "prettier": "3.6.2",

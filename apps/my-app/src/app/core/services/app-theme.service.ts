@@ -1,4 +1,4 @@
-import { AppTheme, IAppThemeService } from '@libs/core/theme.service';
+import { AppTheme, IAppThemeService } from '@/core/theme.service';
 
 export class AppThemeService implements IAppThemeService {
   getTheme(): AppTheme {

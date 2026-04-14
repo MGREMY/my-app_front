@@ -11,8 +11,8 @@ import {
   ZUserResponse,
 } from './user.response';
 
-import { zParse } from '@libs/core/api/zod';
-import { APP_CONFIG_SERVICE } from '@libs/core/app-config.service';
+import { zParse } from '@/core/api/zod';
+import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
