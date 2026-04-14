@@ -21,7 +21,7 @@ export default {
     {
       name: 'no-all-to-environment',
       from: { pathNot: 'src/app/app.config.ts' },
-      to: { path: 'src/environment' },
+      to: { pathNot: 'libs/core', path: 'src/environment' },
     },
   ],
   options: {
