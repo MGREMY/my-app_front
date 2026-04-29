@@ -44,7 +44,7 @@ import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroArrowPath, heroChevronDown, heroFunnel, heroTrash } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { NgTemplateOutlet } from '@angular/common';
+import { NgClass, NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -131,12 +131,14 @@ function removeFilterRecursive<T>(
     NgpTooltipTrigger,
     NgpInput,
     NgIcon,
+    NgClass,
     AppPagination,
     TranslatePipe,
     NgTemplateOutlet,
     ArrayFilterPipe,
     EnumKeyValuePairPipe,
     FormsModule,
+    NgClass,
   ],
   standalone: true,
   templateUrl: './table.component.html',

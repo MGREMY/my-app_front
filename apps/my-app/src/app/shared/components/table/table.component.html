@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-2 divide-y divide-gray-300 dark:divide-gray-700">
-  @if (resourceRef().status() !== 'loading') {
+  @if (!resourceRef().isLoading()) {
     <div class="flex justify-between pb-2">
       <div class="flex gap-2">
         <button
@@ -34,7 +34,7 @@
               <ng-icon name="heroFunnel" />
             </button>
           }
-          @if (_areFilterSync() === false) {
+          @if (!_areFilterSync()) {
             <button
               ngpButton
               mgnpButton
@@ -264,30 +264,60 @@
         @switch (possibleFilter.type) {
           @case ('text') {
             <input
+              #input="ngModel"
               type="text"
               ngpInput
               mgnpInput
+              required
               [(ngModel)]="filter.value"
               (ngModelChange)="_areFilterSync.set(false)"
-              [placeholder]="'misc.value' | translate" />
+              [placeholder]="'misc.value' | translate"
+              [ngClass]="{
+                'border-danger border-2 data-focus:outline-none': input.control.invalid,
+              }" />
+          }
+          @case ('guid') {
+            <input
+              #input="ngModel"
+              type="text"
+              ngpInput
+              mgnpInput
+              required
+              pattern="^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+              [(ngModel)]="filter.value"
+              (ngModelChange)="_areFilterSync.set(false)"
+              placeholder="7adb4379-943a-4538-afb0-326a616c408a"
+              [ngClass]="{
+                'border-danger border-2 data-focus:outline-none': input.control.invalid,
+              }" />
           }
           @case ('number') {
             <input
+              #input="ngModel"
               type="number"
               ngpInput
               mgnpInput
+              required
               [(ngModel)]="filter.value"
               (ngModelChange)="_areFilterSync.set(false)"
-              [placeholder]="'misc.value' | translate" />
+              [placeholder]="'misc.value' | translate"
+              [ngClass]="{
+                'border-danger border-2 data-focus:outline-none': input.control.invalid,
+              }" />
           }
           @case ('date') {
             <input
+              #input="ngModel"
               type="date"
               ngpInput
               mgnpInput
+              required
               [(ngModel)]="filter.value"
               (ngModelChange)="_areFilterSync.set(false)"
-              [placeholder]="'misc.value' | translate" />
+              [placeholder]="'misc.value' | translate"
+              [ngClass]="{
+                'border-danger border-2 data-focus:outline-none': input.control.invalid,
+              }" />
           }
           @case ('boolean') {
             <div

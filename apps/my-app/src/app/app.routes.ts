@@ -1,10 +1,11 @@
-import { authGuard } from '@/shared/guards/auth.guard';
+import { authGuard, notAuthGuard } from '@/shared/guards/auth.guard';
 
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
+    canActivate: [notAuthGuard],
     loadChildren: () => import('./features/landing/landing.routes'),
   },
   {

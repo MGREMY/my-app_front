@@ -10,7 +10,7 @@ export default {
     {
       property: 'id',
       operators: [FilterRequestOperator.Equal, FilterRequestOperator.NotEqual],
-      type: 'text',
+      type: 'guid',
     },
     {
       property: 'userName',
