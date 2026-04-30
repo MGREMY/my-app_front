@@ -70,9 +70,7 @@
           }
         </span>
       </th>
-      <th
-        scope="col"
-        class="px-6 py-6">
+      <th scope="col">
         {{ 'misc.actions' | translate }}
       </th>
     </tr>
@@ -81,19 +79,11 @@
     #tableBody
     let-record>
     <tr mgnpTableBody>
-      <td class="px-6 py-4 font-medium">
-        {{ record.id }}
-      </td>
-      <td class="px-6 py-4">
-        {{ record.createdAtUtc | localizedDate }}
-      </td>
-      <td class="px-6 py-4">
-        {{ record.userName }}
-      </td>
-      <td class="px-6 py-4">
-        {{ record.email }}
-      </td>
-      <td class="px-6 py-4">
+      <td class="ont-medium">{{ record.id }}</td>
+      <td>{{ record.createdAtUtc | localizedDate }}</td>
+      <td>{{ record.userName }}</td>
+      <td>{{ record.email }}</td>
+      <td>
         <button
           mgnpButton
           [ngpMenuTrigger]="userActionsDropdown">
