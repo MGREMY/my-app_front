@@ -9,9 +9,9 @@ import {
   UserResponse,
   ZMinimalUserResponse,
   ZUserResponse,
-} from './user.response';
+} from '../user/user.response';
+import { zParse } from '../zod';
 
-import { zParse } from '@/core/api/zod';
 import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
 
 import { HttpClient } from '@angular/common/http';
@@ -21,23 +21,23 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class AdminService {
   private readonly _http = inject(HttpClient);
-  private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/users`;
+  private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/admin`;
 
-  get(
+  getUsers(
     request: PaginationRequest<MinimalUserResponse>
   ): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
-      .get(`${this._prefix}?${toURLSearchParams(request)}`)
+      .get(`${this._prefix}/users?${toURLSearchParams(request)}`)
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
   }
 
-  getById(id: string): Observable<UserResponse> {
-    return this._http.get(`${this._prefix}/${id}`).pipe(zParse(ZUserResponse));
+  getUserById(id: string): Observable<UserResponse> {
+    return this._http.get(`${this._prefix}/users/${id}`).pipe(zParse(ZUserResponse));
   }
 
-  delete(id: string): Observable<unknown> {
-    return this._http.delete(`${this._prefix}/${id}`);
+  deleteUserById(id: string): Observable<unknown> {
+    return this._http.delete(`${this._prefix}/users/${id}`);
   }
 }
