@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
 @import '@mgremy/ng-primitives';
+@import '@mgremy/ng-primitives-extended';
 
 @import './components/navbar.css';
 
