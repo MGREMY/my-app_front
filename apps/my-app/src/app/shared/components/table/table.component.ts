@@ -131,7 +131,6 @@ function removeFilterRecursive<T>(
     NgpTooltipTrigger,
     NgpInput,
     NgIcon,
-    NgClass,
     AppPagination,
     TranslatePipe,
     NgTemplateOutlet,
