@@ -23,7 +23,9 @@
     "error": {
       "error": "error",
       "name": "name",
-      "message": "message"
+      "message": "message",
+      "unhautorized": "Unhautorized",
+      "no_connection": "No connection"
     }
   },
   "tooltip": {
