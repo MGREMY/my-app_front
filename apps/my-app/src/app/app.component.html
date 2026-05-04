@@ -9,7 +9,9 @@
       </a>
     </div>
 
-    <app-navbar-content #navbarContent>
+    <ul
+      appNavbarContent
+      #navbarContent="appNavbarContent">
       @if (_authService.isAuthenticated()) {
         <li>
           <a
@@ -22,7 +24,7 @@
           </a>
         </li>
       }
-    </app-navbar-content>
+    </ul>
 
     <div class="my-auto flex flex-row items-center justify-start">
       <ng-icon
@@ -111,6 +113,6 @@
   </nav>
 </header>
 
-<main class="overflow-hidden p-4 w-full">
+<main class="w-full overflow-hidden p-4">
   <router-outlet />
 </main>

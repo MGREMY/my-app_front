@@ -14,7 +14,7 @@ import { rxResource, RxResourceOptions } from '@angular/core/rxjs-interop';
  */
 export class PaginationContainer<TResult> {
   /**
-   * Value is computed each time pageNumber | pageSize | sortRequest (is not undefined) is updated.
+   * Value is computed each time pageNumber | pageSize | sortRequest (if not undefined) is updated.
    */
   private readonly _paginationRequest = computed<PaginationRequest<TResult> | undefined>(() => {
     const pageNumber = this.pageNumber();
@@ -22,7 +22,7 @@ export class PaginationContainer<TResult> {
     const sortRequest = this.sortRequest();
     const filterRequest = this.filterRequest();
 
-    if (pageNumber === -1 || pageSize === -1) {
+    if (pageNumber <= 0 || pageSize <= 0) {
       return undefined;
     }
 
