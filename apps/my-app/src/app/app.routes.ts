@@ -6,15 +6,15 @@ export const routes: Routes = [
   {
     path: '',
     canActivate: [notAuthGuard],
-    loadChildren: () => import('./features/landing/landing.routes'),
+    loadChildren: () => import('./pages/landing/landing.routes'),
   },
   {
     path: 'app',
     canActivate: [authGuard],
-    loadChildren: () => import('./features/features.routes'),
+    loadChildren: () => import('./pages/pages.routes'),
   },
   {
     path: '**',
-    loadChildren: () => import('./features/not-found/not-found.routes'),
+    loadChildren: () => import('./pages/not-found/not-found.routes'),
   },
 ];

@@ -49,6 +49,7 @@ export function badResponseInterceptor(
         ngpToastManager.show(ErrorToastComponent, {
           context: {
             title: translateService.instant('misc.error.no_connection'),
+            description: req.url,
           } satisfies ErrorToastContext,
         });
 

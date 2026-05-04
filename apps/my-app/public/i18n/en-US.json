@@ -6,6 +6,7 @@
     "actions": "actions",
     "update": "update",
     "delete": "delete",
+    "show": "show",
     "refresh": "refresh",
     "reset": "reset",
     "no_data": "no data",
@@ -43,7 +44,15 @@
       "id": "id",
       "createdAtUtc": "created at",
       "userName": "user name",
-      "email": "email"
+      "email": "email",
+      "isDeleted": "is deleted"
+    },
+    "user_response": {
+      "id": "id",
+      "createdAtUtc": "created at",
+      "userName": "user name",
+      "email": "email",
+      "isDeleted": "is deleted"
     }
   },
   "enum": {

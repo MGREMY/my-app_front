@@ -15,14 +15,12 @@
         class="hover:bg-ui-hover cursor-pointer"
         (click)="userResource.onSortChange('id')">
         <span class="flex flex-row">
-          {{ 'object.minimal_user_response.id' | translate }}
-          @if (userResource.sortRequest()['id'] !== undefined) {
-            @if (userResource.sortRequest()['id'] === true) {
-              <ng-icon name="heroArrowSmallUp" />
-            } @else {
-              <ng-icon name="heroArrowSmallDown" />
-            }
-          }
+          {{ 'object.minimal_user_response.id' | translate }} @if (userResource.sortRequest()['id']
+          !== undefined) { @if (userResource.sortRequest()['id'] === true) {
+          <ng-icon name="heroArrowSmallUp" />
+          } @else {
+          <ng-icon name="heroArrowSmallDown" />
+          } }
         </span>
       </th>
       <th
@@ -30,14 +28,13 @@
         class="hover:bg-ui-hover cursor-pointer"
         (click)="userResource.onSortChange('createdAtUtc')">
         <span class="flex flex-row">
-          {{ 'object.minimal_user_response.createdAtUtc' | translate }}
-          @if (userResource.sortRequest()['createdAtUtc'] !== undefined) {
-            @if (userResource.sortRequest()['createdAtUtc'] === true) {
-              <ng-icon name="heroArrowSmallUp" />
-            } @else {
-              <ng-icon name="heroArrowSmallDown" />
-            }
-          }
+          {{ 'object.minimal_user_response.createdAtUtc' | translate }} @if
+          (userResource.sortRequest()['createdAtUtc'] !== undefined) { @if
+          (userResource.sortRequest()['createdAtUtc'] === true) {
+          <ng-icon name="heroArrowSmallUp" />
+          } @else {
+          <ng-icon name="heroArrowSmallDown" />
+          } }
         </span>
       </th>
       <th
@@ -45,14 +42,13 @@
         class="hover:bg-ui-hover cursor-pointer"
         (click)="userResource.onSortChange('userName')">
         <span class="flex flex-row">
-          {{ 'object.minimal_user_response.userName' | translate }}
-          @if (userResource.sortRequest()['userName'] !== undefined) {
-            @if (userResource.sortRequest()['userName'] === true) {
-              <ng-icon name="heroArrowSmallUp" />
-            } @else {
-              <ng-icon name="heroArrowSmallDown" />
-            }
-          }
+          {{ 'object.minimal_user_response.userName' | translate }} @if
+          (userResource.sortRequest()['userName'] !== undefined) { @if
+          (userResource.sortRequest()['userName'] === true) {
+          <ng-icon name="heroArrowSmallUp" />
+          } @else {
+          <ng-icon name="heroArrowSmallDown" />
+          } }
         </span>
       </th>
       <th
@@ -60,25 +56,24 @@
         class="hover:bg-ui-hover cursor-pointer"
         (click)="userResource.onSortChange('email')">
         <span class="flex flex-row">
-          {{ 'object.minimal_user_response.email' | translate }}
-          @if (userResource.sortRequest()['email'] !== undefined) {
-            @if (userResource.sortRequest()['email'] === true) {
-              <ng-icon name="heroArrowSmallUp" />
-            } @else {
-              <ng-icon name="heroArrowSmallDown" />
-            }
-          }
+          {{ 'object.minimal_user_response.email' | translate }} @if
+          (userResource.sortRequest()['email'] !== undefined) { @if
+          (userResource.sortRequest()['email'] === true) {
+          <ng-icon name="heroArrowSmallUp" />
+          } @else {
+          <ng-icon name="heroArrowSmallDown" />
+          } }
         </span>
       </th>
-      <th scope="col">
-        {{ 'misc.actions' | translate }}
-      </th>
+      <th scope="col">{{ 'misc.actions' | translate }}</th>
     </tr>
   </ng-template>
   <ng-template
     #tableBody
     let-record>
-    <tr mgnpTableBody>
+    <tr
+      mgnpTableBody
+      class="hover:bg-ui-hover">
       <td class="ont-medium">{{ record.id }}</td>
       <td>{{ record.createdAtUtc | localizedDate }}</td>
       <td>{{ record.userName }}</td>
@@ -97,9 +92,16 @@
             <button
               ngpMenuItem
               mgnpMenuItem
+              [routerLink]="['./', record.id]">
+              <ng-icon name="heroEye" />
+              {{ 'misc.show' | translate }}
+            </button>
+            <button
+              ngpMenuItem
+              mgnpMenuItem
               color="failure"
               (click)="_service.deleteUser(record.id)"
-              [ngpMenuItemDisabled]="_authService.isAdmin() === false"
+              [ngpMenuItemDisabled]="!_authService.isAdmin()"
               [ngpTooltipTrigger]="needAdminTooltip"
               [ngpTooltipTriggerDisabled]="_authService.isAdmin()">
               <ng-icon name="heroTrash" />

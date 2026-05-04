@@ -9,22 +9,24 @@
       </a>
     </div>
 
-    <ul
+    <div
       appNavbarContent
       #navbarContent="appNavbarContent">
-      @if (_authService.isAuthenticated()) {
-        <li>
-          <a
-            appNavbarItem
-            [routerLink]="['/', 'app']"
-            routerLinkActive="page"
-            [routerLinkActiveOptions]="{ exact: true }"
-            ariaCurrentWhenActive="page">
-            {{ 'nav.dashboard' | translate | titlecase }}
-          </a>
-        </li>
-      }
-    </ul>
+      <ul>
+        @if (_authService.isAuthenticated()) {
+          <li>
+            <a
+              appNavbarItem
+              [routerLink]="['/', 'app']"
+              routerLinkActive="page"
+              [routerLinkActiveOptions]="{ exact: true }"
+              ariaCurrentWhenActive="page">
+              {{ 'nav.dashboard' | translate | titlecase }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
 
     <div class="my-auto flex flex-row items-center justify-start">
       <ng-icon

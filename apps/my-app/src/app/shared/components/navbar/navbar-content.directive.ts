@@ -1,7 +1,7 @@
 import { Directive, signal } from '@angular/core';
 
 @Directive({
-  selector: '[appNavbarContent], ul[appNavbarContent]',
+  selector: 'div[appNavbarContent]',
   standalone: true,
   providers: [],
   host: {

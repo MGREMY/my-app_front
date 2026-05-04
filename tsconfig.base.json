@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@my-app/features/*": ["apps/my-app/src/app/features/*"],
       "@my-app/core/*": ["apps/my-app/src/app/core/*"],
       "@my-app/shared/*": ["apps/my-app/src/app/shared/*"],
       "@/core/*": ["libs/core/src/*"],

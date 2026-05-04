@@ -6,6 +6,7 @@
     "actions": "actions",
     "update": "mettre à jour",
     "delete": "supprimer",
+    "show": "afficher",
     "refresh": "rafraîchir",
     "reset": "réinitialiser",
     "no_data": "aucune donnée",
@@ -43,7 +44,15 @@
       "id": "identifiant",
       "createdAtUtc": "créé le",
       "userName": "nom d'utilisateur",
-      "email": "email"
+      "email": "email",
+      "isDeleted": "est supprimé"
+    },
+    "user_response": {
+      "id": "identifiant",
+      "createdAtUtc": "créé le",
+      "userName": "nom d'utilisateur",
+      "email": "email",
+      "isDeleted": "est supprimé"
     }
   },
   "enum": {

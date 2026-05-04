@@ -17,6 +17,7 @@ import {
   heroArrowSmallDown,
   heroArrowSmallUp,
   heroEllipsisVertical,
+  heroEye,
   heroTrash,
 } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
@@ -30,6 +31,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [
@@ -50,13 +52,15 @@ import {
     NgIcon,
     TranslatePipe,
     LocalizedDatePipe,
+    RouterLink,
   ],
-  templateUrl: './user-list-page.component.html',
+  templateUrl: './user-list.page.html',
   providers: [
     UserListStoreService,
     provideIcons({
       heroEllipsisVertical,
       heroTrash,
+      heroEye,
       heroArrowSmallDown,
       heroArrowSmallUp,
     }),
@@ -64,7 +68,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class UserListPageComponent extends BaseComponent implements OnInit {
+export class UserListPage extends BaseComponent implements OnInit {
   protected readonly _service = inject(UserListStoreService);
   protected readonly _authService = inject(AuthService);
 
