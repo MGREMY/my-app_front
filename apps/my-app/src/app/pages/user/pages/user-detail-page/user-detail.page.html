@@ -1,9 +1,9 @@
 @if (_service.userResource.isLoading()) {
-<mgnp-loader />
+  <mgnp-loader />
 } @else if (_service.userResource.error()) {
-<app-error [error]="_service.userResource.error()!" />
+  <app-error [error]="_service.userResource.error()!" />
 } @else if (_service.userResource.hasValue()) {
-<app-user-detail
-  [user]="_service.userResource.value()!"
-  [isCurrentUser]="_service.isCurrentUser()" />
+  <app-user-detail
+    [user]="_service.userResource.value()!"
+    [isCurrentUser]="_service.isCurrentUser()" />
 }

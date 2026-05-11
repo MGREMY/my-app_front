@@ -35,6 +35,14 @@ const config = {
     '@ianvs/prettier-plugin-sort-imports',
     'prettier-plugin-tailwindcss',
   ],
+  overrides: [
+    {
+      files: '*.html',
+      options: {
+        parser: 'angular',
+      },
+    },
+  ],
 };
 
 export default config;
