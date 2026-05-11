@@ -92,7 +92,8 @@
             <button
               ngpMenuItem
               mgnpMenuItem
-              [routerLink]="['./', record.id]">
+              [routerLink]="['./', record.id]"
+              class="flex items-center gap-1">
               <ng-icon name="heroEye" />
               {{ 'misc.show' | translate }}
             </button>
@@ -103,7 +104,8 @@
               (click)="_service.deleteUser(record.id)"
               [ngpMenuItemDisabled]="!_authService.isAdmin()"
               [ngpTooltipTrigger]="needAdminTooltip"
-              [ngpTooltipTriggerDisabled]="_authService.isAdmin()">
+              [ngpTooltipTriggerDisabled]="_authService.isAdmin()"
+              class="flex items-center gap-1">
               <ng-icon name="heroTrash" />
               {{ 'misc.delete' | translate }}
             </button>

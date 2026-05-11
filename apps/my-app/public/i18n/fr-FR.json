@@ -39,6 +39,14 @@
       "title": "my-app"
     }
   },
+  "features": {
+    "user": {
+      "user_detail": {
+        "user_info": "information de l'utilisateur",
+        "sso_information": "information du sso"
+      }
+    }
+  },
   "object": {
     "minimal_user_response": {
       "id": "identifiant",
@@ -71,6 +79,17 @@
     "filter_request_logic": {
       "0": "and",
       "1": "or"
+    }
+  },
+  "models": {
+    "id_token": {
+      "name": "nom",
+      "given_name": "prénom",
+      "family_name": "nom de famille",
+      "email": "email",
+      "preferred_username": "nom d'utilisateur préféré",
+      "email_verified": "email vérifié",
+      "sub": "identifiant"
     }
   }
 }
