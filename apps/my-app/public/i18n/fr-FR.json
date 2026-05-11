@@ -15,6 +15,7 @@
     "logout": "déconnexion",
     "profile": "profile",
     "value": "valeur",
+    "open": "ouvrir",
     "boolean": {
       "true": "vrai",
       "1": "vrai",
@@ -89,7 +90,8 @@
       "email": "email",
       "preferred_username": "nom d'utilisateur préféré",
       "email_verified": "email vérifié",
-      "sub": "identifiant"
+      "sub": "identifiant",
+      "iss": "émetteur"
     }
   }
 }

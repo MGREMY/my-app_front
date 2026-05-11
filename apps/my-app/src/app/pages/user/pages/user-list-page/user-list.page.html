@@ -1,4 +1,5 @@
 @let userResource = _service.usersResource;
+
 <app-table
   #userTable
   [resourceRef]="userResource.resource"
@@ -92,8 +93,9 @@
             <button
               ngpMenuItem
               mgnpMenuItem
-              [routerLink]="['./', record.id]"
-              class="flex items-center gap-1">
+              class="flex items-center gap-1"
+              (click)="_selectedUserId.set(record.id)"
+              [ngpDialogTrigger]="userDetailDialog">
               <ng-icon name="heroEye" />
               {{ 'misc.show' | translate }}
             </button>
@@ -125,3 +127,20 @@
     </tr>
   </ng-template>
 </app-table>
+
+<ng-template #userDetailDialog>
+  <div
+    ngpDialogOverlay
+    mgnpDialogOverlay>
+    <div
+      ngpDialog
+      mgnpDialog>
+      <h2
+        ngpDialogTitle
+        mgnpDialogTitle>
+        {{ 'features.user.user_detail.user_info' | translate | titlecase }}
+      </h2>
+      <app-user-detail-page [id]="_selectedUserId()!" />
+    </div>
+  </div>
+</ng-template>

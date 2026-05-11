@@ -84,20 +84,7 @@
     @if (resourceRef().isLoading()) {
       <mgnp-loader />
     } @else if (resourceRef().error()) {
-      <div class="flex flex-col gap-2">
-        <div class="flex flex-col gap-2">
-          <div>
-            <span class="font-semibold">{{ 'misc.error.name' | translate }}</span>
-          </div>
-          <span>{{ resourceRef().error()?.name ?? '' }}</span>
-        </div>
-        <div class="flex flex-col gap-2">
-          <div>
-            <span class="font-semibold">{{ 'misc.error.message' | translate }}</span>
-          </div>
-          <span>{{ resourceRef().error()?.message ?? '' }}</span>
-        </div>
-      </div>
+      <app-error [error]="resourceRef().error()!" />
     } @else if (resourceRef().hasValue()) {
       @let value = resourceRef().value();
 

@@ -1,20 +1,9 @@
 @if (_service.userResource.isLoading()) {
 <mgnp-loader />
 } @else if (_service.userResource.error()) {
-<div class="flex flex-col gap-2">
-  <div class="flex flex-col gap-2">
-    <div>
-      <span class="font-semibold">{{ 'misc.error.name' | translate }}</span>
-    </div>
-    <span>{{ _service.userResource.error()?.name ?? '' }}</span>
-  </div>
-  <div class="flex flex-col gap-2">
-    <div>
-      <span class="font-semibold">{{ 'misc.error.message' | translate }}</span>
-    </div>
-    <span>{{ _service.userResource.error()?.message ?? '' }}</span>
-  </div>
-</div>
-} @else {
-<app-user-detail [user]="_service.userResource.value()!" />
+<app-error [error]="_service.userResource.error()!" />
+} @else if (_service.userResource.hasValue()) {
+<app-user-detail
+  [user]="_service.userResource.value()!"
+  [isCurrentUser]="_service.isCurrentUser()" />
 }

@@ -2,7 +2,7 @@ import { AdminService } from '@/core/api/admin/admin.service';
 import { AuthService } from '@/core/api/auth/auth.service';
 import { UserService } from '@/core/api/user/user.service';
 
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 
 @Injectable()
@@ -19,5 +19,11 @@ export class UserDetailStoreService {
       this._authService.isAdmin()
         ? this._adminService.getUserById(params)
         : this._userService.getUserById(params),
+  });
+
+  public readonly isCurrentUser = computed(() => {
+    if (!this.userResource.hasValue()) return false;
+
+    return this._authService.getIdToken().email === this.userResource.value()?.email;
   });
 }

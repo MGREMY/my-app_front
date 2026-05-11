@@ -19,7 +19,7 @@ import { NgpButton } from 'ng-primitives/button';
 import { NgpCheckbox } from 'ng-primitives/checkbox';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { heroCheckMini } from '@ng-icons/heroicons/mini';
+import { heroCheckMini, heroMinusMini } from '@ng-icons/heroicons/mini';
 import { TranslatePipe } from '@ngx-translate/core';
 
 import { TitleCasePipe } from '@angular/common';
@@ -27,6 +27,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
+  input,
   model,
   ViewEncapsulation,
 } from '@angular/core';
@@ -54,6 +55,7 @@ import {
   providers: [
     provideIcons({
       heroCheckMini,
+      heroMinusMini,
     }),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,5 +65,5 @@ export class UserDetailComponent {
   protected readonly _authService = inject(AuthService);
 
   public readonly user = model.required<UserResponse>();
-  public readonly current = model<boolean>(false);
+  public readonly isCurrentUser = input<boolean>(false);
 }

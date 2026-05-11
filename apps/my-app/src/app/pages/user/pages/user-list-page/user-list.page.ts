@@ -1,4 +1,5 @@
 import { UserListStoreService } from '../../services/user-list.store.service';
+import { UserDetailPage } from '../user-detail-page/user-detail.page';
 import { AppTable } from '@my-app/shared/components/table/table.component';
 
 import { AuthService } from '@/core/api/auth/auth.service';
@@ -7,8 +8,15 @@ import { LocalizedDatePipe } from '@/shared/pipes/date.pipe';
 
 import { MgnpTableBody, MgnpTableHeader } from '@mgremy/ng-primitives-extended/table';
 import { MgnpButton } from '@mgremy/ng-primitives/button';
+import { MgnpDialog, MgnpDialogOverlay, MgnpDialogTitle } from '@mgremy/ng-primitives/dialog';
 import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
 import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
+import {
+  NgpDialog,
+  NgpDialogOverlay,
+  NgpDialogTitle,
+  NgpDialogTrigger,
+} from 'ng-primitives/dialog';
 import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
 import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
 
@@ -22,6 +30,7 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
+import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,13 +38,14 @@ import {
   inject,
   model,
   OnInit,
+  signal,
   ViewEncapsulation,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [
     AppTable,
+    UserDetailPage,
     MgnpButton,
     MgnpMenu,
     MgnpMenuItem,
@@ -43,6 +53,13 @@ import { RouterLink } from '@angular/router';
     MgnpTableBody,
     MgnpTooltip,
     MgnpTooltipArrow,
+    MgnpDialog,
+    MgnpDialogTitle,
+    MgnpDialogOverlay,
+    NgpDialog,
+    NgpDialogTitle,
+    NgpDialogOverlay,
+    NgpDialogTrigger,
     NgpTooltip,
     NgpTooltipArrow,
     NgpTooltipTrigger,
@@ -52,7 +69,7 @@ import { RouterLink } from '@angular/router';
     NgIcon,
     TranslatePipe,
     LocalizedDatePipe,
-    RouterLink,
+    TitleCasePipe,
   ],
   templateUrl: './user-list.page.html',
   providers: [
@@ -71,6 +88,8 @@ import { RouterLink } from '@angular/router';
 export class UserListPage extends BaseComponent implements OnInit {
   protected readonly _service = inject(UserListStoreService);
   protected readonly _authService = inject(AuthService);
+
+  protected readonly _selectedUserId = signal<string | undefined>(undefined);
 
   public readonly pageNumber = model.required<number>();
   public readonly pageSize = model.required<number>();

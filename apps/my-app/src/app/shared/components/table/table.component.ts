@@ -1,3 +1,4 @@
+import { AppError } from '../error/error.component';
 import { AppPagination } from '../pagination/pagination.component';
 
 import {
@@ -106,6 +107,7 @@ function removeFilterRecursive<T>(
 @Component({
   selector: 'app-table',
   imports: [
+    AppError,
     MgnpLoader,
     MgnpTable,
     MgnpButton,

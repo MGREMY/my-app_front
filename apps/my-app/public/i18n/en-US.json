@@ -15,6 +15,7 @@
     "logout": "log out",
     "profile": "profile",
     "value": "value",
+    "open": "open",
     "boolean": {
       "true": "true",
       "1": "true",
@@ -89,7 +90,8 @@
       "email": "email",
       "preferred_username": "preferred username",
       "email_verified": "email verified",
-      "sub": "id"
+      "sub": "id",
+      "iss": "issuer"
     }
   }
 }
