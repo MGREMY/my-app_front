@@ -16,6 +16,7 @@
     "profile": "profile",
     "value": "valeur",
     "open": "ouvrir",
+    "deleted_items": "items supprimés",
     "boolean": {
       "true": "vrai",
       "1": "vrai",
