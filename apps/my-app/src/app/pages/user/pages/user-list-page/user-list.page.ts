@@ -2,7 +2,6 @@ import { UserListStoreService } from '../../services/user-list.store.service';
 import { UserDetailPage } from '../user-detail-page/user-detail.page';
 import { AppTable } from '@my-app/shared/components/table/table.component';
 
-import { AuthService } from '@/core/api/auth/auth.service';
 import { BaseComponent } from '@/shared/base.component';
 import { LocalizedDatePipe } from '@/shared/pipes/date.pipe';
 
@@ -12,7 +11,7 @@ import { MgnpDialog, MgnpDialogOverlay } from '@mgremy/ng-primitives/dialog';
 import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
 import { MgnpSwitch, MgnpSwitchThumb } from '@mgremy/ng-primitives/switch';
 import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
-import { NgpDialog, NgpDialogOverlay, NgpDialogTrigger } from 'ng-primitives/dialog';
+import { NgpDialog, NgpDialogManager, NgpDialogOverlay } from 'ng-primitives/dialog';
 import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
 import { NgpSwitch, NgpSwitchThumb } from 'ng-primitives/switch';
 import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
@@ -35,7 +34,8 @@ import {
   inject,
   model,
   OnInit,
-  signal,
+  Type,
+  viewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -56,7 +56,6 @@ import {
     MgnpSwitchThumb,
     NgpDialog,
     NgpDialogOverlay,
-    NgpDialogTrigger,
     NgpTooltip,
     NgpTooltipArrow,
     NgpTooltipTrigger,
@@ -86,9 +85,9 @@ import {
 })
 export class UserListPage extends BaseComponent implements OnInit {
   protected readonly _service = inject(UserListStoreService);
-  protected readonly _authService = inject(AuthService);
+  protected readonly _ngpDialogManager = inject(NgpDialogManager);
 
-  protected readonly _selectedUserId = signal<string | undefined>(undefined);
+  protected readonly _userDetailDialog = viewChild<Type<NgpDialogOverlay>>('userDetailDialog');
 
   public readonly pageNumber = model.required<number>();
   public readonly pageSize = model.required<number>();
@@ -101,5 +100,13 @@ export class UserListPage extends BaseComponent implements OnInit {
       },
       { injector: this._injector }
     );
+  }
+
+  openUserDetail(id: string): void {
+    const userDetailDialog = this._userDetailDialog();
+
+    if (userDetailDialog) {
+      this._ngpDialogManager.open(userDetailDialog, { data: { id } });
+    }
   }
 }

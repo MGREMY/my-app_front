@@ -1,11 +1,12 @@
 @let userResource = _service.usersResource;
 
-@if (_authService.isAdmin() && !userResource.resource.isLoading()) {
+@if (_service.canApplyGlobalFilter()) {
   <div class="mb-4 flex flex-row gap-2">
     <button
       ngpSwitch
       mgnpSwitch
       [(ngpSwitchChecked)]="_service.includeDeletedItems"
+      [disabled]="userResource.resource.isLoading()"
       (click)="userResource.resource.reload()">
       <span
         ngpSwitchThumb
@@ -98,7 +99,7 @@
         'hover:bg-ui-hover': !record.isDeleted,
         'bg-danger/25 hover:bg-danger-hover/25': record.isDeleted,
       }">
-      <td class="ont-medium">{{ record.id }}</td>
+      <td class="font-medium">{{ record.id }}</td>
       <td>{{ record.createdAtUtc | localizedDate }}</td>
       <td>{{ record.userName }}</td>
       <td>{{ record.email }}</td>
@@ -118,8 +119,7 @@
                 ngpMenuItem
                 mgnpMenuItem
                 class="flex items-center gap-1"
-                (click)="_selectedUserId.set(record.id)"
-                [ngpDialogTrigger]="userDetailDialog">
+                (click)="openUserDetail(record.id)">
                 <ng-icon name="heroEye" />
                 {{ 'misc.show' | translate }}
               </button>
@@ -128,9 +128,9 @@
                 mgnpMenuItem
                 color="failure"
                 (click)="_service.deleteUser(record.id)"
-                [ngpMenuItemDisabled]="!_authService.isAdmin()"
+                [ngpMenuItemDisabled]="!_service.canDelete()"
                 [ngpTooltipTrigger]="needAdminTooltip"
-                [ngpTooltipTriggerDisabled]="_authService.isAdmin()"
+                [ngpTooltipTriggerDisabled]="_service.canDelete()"
                 class="flex items-center gap-1">
                 <ng-icon name="heroTrash" />
                 {{ 'misc.delete' | translate }}
@@ -153,14 +153,18 @@
   </ng-template>
 </app-table>
 
-<ng-template #userDetailDialog>
+<ng-template
+  #userDetailDialog
+  let-ctx>
   <div
     ngpDialogOverlay
-    mgnpDialogOverlay>
+    mgnpDialogOverlay
+    mode="drawer"
+    drawerPosition="end">
     <div
       ngpDialog
       mgnpDialog>
-      <app-user-detail-page [id]="_selectedUserId()!" />
+      <app-user-detail-page [id]="ctx.data.id" />
     </div>
   </div>
 </ng-template>

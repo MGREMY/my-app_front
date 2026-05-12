@@ -1,4 +1,4 @@
-<div class="flex flex-col gap-3">
+<div class="@container flex flex-col gap-3">
   <h2 class="text-primary col-span-full text-lg">
     {{ 'features.user.user_detail.user_info' | translate | titlecase }}
   </h2>
@@ -16,7 +16,7 @@
       alt="#"
       priority />
 
-    <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-3 @md:grid-cols-2 @lg:grid-cols-3">
       <p>
         <span class="text-secondary font-semibold">
           {{ 'object.user_response.userName' | translate | titlecase }} :
@@ -74,7 +74,7 @@
         <div
           ngpAccordionContent
           mgnpAccordionContent>
-          <div class="grid gap-3 p-2 md:grid-cols-2 lg:grid-cols-3">
+          <div class="grid gap-3 p-2 @md:grid-cols-2 @lg:grid-cols-3">
             <p class="col-span-full text-sm">
               <span class="text-secondary font-semibold">
                 {{ 'models.id_token.sub' | translate | titlecase }} :

@@ -17,6 +17,8 @@ export class UserListStoreService {
 
   public readonly userFilterOption = MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION;
 
+  public readonly canDelete = signal(this._authService.isAdmin());
+  public readonly canApplyGlobalFilter = signal(this._authService.isAdmin());
   public readonly includeDeletedItems = signal(false);
 
   public readonly usersResource = paginationContainer<MinimalUserResponse>({

@@ -83,6 +83,11 @@
             </button>
           </div>
         </ng-template>
+
+        <ng-icon
+          name="heroBars4"
+          class="ml-5 rounded-full hover:cursor-pointer md:hidden!"
+          (click)="navbarContent.toggle()" />
       } @else {
         <ng-icon
           [ngpMenuTrigger]="notLoggedInUserDropdown"
@@ -106,15 +111,10 @@
           </div>
         </ng-template>
       }
-
-      <ng-icon
-        name="heroBars4"
-        class="ml-5 rounded-full hover:cursor-pointer md:hidden!"
-        (click)="navbarContent.toggle()" />
     </div>
   </nav>
 </header>
 
-<main class="w-full overflow-hidden p-4 @container">
+<main class="@container w-full overflow-hidden p-4">
   <router-outlet />
 </main>
