@@ -43,7 +43,7 @@
   "features": {
     "user": {
       "user_detail": {
-        "user_info": "user informations",
+        "user_info": "user information",
         "sso_information": "sso information"
       }
     }
@@ -86,7 +86,7 @@
     "id_token": {
       "name": "name",
       "given_name": "given name",
-      "family_name": "familly name",
+      "family_name": "family name",
       "email": "email",
       "preferred_username": "preferred username",
       "email_verified": "email verified",

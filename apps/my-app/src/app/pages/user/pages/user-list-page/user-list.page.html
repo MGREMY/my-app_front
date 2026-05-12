@@ -109,7 +109,7 @@
               mgnpMenuItem
               color="failure"
               (click)="_service.deleteUser(record.id)"
-              [ngpMenuItemDisabled]="!_authService.isAdmin()"
+              [ngpMenuItemDisabled]="!_authService.isAdmin() || record.isDeleted"
               [ngpTooltipTrigger]="needAdminTooltip"
               [ngpTooltipTriggerDisabled]="_authService.isAdmin()"
               class="flex items-center gap-1">
@@ -140,11 +140,6 @@
     <div
       ngpDialog
       mgnpDialog>
-      <h2
-        ngpDialogTitle
-        mgnpDialogTitle>
-        {{ 'features.user.user_detail.user_info' | translate | titlecase }}
-      </h2>
       <app-user-detail-page [id]="_selectedUserId()!" />
     </div>
   </div>

@@ -8,15 +8,10 @@ import { LocalizedDatePipe } from '@/shared/pipes/date.pipe';
 
 import { MgnpTableBody, MgnpTableHeader } from '@mgremy/ng-primitives-extended/table';
 import { MgnpButton } from '@mgremy/ng-primitives/button';
-import { MgnpDialog, MgnpDialogOverlay, MgnpDialogTitle } from '@mgremy/ng-primitives/dialog';
+import { MgnpDialog, MgnpDialogOverlay } from '@mgremy/ng-primitives/dialog';
 import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
 import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
-import {
-  NgpDialog,
-  NgpDialogOverlay,
-  NgpDialogTitle,
-  NgpDialogTrigger,
-} from 'ng-primitives/dialog';
+import { NgpDialog, NgpDialogOverlay, NgpDialogTrigger } from 'ng-primitives/dialog';
 import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
 import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
 
@@ -30,7 +25,6 @@ import {
 } from '@ng-icons/heroicons/outline';
 import { TranslatePipe } from '@ngx-translate/core';
 
-import { TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -54,10 +48,8 @@ import {
     MgnpTooltip,
     MgnpTooltipArrow,
     MgnpDialog,
-    MgnpDialogTitle,
     MgnpDialogOverlay,
     NgpDialog,
-    NgpDialogTitle,
     NgpDialogOverlay,
     NgpDialogTrigger,
     NgpTooltip,
@@ -69,7 +61,6 @@ import {
     NgIcon,
     TranslatePipe,
     LocalizedDatePipe,
-    TitleCasePipe,
   ],
   templateUrl: './user-list.page.html',
   providers: [
