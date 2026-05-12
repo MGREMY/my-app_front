@@ -26,10 +26,13 @@ export class AdminService {
   private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/admin`;
 
   getUsers(
-    request: PaginationRequest<MinimalUserResponse>
+    request: PaginationRequest<MinimalUserResponse>,
+    includeDeletedItems: boolean
   ): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
-      .get(`${this._prefix}/users?${toURLSearchParams(request)}`)
+      .get(
+        `${this._prefix}/users?${toURLSearchParams(request)}&includeDeletedItems=${includeDeletedItems}`
+      )
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
   }
 

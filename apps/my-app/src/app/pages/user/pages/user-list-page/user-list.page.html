@@ -1,5 +1,20 @@
 @let userResource = _service.usersResource;
 
+@if (_authService.isAdmin() && !userResource.resource.isLoading()) {
+  <div class="mb-4 flex flex-row gap-2">
+    <button
+      ngpSwitch
+      mgnpSwitch
+      [(ngpSwitchChecked)]="_service.includeDeletedItems"
+      (click)="userResource.resource.reload()">
+      <span
+        ngpSwitchThumb
+        mgnpSwitchThumb></span>
+    </button>
+    <span>Deleted items</span>
+  </div>
+}
+
 <app-table
   #userTable
   [resourceRef]="userResource.resource"
@@ -79,55 +94,60 @@
     let-record>
     <tr
       mgnpTableBody
-      class="hover:bg-ui-hover">
+      [ngClass]="{
+        'hover:bg-ui-hover': !record.isDeleted,
+        'bg-danger/25 hover:bg-danger-hover/25': record.isDeleted,
+      }">
       <td class="ont-medium">{{ record.id }}</td>
       <td>{{ record.createdAtUtc | localizedDate }}</td>
       <td>{{ record.userName }}</td>
       <td>{{ record.email }}</td>
       <td>
-        <button
-          mgnpButton
-          [ngpMenuTrigger]="userActionsDropdown">
-          <span class="sr-only">Actions menu toggle</span>
-          <ng-icon name="heroEllipsisVertical" />
-        </button>
-        <ng-template #userActionsDropdown>
-          <div
-            ngpMenu
-            mgnpMenu>
-            <button
-              ngpMenuItem
-              mgnpMenuItem
-              class="flex items-center gap-1"
-              (click)="_selectedUserId.set(record.id)"
-              [ngpDialogTrigger]="userDetailDialog">
-              <ng-icon name="heroEye" />
-              {{ 'misc.show' | translate }}
-            </button>
-            <button
-              ngpMenuItem
-              mgnpMenuItem
-              color="failure"
-              (click)="_service.deleteUser(record.id)"
-              [ngpMenuItemDisabled]="!_authService.isAdmin() || record.isDeleted"
-              [ngpTooltipTrigger]="needAdminTooltip"
-              [ngpTooltipTriggerDisabled]="_authService.isAdmin()"
-              class="flex items-center gap-1">
-              <ng-icon name="heroTrash" />
-              {{ 'misc.delete' | translate }}
-            </button>
-            <ng-template #needAdminTooltip>
-              <div
-                ngpTooltip
-                mgnpTooltip>
-                {{ 'tooltip.need_role.admin' | translate }}
+        @if (!record.isDeleted) {
+          <button
+            mgnpButton
+            [ngpMenuTrigger]="userActionsDropdown">
+            <span class="sr-only">Actions menu toggle</span>
+            <ng-icon name="heroEllipsisVertical" />
+          </button>
+          <ng-template #userActionsDropdown>
+            <div
+              ngpMenu
+              mgnpMenu>
+              <button
+                ngpMenuItem
+                mgnpMenuItem
+                class="flex items-center gap-1"
+                (click)="_selectedUserId.set(record.id)"
+                [ngpDialogTrigger]="userDetailDialog">
+                <ng-icon name="heroEye" />
+                {{ 'misc.show' | translate }}
+              </button>
+              <button
+                ngpMenuItem
+                mgnpMenuItem
+                color="failure"
+                (click)="_service.deleteUser(record.id)"
+                [ngpMenuItemDisabled]="!_authService.isAdmin()"
+                [ngpTooltipTrigger]="needAdminTooltip"
+                [ngpTooltipTriggerDisabled]="_authService.isAdmin()"
+                class="flex items-center gap-1">
+                <ng-icon name="heroTrash" />
+                {{ 'misc.delete' | translate }}
+              </button>
+              <ng-template #needAdminTooltip>
                 <div
-                  ngpTooltipArrow
-                  mgnpTooltipArrow></div>
-              </div>
-            </ng-template>
-          </div>
-        </ng-template>
+                  ngpTooltip
+                  mgnpTooltip>
+                  {{ 'tooltip.need_role.admin' | translate }}
+                  <div
+                    ngpTooltipArrow
+                    mgnpTooltipArrow></div>
+                </div>
+              </ng-template>
+            </div>
+          </ng-template>
+        }
       </td>
     </tr>
   </ng-template>
