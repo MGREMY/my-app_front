@@ -34,7 +34,7 @@ import {
   inject,
   model,
   OnInit,
-  Type,
+  TemplateRef,
   viewChild,
   ViewEncapsulation,
 } from '@angular/core';
@@ -87,7 +87,8 @@ export class UserListPage extends BaseComponent implements OnInit {
   protected readonly _service = inject(UserListStoreService);
   protected readonly _ngpDialogManager = inject(NgpDialogManager);
 
-  protected readonly _userDetailDialog = viewChild<Type<NgpDialogOverlay>>('userDetailDialog');
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  protected readonly _userDetailDialog = viewChild<TemplateRef<any>>('userDetailDialog');
 
   public readonly pageNumber = model.required<number>();
   public readonly pageSize = model.required<number>();
