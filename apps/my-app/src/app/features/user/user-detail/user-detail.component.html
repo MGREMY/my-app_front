@@ -1,0 +1,144 @@
+<div class="@container flex flex-col gap-3">
+  <h2 class="text-primary col-span-full text-lg">
+    {{ 'features.user.user_detail.user_info' | translate | titlecase }}
+  </h2>
+  <p class="col-span-full text-sm">
+    <span class="text-secondary font-semibold">
+      {{ 'object.user_response.id' | translate | titlecase }} :
+    </span>
+    <span class="text-ui-disabled">{{ user().id }}</span>
+  </p>
+  <div class="flex flex-row items-center gap-2">
+    <img
+      src="/icons/avatar.svg"
+      fetchpriority="high"
+      class="size-24 rounded-full object-cover"
+      alt="#"
+      priority />
+
+    <div class="grid gap-3 @md:grid-cols-2 @lg:grid-cols-3">
+      <p>
+        <span class="text-secondary font-semibold">
+          {{ 'object.user_response.userName' | translate | titlecase }} :
+        </span>
+        {{ user().userName }}
+      </p>
+      <p>
+        <span class="text-secondary font-semibold">
+          {{ 'object.user_response.createdAtUtc' | translate | titlecase }} :
+        </span>
+        {{ user().createdAtUtc | localizedDate: 'medium' }}
+      </p>
+      <p class="flex items-center gap-1">
+        <span class="text-secondary font-semibold">
+          {{ 'object.user_response.isDeleted' | translate | titlecase }} :
+        </span>
+        <span
+          ngpCheckbox
+          mgnpCheckbox
+          [ngpCheckboxChecked]="user().isDeleted"
+          ngpCheckboxDisabled>
+          @if (user().isDeleted) {
+            <ng-icon
+              name="heroCheckMini"
+              aria-hidden="true" />
+          }
+        </span>
+      </p>
+    </div>
+  </div>
+  @if (isCurrentUser()) {
+    @let idToken = _authService.getIdToken();
+
+    <div
+      ngpAccordion
+      ngpAccordionType="single"
+      ngpAccordionCollapsible="false"
+      ngpAccordionValue="ssoInformationPanel"
+      mgnpAccordion
+      class="max-w-none">
+      <div
+        #ssoInformationPanel="ngpAccordionItem"
+        ngpAccordionItem
+        ngpAccordionItemValue="ssoInformationPanel"
+        mgnpAccordionItem>
+        <h3>
+          <button
+            ngpAccordionTrigger
+            ngpButton
+            mgnpButton>
+            {{ 'features.user.user_detail.sso_information' | translate }}
+          </button>
+        </h3>
+        <div
+          ngpAccordionContent
+          mgnpAccordionContent>
+          <div class="grid gap-3 p-2 @md:grid-cols-2 @lg:grid-cols-3">
+            <p class="col-span-full text-sm">
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.sub' | translate | titlecase }} :
+              </span>
+              {{ idToken.sub }}
+            </p>
+            <p class="col-span-full text-sm">
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.iss' | translate | titlecase }} :
+              </span>
+              {{ idToken.iss }}
+            </p>
+            <p>
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.name' | translate | titlecase }} :
+              </span>
+              {{ idToken.name }}
+            </p>
+            <p>
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.given_name' | translate | titlecase }} :
+              </span>
+              {{ idToken.given_name }}
+            </p>
+            <p>
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.family_name' | translate | titlecase }} :
+              </span>
+              {{ idToken.family_name }}
+            </p>
+            <p>
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.preferred_username' | translate | titlecase }} :
+              </span>
+              {{ idToken.preferred_username }}
+            </p>
+            <p>
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.email' | translate | titlecase }} :
+              </span>
+              {{ idToken.email }}
+            </p>
+            <p class="flex items-center gap-1">
+              <span class="text-secondary font-semibold">
+                {{ 'models.id_token.email_verified' | translate | titlecase }} :
+              </span>
+              <span
+                ngpCheckbox
+                mgnpCheckbox
+                [ngpCheckboxChecked]="idToken.email_verified"
+                ngpCheckboxDisabled>
+                @if (idToken.email_verified) {
+                  <ng-icon
+                    name="heroCheckMini"
+                    aria-hidden="true" />
+                } @else if (idToken.email_verified === undefined) {
+                  <ng-icon
+                    name="heroMinusMini"
+                    aria-hidden="true" />
+                }
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

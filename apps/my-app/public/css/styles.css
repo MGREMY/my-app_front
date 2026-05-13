@@ -6,11 +6,6 @@
 @import './components/navbar.css';
 
 @font-face {
-  font-family: inter;
-  src: url('../fonts/inter.ttf') format('truetype');
-}
-
-@font-face {
   font-family: roboto;
   src: url('../fonts/roboto.ttf') format('truetype');
 }

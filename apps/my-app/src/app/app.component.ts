@@ -1,6 +1,6 @@
-import { AppNavbarContent } from '@my-app/shared/components/navbar/navbar-content.component';
-import { AppNavbarItem } from '@my-app/shared/components/navbar/navbar-item.component';
-import { AppNavbar } from '@my-app/shared/components/navbar/navbar.component';
+import { AppNavbarContent } from '@my-app/shared/components/navbar/navbar-content.directive';
+import { AppNavbarItem } from '@my-app/shared/components/navbar/navbar-item.directive';
+import { AppNavbar } from '@my-app/shared/components/navbar/navbar.directive';
 
 import { AuthService } from '@/core/api/auth/auth.service';
 import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';

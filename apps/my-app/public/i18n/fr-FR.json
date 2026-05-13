@@ -6,6 +6,7 @@
     "actions": "actions",
     "update": "mettre à jour",
     "delete": "supprimer",
+    "show": "afficher",
     "refresh": "rafraîchir",
     "reset": "réinitialiser",
     "no_data": "aucune donnée",
@@ -14,6 +15,8 @@
     "logout": "déconnexion",
     "profile": "profile",
     "value": "valeur",
+    "open": "ouvrir",
+    "deleted_items": "items supprimés",
     "boolean": {
       "true": "vrai",
       "1": "vrai",
@@ -38,12 +41,28 @@
       "title": "my-app"
     }
   },
+  "features": {
+    "user": {
+      "user_detail": {
+        "user_info": "information de l'utilisateur",
+        "sso_information": "information du sso"
+      }
+    }
+  },
   "object": {
     "minimal_user_response": {
       "id": "identifiant",
       "createdAtUtc": "créé le",
       "userName": "nom d'utilisateur",
-      "email": "email"
+      "email": "email",
+      "isDeleted": "est supprimé"
+    },
+    "user_response": {
+      "id": "identifiant",
+      "createdAtUtc": "créé le",
+      "userName": "nom d'utilisateur",
+      "email": "email",
+      "isDeleted": "est supprimé"
     }
   },
   "enum": {
@@ -62,6 +81,18 @@
     "filter_request_logic": {
       "0": "and",
       "1": "or"
+    }
+  },
+  "models": {
+    "id_token": {
+      "name": "nom",
+      "given_name": "prénom",
+      "family_name": "nom de famille",
+      "email": "email",
+      "preferred_username": "nom d'utilisateur préféré",
+      "email_verified": "email vérifié",
+      "sub": "identifiant",
+      "iss": "émetteur"
     }
   }
 }

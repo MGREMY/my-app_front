@@ -1,4 +1,21 @@
 @let userResource = _service.usersResource;
+
+@if (_service.canApplyAdditionalFlags()) {
+  <div class="mb-4 flex flex-row gap-2">
+    <button
+      ngpSwitch
+      mgnpSwitch
+      [(ngpSwitchChecked)]="_service.additionalFlags().includeDeletedItems"
+      [disabled]="userResource.resource.isLoading()"
+      (click)="userResource.resource.reload()">
+      <span
+        ngpSwitchThumb
+        mgnpSwitchThumb></span>
+    </button>
+    <span>{{ 'misc.deleted_items' | translate }}</span>
+  </div>
+}
+
 <app-table
   #userTable
   [resourceRef]="userResource.resource"
@@ -70,54 +87,84 @@
           }
         </span>
       </th>
-      <th scope="col">
-        {{ 'misc.actions' | translate }}
-      </th>
+      <th scope="col">{{ 'misc.actions' | translate }}</th>
     </tr>
   </ng-template>
   <ng-template
     #tableBody
     let-record>
-    <tr mgnpTableBody>
-      <td class="ont-medium">{{ record.id }}</td>
+    <tr
+      mgnpTableBody
+      [ngClass]="{
+        'hover:bg-ui-hover': !record.isDeleted,
+        'bg-danger/25 hover:bg-danger-hover/25': record.isDeleted,
+      }">
+      <td class="font-medium">{{ record.id }}</td>
       <td>{{ record.createdAtUtc | localizedDate }}</td>
       <td>{{ record.userName }}</td>
       <td>{{ record.email }}</td>
       <td>
-        <button
-          mgnpButton
-          [ngpMenuTrigger]="userActionsDropdown">
-          <span class="sr-only">Actions menu toggle</span>
-          <ng-icon name="heroEllipsisVertical" />
-        </button>
-        <ng-template #userActionsDropdown>
-          <div
-            ngpMenu
-            mgnpMenu>
-            <button
-              ngpMenuItem
-              mgnpMenuItem
-              color="failure"
-              (click)="_service.deleteUser(record.id)"
-              [ngpMenuItemDisabled]="_authService.isAdmin() === false"
-              [ngpTooltipTrigger]="needAdminTooltip"
-              [ngpTooltipTriggerDisabled]="_authService.isAdmin()">
-              <ng-icon name="heroTrash" />
-              {{ 'misc.delete' | translate }}
-            </button>
-            <ng-template #needAdminTooltip>
-              <div
-                ngpTooltip
-                mgnpTooltip>
-                {{ 'tooltip.need_role.admin' | translate }}
+        @if (!record.isDeleted) {
+          <button
+            mgnpButton
+            [ngpMenuTrigger]="userActionsDropdown">
+            <span class="sr-only">Actions menu toggle</span>
+            <ng-icon name="heroEllipsisVertical" />
+          </button>
+          <ng-template #userActionsDropdown>
+            <div
+              ngpMenu
+              mgnpMenu>
+              <button
+                ngpMenuItem
+                mgnpMenuItem
+                class="flex items-center gap-1"
+                (click)="openUserDetail(record.id)">
+                <ng-icon name="heroEye" />
+                {{ 'misc.show' | translate }}
+              </button>
+              <button
+                ngpMenuItem
+                mgnpMenuItem
+                color="failure"
+                (click)="_service.deleteUser(record.id)"
+                [ngpMenuItemDisabled]="!_service.canDelete()"
+                [ngpTooltipTrigger]="needAdminTooltip"
+                [ngpTooltipTriggerDisabled]="_service.canDelete()"
+                class="flex items-center gap-1">
+                <ng-icon name="heroTrash" />
+                {{ 'misc.delete' | translate }}
+              </button>
+              <ng-template #needAdminTooltip>
                 <div
-                  ngpTooltipArrow
-                  mgnpTooltipArrow></div>
-              </div>
-            </ng-template>
-          </div>
-        </ng-template>
+                  ngpTooltip
+                  mgnpTooltip>
+                  {{ 'tooltip.need_role.admin' | translate }}
+                  <div
+                    ngpTooltipArrow
+                    mgnpTooltipArrow></div>
+                </div>
+              </ng-template>
+            </div>
+          </ng-template>
+        }
       </td>
     </tr>
   </ng-template>
 </app-table>
+
+<ng-template
+  #userDetailDialog
+  let-ctx>
+  <div
+    ngpDialogOverlay
+    mgnpDialogOverlay
+    mode="drawer"
+    drawerPosition="end">
+    <div
+      ngpDialog
+      mgnpDialog>
+      <app-user-detail-page [id]="ctx.data.id" />
+    </div>
+  </div>
+</ng-template>

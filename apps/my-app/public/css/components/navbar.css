@@ -63,18 +63,16 @@
 }
 
 @layer base {
-  [app-navbar],
+  [appNavbar],
   nav[appNavbar] {
     @apply app-navbar transition;
   }
 
-  app-navbar-content {
+  div[appNavbarContent] {
     @apply app-navbar-content transition;
   }
 
-  [app-navbar-item],
-  button[appNavbarItem],
-  a[appNavbarItem] {
+  [appNavbarItem] {
     @apply app-navbar-item transition;
   }
 }

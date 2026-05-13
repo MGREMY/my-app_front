@@ -5,6 +5,7 @@ export interface UserResponse {
   createdAtUtc: Date;
   userName: string;
   email: string;
+  isDeleted: boolean;
 }
 
 export interface MinimalUserResponse {
@@ -12,6 +13,7 @@ export interface MinimalUserResponse {
   createdAtUtc: Date;
   userName: string;
   email: string;
+  isDeleted: boolean;
 }
 
 export const ZUserResponse: z.ZodType<UserResponse> = z.object({
@@ -19,6 +21,7 @@ export const ZUserResponse: z.ZodType<UserResponse> = z.object({
   createdAtUtc: z.coerce.date(),
   userName: z.string(),
   email: z.string(),
+  isDeleted: z.boolean(),
 });
 
 export const ZMinimalUserResponse: z.ZodType<MinimalUserResponse> = z.object({
@@ -26,4 +29,5 @@ export const ZMinimalUserResponse: z.ZodType<MinimalUserResponse> = z.object({
   createdAtUtc: z.coerce.date(),
   userName: z.string(),
   email: z.string(),
+  isDeleted: z.boolean(),
 });

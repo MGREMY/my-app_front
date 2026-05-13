@@ -6,6 +6,7 @@
     "actions": "actions",
     "update": "update",
     "delete": "delete",
+    "show": "show",
     "refresh": "refresh",
     "reset": "reset",
     "no_data": "no data",
@@ -14,6 +15,8 @@
     "logout": "log out",
     "profile": "profile",
     "value": "value",
+    "open": "open",
+    "deleted_items": "deleted items",
     "boolean": {
       "true": "true",
       "1": "true",
@@ -38,12 +41,28 @@
       "title": "my-app"
     }
   },
+  "features": {
+    "user": {
+      "user_detail": {
+        "user_info": "user information",
+        "sso_information": "sso information"
+      }
+    }
+  },
   "object": {
     "minimal_user_response": {
       "id": "id",
       "createdAtUtc": "created at",
       "userName": "user name",
-      "email": "email"
+      "email": "email",
+      "isDeleted": "is deleted"
+    },
+    "user_response": {
+      "id": "id",
+      "createdAtUtc": "created at",
+      "userName": "user name",
+      "email": "email",
+      "isDeleted": "is deleted"
     }
   },
   "enum": {
@@ -62,6 +81,18 @@
     "filter_request_logic": {
       "0": "and",
       "1": "or"
+    }
+  },
+  "models": {
+    "id_token": {
+      "name": "name",
+      "given_name": "given name",
+      "family_name": "family name",
+      "email": "email",
+      "preferred_username": "preferred username",
+      "email_verified": "email verified",
+      "sub": "id",
+      "iss": "issuer"
     }
   }
 }

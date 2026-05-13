@@ -1,20 +1,16 @@
 import {
-  AdditionalFlagsRequest,
-  additionalFlagsToURLSearchParams,
-} from '../additional-flags/additional-flags.request';
-import {
   PaginationRequest,
   paginationRequestToURLSearchParams,
   PaginationResponse,
   ZPaginationResponse,
 } from '../pagination/pagination.request';
+import { zParse } from '../zod';
 import {
   MinimalUserResponse,
   UserResponse,
   ZMinimalUserResponse,
   ZUserResponse,
-} from '../user/user.response';
-import { zParse } from '../zod';
+} from './user.response';
 
 import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
 
@@ -25,26 +21,19 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminService {
+export class UserService {
   private readonly _http = inject(HttpClient);
-  private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/admin`;
+  private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/users`;
 
   getUsers(
-    request: PaginationRequest<MinimalUserResponse>,
-    additionalFlags: AdditionalFlagsRequest
+    request: PaginationRequest<MinimalUserResponse>
   ): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
-      .get(
-        `${this._prefix}/users?${paginationRequestToURLSearchParams(request)}&${additionalFlagsToURLSearchParams(additionalFlags)}`
-      )
+      .get(`${this._prefix}?${paginationRequestToURLSearchParams(request)}`)
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
   }
 
   getUserById(id: string): Observable<UserResponse> {
-    return this._http.get(`${this._prefix}/users/${id}`).pipe(zParse(ZUserResponse));
-  }
-
-  deleteUserById(id: string): Observable<unknown> {
-    return this._http.delete(`${this._prefix}/users/${id}`);
+    return this._http.get(`${this._prefix}/${id}`).pipe(zParse(ZUserResponse));
   }
 }
