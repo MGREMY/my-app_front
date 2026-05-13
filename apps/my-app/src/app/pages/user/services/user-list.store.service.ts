@@ -1,5 +1,6 @@
 import MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION from '@my-app/core/constants/table-filter-option/minimal-user-response.table-filter-option';
 
+import { AdditionalFlagsRequest } from '@/core/api/additional-flags/additional-flags.request';
 import { AdminService } from '@/core/api/admin/admin.service';
 import { AuthService } from '@/core/api/auth/auth.service';
 import { MinimalUserResponse } from '@/core/api/user/user.response';
@@ -18,13 +19,15 @@ export class UserListStoreService {
   public readonly userFilterOption = MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION;
 
   public readonly canDelete = signal(this._authService.isAdmin());
-  public readonly canApplyGlobalFilter = signal(this._authService.isAdmin());
-  public readonly includeDeletedItems = signal(false);
+  public readonly canApplyAdditionalFlags = signal(this._authService.isAdmin());
+  public readonly additionalFlags = signal<AdditionalFlagsRequest>({
+    includeDeletedItems: false,
+  });
 
   public readonly usersResource = paginationContainer<MinimalUserResponse>({
     stream: ({ params }) =>
       this._authService.isAdmin()
-        ? this._adminService.getUsers(params, this.includeDeletedItems())
+        ? this._adminService.getUsers(params, this.additionalFlags())
         : this._userService.getUsers(params),
   });
 

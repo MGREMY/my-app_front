@@ -47,7 +47,16 @@ export interface PaginationResponse<T> {
   data: T[];
 }
 
+/**
+ * @deprecated Please use `paginationRequestToURLSearchParams`
+ * @param request
+ * @returns
+ */
 export function toURLSearchParams<T>(request: PaginationRequest<T>) {
+  return paginationRequestToURLSearchParams<T>(request);
+}
+
+export function paginationRequestToURLSearchParams<T>(request: PaginationRequest<T>) {
   const urlSearchParams = new URLSearchParams({
     pageNumber: request.pageNumber.toString(),
     pageSize: request.pageSize.toString(),

@@ -1,7 +1,11 @@
 import {
+  AdditionalFlagsRequest,
+  additionalFlagsToURLSearchParams,
+} from '../additional-flags/additional-flags.request';
+import {
   PaginationRequest,
+  paginationRequestToURLSearchParams,
   PaginationResponse,
-  toURLSearchParams,
   ZPaginationResponse,
 } from '../pagination/pagination.request';
 import {
@@ -27,11 +31,11 @@ export class AdminService {
 
   getUsers(
     request: PaginationRequest<MinimalUserResponse>,
-    includeDeletedItems: boolean
+    additionalFlags: AdditionalFlagsRequest
   ): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
       .get(
-        `${this._prefix}/users?${toURLSearchParams(request)}&includeDeletedItems=${includeDeletedItems}`
+        `${this._prefix}/users?${paginationRequestToURLSearchParams(request)}&${additionalFlagsToURLSearchParams(additionalFlags)}`
       )
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
   }

@@ -1,11 +1,11 @@
 @let userResource = _service.usersResource;
 
-@if (_service.canApplyGlobalFilter()) {
+@if (_service.canApplyAdditionalFlags()) {
   <div class="mb-4 flex flex-row gap-2">
     <button
       ngpSwitch
       mgnpSwitch
-      [(ngpSwitchChecked)]="_service.includeDeletedItems"
+      [(ngpSwitchChecked)]="_service.additionalFlags().includeDeletedItems"
       [disabled]="userResource.resource.isLoading()"
       (click)="userResource.resource.reload()">
       <span

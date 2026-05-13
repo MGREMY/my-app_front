@@ -1,7 +1,7 @@
 import {
   PaginationRequest,
+  paginationRequestToURLSearchParams,
   PaginationResponse,
-  toURLSearchParams,
   ZPaginationResponse,
 } from '../pagination/pagination.request';
 import { zParse } from '../zod';
@@ -29,7 +29,7 @@ export class UserService {
     request: PaginationRequest<MinimalUserResponse>
   ): Observable<PaginationResponse<MinimalUserResponse>> {
     return this._http
-      .get(`${this._prefix}?${toURLSearchParams(request)}`)
+      .get(`${this._prefix}?${paginationRequestToURLSearchParams(request)}`)
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
   }
 
