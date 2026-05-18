@@ -10,27 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { KeyValuePipe } from '@angular/common';
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { catchError, EMPTY, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 // Custom error for no network connection
 class HttpNoNetworkConnectionError extends Error {
   constructor() {
     super('No network connection');
   }
-}
-
-// Helper function to check if the error is due to no network connection
-function checkNoNetworkConnection(error: unknown): boolean {
-  if (!(error instanceof HttpErrorResponse)) return false;
-
-  return error.status === 0 || error.error instanceof ProgressEvent;
-}
-
-// Handles the case where the user does not have access to the resource
-function noAccessToResource(error: HttpErrorResponse): Observable<never> {
-  console.warn("You don't have access to this resource");
-
-  return throwError(() => error.error);
 }
 
 // Main interceptor function
@@ -45,18 +31,18 @@ export function badResponseInterceptor(
   return next(req).pipe(
     catchError((error) => {
       // If there is no network connection, throw a custom error
-      if (checkNoNetworkConnection(error)) {
-        ngpToastManager.show(ErrorToastComponent, {
-          context: {
-            title: translateService.instant('misc.error.no_connection'),
-            description: req.url,
-          } satisfies ErrorToastContext,
-        });
-
-        throw new HttpNoNetworkConnectionError();
-      }
-
       if (error instanceof HttpErrorResponse) {
+        if (error.status === 0 || error.error instanceof ProgressEvent) {
+          ngpToastManager.show(ErrorToastComponent, {
+            context: {
+              title: translateService.instant('misc.error.no_connection'),
+              description: req.url,
+            } satisfies ErrorToastContext,
+          });
+
+          throw new HttpNoNetworkConnectionError();
+        }
+
         if (error.status === 401 || error.status === 403) {
           ngpToastManager.show(ErrorToastComponent, {
             context: {
@@ -64,7 +50,9 @@ export function badResponseInterceptor(
             } satisfies ErrorToastContext,
           });
 
-          return noAccessToResource(error);
+          console.warn("You don't have access to this resource");
+
+          return throwError(() => error.error);
         }
 
         const parsedError = ZErrorResponse.safeParse(error.error);
@@ -78,7 +66,7 @@ export function badResponseInterceptor(
             } satisfies ErrorToastContext,
           });
 
-          return EMPTY;
+          return throwError(() => error.error);
         }
       }
 
