@@ -3,22 +3,17 @@
     <div class="flex justify-between pb-2">
       <div class="flex gap-2">
         <button
-          ngpButton
           mgnpButton
-          [ngpTooltipTrigger]="RefreshTooltip"
-          [ngpTooltipTriggerContainer]="refreshTooltipContainer"
+          [mgnpTooltipTrigger]="RefreshTooltip"
+          [mgnpTooltipTriggerContainer]="refreshTooltipContainer"
           (click)="resourceRef().reload()">
           <span class="sr-only">Reload data</span>
           <ng-icon name="heroArrowPath" />
         </button>
         <ng-template #RefreshTooltip>
-          <div
-            ngpTooltip
-            mgnpTooltip>
+          <div mgnpTooltip>
             {{ 'misc.refresh' | translate }}
-            <div
-              ngpTooltipArrow
-              mgnpTooltipArrow></div>
+            <div mgnpTooltipArrow></div>
           </div>
         </ng-template>
 
@@ -27,7 +22,6 @@
         @if (filterOption() !== undefined) {
           @if (_filters().length === 0) {
             <button
-              ngpButton
               mgnpButton
               (click)="addFilter()"
               class="w-fit">
@@ -36,7 +30,6 @@
           }
           @if (!_areFilterSync()) {
             <button
-              ngpButton
               mgnpButton
               (click)="applyFilters()">
               Apply filters
@@ -47,7 +40,7 @@
 
       <button
         mgnpButton
-        [ngpMenuTrigger]="pageSizeDropdown"
+        [mgnpMenuTrigger]="pageSizeDropdown"
         class="data-open:*:[ng-icon]:rotate-180">
         {{ pageSize() }}
         <ng-icon
@@ -55,12 +48,9 @@
           class="ml-2 transition-transform duration-150 ease-in-out" />
       </button>
       <ng-template #pageSizeDropdown>
-        <div
-          ngpMenu
-          mgnpMenu>
+        <div mgnpMenu>
           @for (size of pageSizes; track $index) {
             <button
-              ngpMenuItem
               mgnpMenuItem
               (click)="pageSize.set(size)">
               {{ size }}
@@ -100,8 +90,8 @@
 
         <app-pagination
           class="self-end"
-          [pageCount]="value.totalPages"
-          [(page)]="pageNumber" />
+          [mgnpPaginationPageCount]="value.totalPages"
+          [(mgnpPaginationPage)]="pageNumber" />
       } @else {
         <div class="flex flex-col gap-2 place-self-center">
           <div class="flex flex-col gap-2">
@@ -123,7 +113,6 @@
       <div class="flex flex-col">
         <div class="flex gap-3">
           <button
-            ngpButton
             mgnpButton
             (click)="removeFilter(filter)">
             <ng-icon name="heroTrash" />
@@ -131,25 +120,20 @@
 
           @if ($index > 0) {
             <div
-              ngpCombobox
               mgnpCombobox
-              [(ngpComboboxValue)]="filter.filterLogic"
-              (ngpComboboxValueChange)="_areFilterSync.set(false)">
-              <button
-                ngpComboboxButton
-                mgnpButton>
+              [(mgnpComboboxValue)]="filter.filterLogic"
+              (mgnpComboboxValueChange)="_areFilterSync.set(false)">
+              <button ngpComboboxButton>
                 {{ filterRequestLogic[filter.filterLogic] }}
               </button>
 
               <div
                 *ngpComboboxPortal
-                ngpComboboxDropdown
                 mgnpComboboxDropdown>
                 @for (item of filterRequestLogic | enumKeyValuePair; track $index) {
                   <div
-                    ngpComboboxOption
                     mgnpComboboxOption
-                    [ngpComboboxOptionValue]="item.value">
+                    [mgnpComboboxOptionValue]="item.value">
                     {{ item.key }}
                   </div>
                 }
@@ -162,7 +146,6 @@
             [ngTemplateOutletContext]="{ $implicit: filter }" />
 
           <button
-            ngpButton
             mgnpButton
             (click)="addFilter(filter)"
             class="w-fit">
@@ -172,7 +155,6 @@
 
         @if ($index === filters.length - 1) {
           <button
-            ngpButton
             mgnpButton
             (click)="addFilter(filters)"
             class="w-fit">
@@ -191,28 +173,24 @@
   <div class="flex flex-col gap-1.5">
     <div class="flex items-center gap-3">
       <div
-        ngpCombobox
         mgnpCombobox
-        [(ngpComboboxValue)]="filter.propertyName"
-        (ngpComboboxValueChange)="_areFilterSync.set(false)">
+        [(mgnpComboboxValue)]="filter.propertyName"
+        (mgnpComboboxValueChange)="_areFilterSync.set(false)">
         <button
-          ngpComboboxButton
-          mgnpButton>
+          mgnpComboboxButton>
           {{ `object.${filterOption()?.objectTranslationKey}.${filter.propertyName}` | translate }}
         </button>
 
         @if (possibleFilters !== undefined) {
           <div
             *ngpComboboxPortal
-            ngpComboboxDropdown
             mgnpComboboxDropdown>
             @for (possibleFilter of possibleFilters; track $index) {
               @let propertyName = possibleFilter.property.toString();
 
               <span
-                ngpComboboxOption
                 mgnpComboboxOption
-                [ngpComboboxOptionValue]="possibleFilter.property">
+                [mgnpComboboxOptionValue]="possibleFilter.property">
                 {{ `object.${filterOption()?.objectTranslationKey}.${propertyName}` | translate }}
               </span>
             }
@@ -225,25 +203,21 @@
           possibleFilters | arrayFilter: possibleFilterCallback(filter.propertyName) : 'single';
 
         <div
-          ngpCombobox
           mgnpCombobox
-          [(ngpComboboxValue)]="filter.filterOperator"
-          (ngpComboboxValueChange)="_areFilterSync.set(false)">
+          [(mgnpComboboxValue)]="filter.filterOperator"
+          (mgnpComboboxValueChange)="_areFilterSync.set(false)">
           <button
-            ngpComboboxButton
-            mgnpButton>
+            mgnpComboboxButton>
             {{ `enum.filter_request_operator.${filter.filterOperator}` | translate }}
           </button>
 
           <div
             *ngpComboboxPortal
-            ngpComboboxDropdown
             mgnpComboboxDropdown>
             @for (item of possibleFilter.operators | enumKeyValuePair; track $index) {
               <div
-                ngpComboboxOption
                 mgnpComboboxOption
-                [ngpComboboxOptionValue]="item.value">
+                [mgnpComboboxOptionValue]="item.value">
                 {{ `enum.filter_request_operator.${item.value}` | translate }}
               </div>
             }
@@ -255,7 +229,6 @@
             <input
               #input="ngModel"
               type="text"
-              ngpInput
               mgnpInput
               required
               [(ngModel)]="filter.value"
@@ -269,7 +242,6 @@
             <input
               #input="ngModel"
               type="text"
-              ngpInput
               mgnpInput
               required
               pattern="^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
@@ -284,7 +256,6 @@
             <input
               #input="ngModel"
               type="number"
-              ngpInput
               mgnpInput
               required
               [(ngModel)]="filter.value"
@@ -298,7 +269,6 @@
             <input
               #input="ngModel"
               type="date"
-              ngpInput
               mgnpInput
               required
               [(ngModel)]="filter.value"
@@ -310,30 +280,25 @@
           }
           @case ('boolean') {
             <div
-              ngpCombobox
               mgnpCombobox
-              [(ngpComboboxValue)]="filter.value"
-              (ngpComboboxValueChange)="_areFilterSync.set(false)">
+              [(mgnpComboboxValue)]="filter.value"
+              (mgnpComboboxValueChange)="_areFilterSync.set(false)">
               <button
-                ngpComboboxButton
-                mgnpButton>
+                mgnpComboboxButton>
                 {{ `misc.boolean.${filter.value}` | translate }}
               </button>
 
               <div
                 *ngpComboboxPortal
-                ngpComboboxDropdown
                 mgnpComboboxDropdown>
                 <div
-                  ngpComboboxOption
                   mgnpComboboxOption
-                  [ngpComboboxOptionValue]="'true'">
+                  [mgnpComboboxOptionValue]="'true'">
                   {{ 'misc.boolean.true' | translate }}
                 </div>
                 <div
-                  ngpComboboxOption
                   mgnpComboboxOption
-                  [ngpComboboxOptionValue]="'false'">
+                  [mgnpComboboxOptionValue]="'false'">
                   {{ 'misc.boolean.false' | translate }}
                 </div>
               </div>

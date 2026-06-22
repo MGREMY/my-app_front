@@ -1,14 +1,12 @@
-import { MgnpPagination } from '@mgremy/ng-primitives/pagination';
 import {
-  injectPaginationState,
-  NgpPagination,
-  NgpPaginationButton,
-  NgpPaginationFirst,
-  NgpPaginationLast,
-  NgpPaginationNext,
-  NgpPaginationPrevious,
-} from 'ng-primitives/pagination';
-import { ChangeFn, provideValueAccessor, TouchedFn } from 'ng-primitives/utils';
+  MgnpPagination,
+  MgnpPaginationButton,
+  MgnpPaginationFirst,
+  MgnpPaginationLast,
+  MgnpPaginationNext,
+  MgnpPaginationPrevious,
+} from '@mgremy/ng-primitives/pagination';
+import { injectPaginationState } from 'ng-primitives/pagination';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -19,22 +17,20 @@ import {
 } from '@ng-icons/heroicons/outline';
 
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-pagination',
   imports: [
-    NgpPaginationButton,
-    NgpPaginationFirst,
-    NgpPaginationLast,
-    NgpPaginationNext,
-    NgpPaginationPrevious,
+    MgnpPaginationFirst,
+    MgnpPaginationPrevious,
+    MgnpPaginationButton,
+    MgnpPaginationNext,
+    MgnpPaginationLast,
     NgIcon,
   ],
   standalone: true,
   templateUrl: './pagination.component.html',
   providers: [
-    provideValueAccessor(NgpPagination),
     provideIcons({
       heroChevronDoubleLeft,
       heroChevronDoubleRight,
@@ -43,20 +39,7 @@ import { ControlValueAccessor } from '@angular/forms';
     }),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    '(focusout)': 'onTouched?.()',
-    ngpPagination: '',
-  },
   hostDirectives: [
-    {
-      directive: NgpPagination,
-      inputs: [
-        'ngpPaginationPage:page',
-        'ngpPaginationPageCount:pageCount',
-        'ngpPaginationDisabled:disabled',
-      ],
-      outputs: ['ngpPaginationPageChange:pageChange'],
-    },
     {
       directive: MgnpPagination,
       inputs: [],
@@ -64,7 +47,7 @@ import { ControlValueAccessor } from '@angular/forms';
     },
   ],
 })
-export class AppPagination implements ControlValueAccessor {
+export class AppPagination {
   /** Access the pagination state */
   protected readonly state = injectPaginationState();
 
@@ -72,29 +55,4 @@ export class AppPagination implements ControlValueAccessor {
   protected readonly pages = computed(() =>
     Array.from({ length: this.state().pageCount() }).map((_, i) => i + 1)
   );
-
-  /** The onChange callback */
-  private onChange?: ChangeFn<number>;
-
-  /** The onTouched callback */
-  protected onTouched?: TouchedFn;
-
-  constructor() {
-    this.state().pageChange.subscribe((value) => this.onChange?.(value));
-  }
-
-  /** Write a new value to the control */
-  writeValue(value: number): void {
-    this.state().page.set(value);
-  }
-
-  /** Register a callback to be called when the value changes */
-  registerOnChange(fn: ChangeFn<number>): void {
-    this.onChange = fn;
-  }
-
-  /** Register a callback to be called when the control is touched */
-  registerOnTouched(fn: TouchedFn): void {
-    this.onTouched = fn;
-  }
 }

@@ -5,8 +5,7 @@ import { AppNavbar } from '@my-app/shared/components/navbar/navbar.directive';
 import { AuthService } from '@/core/api/auth/auth.service';
 import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';
 
-import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
-import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
+import { MgnpMenu, MgnpMenuItem, MgnpMenuTrigger } from '@mgremy/ng-primitives/menu';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { flagCp, flagUs } from '@ng-icons/flag-icons';
@@ -30,10 +29,8 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     AppNavbarContent,
     AppNavbarItem,
     MgnpMenu,
+    MgnpMenuTrigger,
     MgnpMenuItem,
-    NgpMenu,
-    NgpMenuItem,
-    NgpMenuTrigger,
     NgIcon,
     RouterOutlet,
     RouterLink,

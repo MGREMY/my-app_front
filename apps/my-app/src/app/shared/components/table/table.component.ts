@@ -23,23 +23,14 @@ import {
 import { MgnpButton } from '@mgremy/ng-primitives/button';
 import {
   MgnpCombobox,
+  MgnpComboboxButton,
   MgnpComboboxDropdown,
   MgnpComboboxOption,
 } from '@mgremy/ng-primitives/combobox';
 import { MgnpInput } from '@mgremy/ng-primitives/input';
-import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
-import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
-import { NgpButton } from 'ng-primitives/button';
-import {
-  NgpCombobox,
-  NgpComboboxButton,
-  NgpComboboxDropdown,
-  NgpComboboxOption,
-  NgpComboboxPortal,
-} from 'ng-primitives/combobox';
-import { NgpInput } from 'ng-primitives/input';
-import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
-import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
+import { MgnpMenu, MgnpMenuItem, MgnpMenuTrigger } from '@mgremy/ng-primitives/menu';
+import { MgnpTooltip, MgnpTooltipArrow, MgnpTooltipTrigger } from '@mgremy/ng-primitives/tooltip';
+import { NgpComboboxPortal } from 'ng-primitives/combobox';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroArrowPath, heroChevronDown, heroFunnel, heroTrash } from '@ng-icons/heroicons/outline';
@@ -112,26 +103,17 @@ function removeFilterRecursive<T>(
     MgnpTable,
     MgnpButton,
     MgnpMenu,
+    MgnpMenuTrigger,
     MgnpMenuItem,
     MgnpTooltip,
+    MgnpTooltipTrigger,
     MgnpTooltipArrow,
     MgnpCombobox,
     MgnpComboboxDropdown,
     MgnpComboboxOption,
+    MgnpComboboxButton,
     MgnpInput,
-    NgpCombobox,
-    NgpComboboxButton,
-    NgpComboboxDropdown,
     NgpComboboxPortal,
-    NgpComboboxOption,
-    NgpButton,
-    NgpMenu,
-    NgpMenuItem,
-    NgpMenuTrigger,
-    NgpTooltip,
-    NgpTooltipArrow,
-    NgpTooltipTrigger,
-    NgpInput,
     NgIcon,
     AppPagination,
     TranslatePipe,

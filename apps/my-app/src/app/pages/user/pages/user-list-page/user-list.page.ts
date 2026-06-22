@@ -8,13 +8,10 @@ import { LocalizedDatePipe } from '@/shared/pipes/date.pipe';
 import { MgnpTableBody, MgnpTableHeader } from '@mgremy/ng-primitives-extended/table';
 import { MgnpButton } from '@mgremy/ng-primitives/button';
 import { MgnpDialog, MgnpDialogOverlay } from '@mgremy/ng-primitives/dialog';
-import { MgnpMenu, MgnpMenuItem } from '@mgremy/ng-primitives/menu';
+import { MgnpMenu, MgnpMenuItem, MgnpMenuTrigger } from '@mgremy/ng-primitives/menu';
 import { MgnpSwitch, MgnpSwitchThumb } from '@mgremy/ng-primitives/switch';
-import { MgnpTooltip, MgnpTooltipArrow } from '@mgremy/ng-primitives/tooltip';
-import { NgpDialog, NgpDialogManager, NgpDialogOverlay } from 'ng-primitives/dialog';
-import { NgpMenu, NgpMenuItem, NgpMenuTrigger } from 'ng-primitives/menu';
-import { NgpSwitch, NgpSwitchThumb } from 'ng-primitives/switch';
-import { NgpTooltip, NgpTooltipArrow, NgpTooltipTrigger } from 'ng-primitives/tooltip';
+import { MgnpTooltip, MgnpTooltipArrow, MgnpTooltipTrigger } from '@mgremy/ng-primitives/tooltip';
+import { NgpDialogManager } from 'ng-primitives/dialog';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -45,25 +42,17 @@ import {
     UserDetailPage,
     MgnpButton,
     MgnpMenu,
+    MgnpMenuTrigger,
     MgnpMenuItem,
     MgnpTableHeader,
     MgnpTableBody,
     MgnpTooltip,
+    MgnpTooltipTrigger,
     MgnpTooltipArrow,
     MgnpDialog,
     MgnpDialogOverlay,
     MgnpSwitch,
     MgnpSwitchThumb,
-    NgpDialog,
-    NgpDialogOverlay,
-    NgpTooltip,
-    NgpTooltipArrow,
-    NgpTooltipTrigger,
-    NgpMenu,
-    NgpMenuItem,
-    NgpMenuTrigger,
-    NgpSwitch,
-    NgpSwitchThumb,
     NgIcon,
     NgClass,
     TranslatePipe,

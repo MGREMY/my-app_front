@@ -6,17 +6,9 @@ import {
   MgnpAccordion,
   MgnpAccordionContent,
   MgnpAccordionItem,
+  MgnpAccordionTrigger,
 } from '@mgremy/ng-primitives/accordion';
-import { MgnpButton } from '@mgremy/ng-primitives/button';
 import { MgnpCheckbox } from '@mgremy/ng-primitives/checkbox';
-import {
-  NgpAccordion,
-  NgpAccordionContent,
-  NgpAccordionItem,
-  NgpAccordionTrigger,
-} from 'ng-primitives/accordion';
-import { NgpButton } from 'ng-primitives/button';
-import { NgpCheckbox } from 'ng-primitives/checkbox';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroCheckMini, heroMinusMini } from '@ng-icons/heroicons/mini';
@@ -35,17 +27,11 @@ import {
 @Component({
   selector: 'app-user-detail',
   imports: [
-    MgnpButton,
     MgnpCheckbox,
     MgnpAccordion,
+    MgnpAccordionTrigger,
     MgnpAccordionItem,
     MgnpAccordionContent,
-    NgpButton,
-    NgpCheckbox,
-    NgpAccordion,
-    NgpAccordionItem,
-    NgpAccordionContent,
-    NgpAccordionTrigger,
     NgIcon,
     LocalizedDatePipe,
     TranslatePipe,

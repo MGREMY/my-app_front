@@ -30,7 +30,7 @@
 
     <div class="my-auto flex flex-row items-center justify-start">
       <ng-icon
-        [ngpMenuTrigger]="langDropdown"
+        [mgnpMenuTrigger]="langDropdown"
         [name]="_currentLanguageIcon()"
         class="hover:cursor-pointer" />
       <ng-template #langDropdown>
@@ -53,7 +53,7 @@
 
       @if (_authService.isAuthenticated()) {
         <img
-          [ngpMenuTrigger]="loggedInUserDropdown"
+          [mgnpMenuTrigger]="loggedInUserDropdown"
           [src]="_authService.getIdToken()['picture'] ?? '/icons/avatar.svg'"
           fetchpriority="high"
           class="ml-5 size-10 rounded-full object-cover hover:cursor-pointer"
@@ -63,20 +63,17 @@
           priority />
         <ng-template #loggedInUserDropdown>
           <div
-            ngpMenu
             mgnpMenu
             class="z-100">
             <span class="border-ui border-b px-4 py-2">
               {{ _authService.getIdToken().email }}
             </span>
             <button
-              ngpMenuItem
               mgnpMenuItem
               (click)="_authService.openAccountPage()">
               <span>{{ 'misc.profile' | translate | titlecase }}</span>
             </button>
             <button
-              ngpMenuItem
               mgnpMenuItem
               (click)="_authService.logout()">
               <span>{{ 'misc.logout' | translate | titlecase }}</span>
@@ -90,17 +87,15 @@
           (click)="navbarContent.toggle()" />
       } @else {
         <ng-icon
-          [ngpMenuTrigger]="notLoggedInUserDropdown"
+          [mgnpMenuTrigger]="notLoggedInUserDropdown"
           name="heroUserCircle"
           size="40px"
           class="ml-5 rounded-full hover:cursor-pointer" />
         <ng-template #notLoggedInUserDropdown>
           <div
-            ngpMenu
             mgnpMenu
             class="z-100">
             <button
-              ngpMenuItem
               mgnpMenuItem
               (click)="_authService.login()">
               <span>

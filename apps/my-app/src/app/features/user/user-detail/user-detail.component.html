@@ -34,10 +34,9 @@
           {{ 'object.user_response.isDeleted' | translate | titlecase }} :
         </span>
         <span
-          ngpCheckbox
           mgnpCheckbox
-          [ngpCheckboxChecked]="user().isDeleted"
-          ngpCheckboxDisabled>
+          [mgnpCheckboxChecked]="user().isDeleted"
+          disabled>
           @if (user().isDeleted) {
             <ng-icon
               name="heroCheckMini"
@@ -51,28 +50,21 @@
     @let idToken = _authService.getIdToken();
 
     <div
-      ngpAccordion
-      ngpAccordionType="single"
-      ngpAccordionCollapsible="false"
-      ngpAccordionValue="ssoInformationPanel"
       mgnpAccordion
+      type="single"
+      collapsible="false"
+      value="ssoInformationPanel"
       class="max-w-none">
       <div
-        #ssoInformationPanel="ngpAccordionItem"
-        ngpAccordionItem
-        ngpAccordionItemValue="ssoInformationPanel"
-        mgnpAccordionItem>
+        mgnpAccordionItem
+        #ssoInformationPanel="mgnpAccordionItem"
+        value="ssoInformationPanel">
         <h3>
-          <button
-            ngpAccordionTrigger
-            ngpButton
-            mgnpButton>
+          <button mgnpAccordionTrigger>
             {{ 'features.user.user_detail.sso_information' | translate }}
           </button>
         </h3>
-        <div
-          ngpAccordionContent
-          mgnpAccordionContent>
+        <div mgnpAccordionContent>
           <div class="grid gap-3 p-2 @md:grid-cols-2 @lg:grid-cols-3">
             <p class="col-span-full text-sm">
               <span class="text-secondary font-semibold">
@@ -121,10 +113,9 @@
                 {{ 'models.id_token.email_verified' | translate | titlecase }} :
               </span>
               <span
-                ngpCheckbox
                 mgnpCheckbox
-                [ngpCheckboxChecked]="idToken.email_verified"
-                ngpCheckboxDisabled>
+                [mgnpCheckboxChecked]="idToken.email_verified"
+                disabled>
                 @if (idToken.email_verified) {
                   <ng-icon
                     name="heroCheckMini"

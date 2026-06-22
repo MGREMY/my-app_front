@@ -3,7 +3,7 @@
 import { ZErrorResponse } from '@/core/api/error/error.response';
 
 import { MgnpToast } from '@mgremy/ng-primitives/toast';
-import { injectToastContext, NgpToast, NgpToastManager } from 'ng-primitives/toast';
+import { injectToastContext, NgpToastManager } from 'ng-primitives/toast';
 
 import { TranslateService } from '@ngx-translate/core';
 
@@ -106,7 +106,7 @@ type ErrorToastContext = {
     mgnpToast: '',
     'data-mgnp-component': 'mgnp-toast',
   },
-  hostDirectives: [MgnpToast, NgpToast],
+  hostDirectives: [MgnpToast],
 })
 class ErrorToastComponent {
   protected readonly context = injectToastContext<ErrorToastContext>();
