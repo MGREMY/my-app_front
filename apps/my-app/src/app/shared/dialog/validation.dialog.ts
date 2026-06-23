@@ -1,4 +1,4 @@
-import { FirstLetterUpperPipe } from './../../../../../../libs/shared/src/pipes/first-letter-upper.pipe';
+import { FirstLetterUpperPipe } from '@/shared/pipes/first-letter-upper.pipe';
 
 import { MgnpButton } from '@mgremy/ng-primitives/button';
 import {
