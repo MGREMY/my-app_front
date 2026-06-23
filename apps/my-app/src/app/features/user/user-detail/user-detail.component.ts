@@ -1,5 +1,5 @@
-import { AuthService } from '@/core/api/auth/auth.service';
-import { UserResponse } from '@/core/api/user/user.response';
+import { UserResponse } from '@/core/api/models/user';
+import { AuthService } from '@/core/api/services/auth';
 import { LocalizedDatePipe } from '@/shared/pipes/date.pipe';
 
 import {

@@ -1,20 +1,18 @@
-import {
-  AdditionalFlagsRequest,
-  additionalFlagsToURLSearchParams,
-} from '../additional-flags/additional-flags.request';
-import {
-  PaginationRequest,
-  paginationRequestToURLSearchParams,
-  PaginationResponse,
-  ZPaginationResponse,
-} from '../pagination/pagination.request';
-import { zParse } from '../zod';
+import { AdditionalFlagsRequest } from '../models/additional-flags';
+import { PaginationRequest, PaginationResponse, ZPaginationResponse } from '../models/pagination';
 import {
   MinimalUserResponse,
   UserResponse,
   ZMinimalUserResponse,
   ZUserResponse,
-} from './user.response';
+} from '../models/user';
+import { zParse } from '../zod';
+
+import {
+  toURLSearchParams,
+  withAdditionalFlags,
+  withPagination,
+} from '@/core/models/to-url-search-params';
 
 import { APP_CONFIG_SERVICE } from '@mgremy/core';
 
@@ -29,14 +27,17 @@ export class UserService {
   private readonly _http = inject(HttpClient);
   private readonly _prefix = `${inject(APP_CONFIG_SERVICE).apiUrl}/v1/users`;
 
-  getUsers(
-    request: PaginationRequest<MinimalUserResponse>,
-    additionalFlags: AdditionalFlagsRequest
-  ): Observable<PaginationResponse<MinimalUserResponse>> {
+  getUsers(request: {
+    pagination: PaginationRequest<MinimalUserResponse>;
+    additionalFlags: AdditionalFlagsRequest;
+  }): Observable<PaginationResponse<MinimalUserResponse>> {
+    const query = toURLSearchParams(
+      withPagination(request.pagination),
+      withAdditionalFlags(request.additionalFlags)
+    );
+
     return this._http
-      .get(
-        `${this._prefix}?${paginationRequestToURLSearchParams(request)}&${additionalFlagsToURLSearchParams(additionalFlags)}`
-      )
+      .get(`${this._prefix}?${query}`)
       .pipe(zParse(ZPaginationResponse(ZMinimalUserResponse)));
   }
 

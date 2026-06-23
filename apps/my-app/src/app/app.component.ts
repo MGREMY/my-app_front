@@ -2,7 +2,7 @@ import { AppNavbarContent } from '@my-app/shared/components/navbar/navbar-conten
 import { AppNavbarItem } from '@my-app/shared/components/navbar/navbar-item.directive';
 import { AppNavbar } from '@my-app/shared/components/navbar/navbar.directive';
 
-import { AuthService } from '@/core/api/auth/auth.service';
+import { AuthService } from '@/core/api/services/auth';
 
 import { APP_TRANSLATION_SERVICE } from '@mgremy/core';
 import { MgnpMenu, MgnpMenuItem, MgnpMenuTrigger } from '@mgremy/ng-primitives/menu';

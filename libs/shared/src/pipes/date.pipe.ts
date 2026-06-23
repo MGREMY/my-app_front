@@ -5,7 +5,7 @@ import { inject, Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'localizedDate',
-  pure: false,
+  pure: true,
 })
 export class LocalizedDatePipe implements PipeTransform {
   private readonly _translationService = inject(APP_TRANSLATION_SERVICE);

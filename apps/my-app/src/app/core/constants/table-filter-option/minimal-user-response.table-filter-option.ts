@@ -1,6 +1,6 @@
-import { FilterRequestOperator } from '@/core/api/pagination/pagination.request';
-import { MinimalUserResponse } from '@/core/api/user/user.response';
-import { TableFilterOption } from '@/core/models/table-filter-option.interface';
+import { FilterRequestOperator } from '@/core/api/models/pagination';
+import { MinimalUserResponse } from '@/core/api/models/user';
+import { TableFilterOption } from '@/core/models/table-filter-option';
 
 export default {
   defaultFilterProperty: 'id',

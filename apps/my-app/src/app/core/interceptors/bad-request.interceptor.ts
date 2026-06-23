@@ -1,6 +1,6 @@
 // This interceptor handles HTTP errors
 
-import { ZErrorResponse } from '@/core/api/error/error.response';
+import { ZErrorResponse } from '@/core/api/models/error';
 
 import { MgnpToast } from '@mgremy/ng-primitives/toast';
 import { injectToastContext, NgpToastManager } from 'ng-primitives/toast';

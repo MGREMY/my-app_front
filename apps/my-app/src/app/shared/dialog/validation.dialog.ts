@@ -1,3 +1,5 @@
+import { FirstLetterUpperPipe } from './../../../../../../libs/shared/src/pipes/first-letter-upper.pipe';
+
 import { MgnpButton } from '@mgremy/ng-primitives/button';
 import {
   MgnpDialog,
@@ -28,13 +30,14 @@ export type AppValidationDialogResponse = 'ok' | 'cancel';
     MgnpDialogDescription,
     MgnpButton,
     TranslatePipe,
+    FirstLetterUpperPipe,
   ],
   template: `
     <div mgnpDialogOverlay>
       <div mgnpDialog>
-        <h1 mgnpDialogTitle>{{ _dialogRef.data.title }}</h1>
+        <h1 mgnpDialogTitle>{{ _dialogRef.data.title | firstLetterUpper }}</h1>
         @if (_dialogRef.data.description) {
-          <p mgnpDialogDescription>{{ _dialogRef.data.description }}</p>
+          <p mgnpDialogDescription>{{ _dialogRef.data.description | firstLetterUpper }}</p>
         }
         <div class="mt-4 flex items-center justify-end-safe gap-2">
           @switch (_dialogRef.data.type) {
@@ -42,30 +45,30 @@ export type AppValidationDialogResponse = 'ok' | 'cancel';
               <button
                 mgnpButton
                 variant="outline"
-                color="info"
+                color="secondary"
                 (click)="close('ok')">
-                {{ 'dialog.ok' | translate }}
+                {{ 'dialog.ok' | translate | firstLetterUpper }}
               </button>
             }
             @case ('ok_cancel') {
               <button
                 mgnpButton
                 variant="outline"
-                color="info"
+                color="secondary"
                 (click)="close('ok')">
-                {{ 'dialog.ok' | translate }}
+                {{ 'dialog.ok' | translate | firstLetterUpper }}
               </button>
               <button
                 mgnpButton
                 (click)="close('cancel')">
-                {{ 'dialog.cancel' | translate }}
+                {{ 'dialog.cancel' | translate | firstLetterUpper }}
               </button>
             }
             @case ('cancel') {
               <button
                 mgnpButton
                 (click)="close('cancel')">
-                {{ 'dialog.cancel' | translate }}
+                {{ 'dialog.cancel' | translate | firstLetterUpper }}
               </button>
             }
           }

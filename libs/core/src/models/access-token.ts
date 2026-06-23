@@ -19,5 +19,4 @@ export interface AccessToken {
   given_name: string | undefined;
   family_name: string | undefined;
   email: string | undefined;
-  [ket: string]: unknown;
 }

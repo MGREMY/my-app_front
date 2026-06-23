@@ -1,8 +1,8 @@
-import { PossibleFilter } from '@/core/models/possible-filter.interface';
+import { PossibleFilter } from '@/core/models/possible-filter';
 
-export interface TableFilterOption<T> {
+export type TableFilterOption<T> = {
   defaultFilterProperty: keyof T;
   defaultFilterValue: string;
   objectTranslationKey: string;
   possibleFilters: PossibleFilter<T>[];
-}
+};
