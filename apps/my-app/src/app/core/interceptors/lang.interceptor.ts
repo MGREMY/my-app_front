@@ -1,4 +1,4 @@
-import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';
+import { APP_TRANSLATION_SERVICE } from '@mgremy/core';
 
 import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { inject } from '@angular/core';

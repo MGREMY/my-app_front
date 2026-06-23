@@ -1,4 +1,4 @@
-import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';
+import { APP_TRANSLATION_SERVICE } from '@mgremy/core';
 
 import { DatePipe } from '@angular/common';
 import { inject, Pipe, PipeTransform } from '@angular/core';

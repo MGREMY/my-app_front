@@ -11,7 +11,8 @@ import { badResponseInterceptor } from '@my-app/core/interceptors/bad-request.in
 import { langInterceptor } from '@my-app/core/interceptors/lang.interceptor';
 
 import { AuthService } from '@/core/api/auth/auth.service';
-import { APP_ENVIRONMENT_SERVICE } from '@/core/environment.service';
+
+import { APP_ENVIRONMENT_SERVICE } from '@mgremy/core';
 
 import { provideNgIconsConfig } from '@ng-icons/core';
 

@@ -1,5 +1,4 @@
-import { IAppConfigService } from '@/core/app-config.service';
-import { APP_ENVIRONMENT_SERVICE } from '@/core/environment.service';
+import { APP_ENVIRONMENT_SERVICE, IAppConfigService } from '@mgremy/core';
 
 import { inject, Injectable } from '@angular/core';
 

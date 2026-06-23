@@ -1,11 +1,8 @@
-import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
-import { APP_STORAGE_SERVICE } from '@/core/storage.service';
-import { ITranslationService } from '@/core/translation.service';
+import { APP_CONFIG_SERVICE, APP_STORAGE_SERVICE, ITranslationService } from '@mgremy/core';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import { inject, Injectable, signal } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

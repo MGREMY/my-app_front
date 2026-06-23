@@ -16,7 +16,7 @@ import {
   ZUserResponse,
 } from './user.response';
 
-import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
+import { APP_CONFIG_SERVICE } from '@mgremy/core';
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';

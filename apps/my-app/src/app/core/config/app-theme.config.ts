@@ -1,6 +1,6 @@
 import { AppThemeService } from '@my-app/core/services/app-theme.service';
 
-import { APP_THEME_SERVICE } from '@/core/theme.service';
+import { APP_THEME_SERVICE } from '@mgremy/core';
 
 import { Provider } from '@angular/core';
 

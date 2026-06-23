@@ -1,6 +1,6 @@
 import { AppConfigService } from '@my-app/core/services/app-config.service';
 
-import { APP_CONFIG_SERVICE } from '@/core/app-config.service';
+import { APP_CONFIG_SERVICE } from '@mgremy/core';
 
 import { APP_BASE_HREF, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { inject, Provider } from '@angular/core';

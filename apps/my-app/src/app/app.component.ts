@@ -3,8 +3,8 @@ import { AppNavbarItem } from '@my-app/shared/components/navbar/navbar-item.dire
 import { AppNavbar } from '@my-app/shared/components/navbar/navbar.directive';
 
 import { AuthService } from '@/core/api/auth/auth.service';
-import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';
 
+import { APP_TRANSLATION_SERVICE } from '@mgremy/core';
 import { MgnpMenu, MgnpMenuItem, MgnpMenuTrigger } from '@mgremy/ng-primitives/menu';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';

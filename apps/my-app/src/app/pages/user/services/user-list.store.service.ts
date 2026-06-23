@@ -5,9 +5,9 @@ import { AdditionalFlagsRequest } from '@/core/api/additional-flags/additional-f
 import { AuthService } from '@/core/api/auth/auth.service';
 import { MinimalUserResponse } from '@/core/api/user/user.response';
 import { UserService } from '@/core/api/user/user.service';
-import { APP_TRANSLATION_SERVICE } from '@/core/translation.service';
 import { paginationContainer } from '@/shared/pagination-container';
 
+import { APP_TRANSLATION_SERVICE } from '@mgremy/core';
 import { NgpDialogManager } from 'ng-primitives/dialog';
 
 import { inject, Injectable, signal } from '@angular/core';
