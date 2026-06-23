@@ -12,7 +12,7 @@ import {
   toURLSearchParams,
   withAdditionalFlags,
   withPagination,
-} from '@/core/models/to-url-search-params';
+} from '@/core/to-url-search-params';
 
 import { APP_CONFIG_SERVICE } from '@mgremy/core';
 

@@ -1,5 +1,5 @@
-import { AdditionalFlagsRequest } from '../api/models/additional-flags';
-import { PaginationRequest } from '../api/models/pagination';
+import { AdditionalFlagsRequest } from './api/models/additional-flags';
+import { PaginationRequest } from './api/models/pagination';
 
 type ToURLSearchParamsHandler = (params: URLSearchParams) => void;
 
