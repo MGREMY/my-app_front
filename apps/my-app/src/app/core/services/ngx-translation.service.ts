@@ -5,6 +5,7 @@ import { ITranslationService } from '@/core/translation.service';
 import { TranslateService } from '@ngx-translate/core';
 
 import { inject, Injectable, signal } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,11 @@ export class NgxTranslationService implements ITranslationService {
     this._storageService.setItem(this._storageKeys.lang, code);
     this._currentLanguage.set(code);
     this._translationService.use(code);
+  }
+
+  public instant(key: string, params?: Record<string, string>): string;
+  public instant(key: string[], params?: Record<string, string>): string[];
+  public instant(key: string | string[], params?: Record<string, string>): string | string[] {
+    return this._translationService.instant(key, params);
   }
 }

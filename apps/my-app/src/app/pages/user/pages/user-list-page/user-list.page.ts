@@ -11,7 +11,7 @@ import { MgnpDialog, MgnpDialogOverlay } from '@mgremy/ng-primitives/dialog';
 import { MgnpMenu, MgnpMenuItem, MgnpMenuTrigger } from '@mgremy/ng-primitives/menu';
 import { MgnpSwitch, MgnpSwitchThumb } from '@mgremy/ng-primitives/switch';
 import { MgnpTooltip, MgnpTooltipArrow, MgnpTooltipTrigger } from '@mgremy/ng-primitives/tooltip';
-import { NgpDialogManager } from 'ng-primitives/dialog';
+import { NgpDialogContext, NgpDialogManager } from 'ng-primitives/dialog';
 
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import {
@@ -76,8 +76,8 @@ export class UserListPage extends BaseComponent implements OnInit {
   protected readonly _service = inject(UserListStoreService);
   protected readonly _ngpDialogManager = inject(NgpDialogManager);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  protected readonly _userDetailDialog = viewChild<TemplateRef<any>>('userDetailDialog');
+  protected readonly _userDetailDialog =
+    viewChild<TemplateRef<NgpDialogContext<unknown, unknown>>>('userDetailDialog');
 
   public readonly pageNumber = model.required<number>();
   public readonly pageSize = model.required<number>();

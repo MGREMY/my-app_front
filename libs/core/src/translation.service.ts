@@ -8,5 +8,10 @@ export interface ITranslationService {
   currentLanguage: Signal<string>;
 
   init(): void;
+
   setLanguage(code: string): void;
+
+  instant(key: string, params?: Record<string, string>): string;
+  instant(key: string[], params?: Record<string, string>): string[];
+  instant(key: string | string[], params?: Record<string, string>): string | string[];
 }
