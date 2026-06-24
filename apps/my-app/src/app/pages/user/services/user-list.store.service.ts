@@ -1,10 +1,10 @@
 import MINIMAL_USER_RESPONSE_TABLE_FILTER_OPTION from '@my-app/core/constants/table-filter-option/minimal-user-response.table-filter-option';
 import { AppValidationDialog } from '@my-app/shared/dialog/validation.dialog';
 
-import { AdditionalFlagsRequest } from '@/core/api/additional-flags/additional-flags.request';
-import { AuthService } from '@/core/api/auth/auth.service';
-import { MinimalUserResponse } from '@/core/api/user/user.response';
-import { UserService } from '@/core/api/user/user.service';
+import { AdditionalFlagsRequest } from '@/core/api/models/additional-flags';
+import { MinimalUserResponse } from '@/core/api/models/user';
+import { AuthService } from '@/core/api/services/auth';
+import { UserService } from '@/core/api/services/user';
 import { paginationContainer } from '@/shared/pagination-container';
 
 import { APP_TRANSLATION_SERVICE } from '@mgremy/core';
@@ -28,7 +28,11 @@ export class UserListStoreService {
   });
 
   public readonly usersResource = paginationContainer<MinimalUserResponse>({
-    stream: ({ params }) => this._userService.getUsers(params, this.additionalFlags()),
+    stream: ({ params }) =>
+      this._userService.getUsers({
+        pagination: params,
+        additionalFlags: this.additionalFlags(),
+      }),
   });
 
   public deleteUser(id: string): void {

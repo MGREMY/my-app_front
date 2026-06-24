@@ -1,13 +1,13 @@
 <div class="flex flex-col gap-2">
   <div class="flex flex-col gap-2">
     <div>
-      <span class="font-semibold">{{ 'misc.error.name' | translate }}</span>
+      <span class="font-semibold">{{ 'misc.error.name' | translate | firstLetterUpper }}</span>
     </div>
     <span>{{ error().name }}</span>
   </div>
   <div class="flex flex-col gap-2">
     <div>
-      <span class="font-semibold">{{ 'misc.error.message' | translate }}</span>
+      <span class="font-semibold">{{ 'misc.error.message' | translate | firstLetterUpper }}</span>
     </div>
     <span>{{ error().message }}</span>
   </div>

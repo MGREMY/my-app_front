@@ -1,5 +1,5 @@
-import { AuthService } from '@/core/api/auth/auth.service';
-import { UserService } from '@/core/api/user/user.service';
+import { AuthService } from '@/core/api/services/auth';
+import { UserService } from '@/core/api/services/user';
 
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';

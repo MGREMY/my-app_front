@@ -1,4 +1,4 @@
-import { Environment } from '@/core/environment.service';
+import { Environment } from '@mgremy/core';
 
 export const environment: Environment = {
   production: false,

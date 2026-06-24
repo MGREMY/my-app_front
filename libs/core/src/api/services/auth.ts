@@ -1,9 +1,10 @@
-import { ZErrorResponse } from '@/core/api/error/error.response';
-import { MiscService } from '@/core/api/misc/misc.service';
+import { ZErrorResponse } from '../models/error';
+import { MiscService } from './misc';
+
 import { APP_AUTH_CONFIG } from '@/core/app-auth-config.service';
-import ROLES from '@/core/constants/role.constant';
-import { AccessToken } from '@/core/models/access-token.interface';
-import { IdToken } from '@/core/models/id-token.interface';
+import { ROLES } from '@/core/constants/role';
+import { AccessToken } from '@/core/models/access-token';
+import { IdToken } from '@/core/models/id-token';
 
 import { APP_CONFIG_SERVICE, APP_STORAGE_SERVICE } from '@mgremy/core';
 

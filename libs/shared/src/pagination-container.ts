@@ -3,7 +3,7 @@ import {
   PaginationRequest,
   PaginationResponse,
   SortRequest,
-} from '@/core/api/pagination/pagination.request';
+} from '@/core/api/models/pagination';
 
 import { computed, ResourceRef, signal } from '@angular/core';
 import { rxResource, RxResourceOptions } from '@angular/core/rxjs-interop';

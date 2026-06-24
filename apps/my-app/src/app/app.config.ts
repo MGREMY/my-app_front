@@ -10,7 +10,7 @@ import { authInterceptor } from '@my-app/core/interceptors/auth.interceptor';
 import { badResponseInterceptor } from '@my-app/core/interceptors/bad-request.interceptor';
 import { langInterceptor } from '@my-app/core/interceptors/lang.interceptor';
 
-import { AuthService } from '@/core/api/auth/auth.service';
+import { AuthService } from '@/core/api/services/auth';
 
 import { APP_ENVIRONMENT_SERVICE } from '@mgremy/core';
 

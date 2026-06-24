@@ -1,20 +1,20 @@
 import * as z from 'zod';
 
-export interface UserResponse {
+export type UserResponse = {
   id: string;
   createdAtUtc: Date;
   userName: string;
   email: string;
   isDeleted: boolean;
-}
+};
 
-export interface MinimalUserResponse {
+export type MinimalUserResponse = {
   id: string;
   createdAtUtc: Date;
   userName: string;
   email: string;
   isDeleted: boolean;
-}
+};
 
 export const ZUserResponse: z.ZodType<UserResponse> = z.object({
   id: z.guid(),

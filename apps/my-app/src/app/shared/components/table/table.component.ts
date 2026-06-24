@@ -6,9 +6,9 @@ import {
   FilterRequestLogic,
   FilterRequestOperator,
   PaginationResponse,
-} from '@/core/api/pagination/pagination.request';
-import { PossibleFilter } from '@/core/models/possible-filter.interface';
-import { TableFilterOption } from '@/core/models/table-filter-option.interface';
+} from '@/core/api/models/pagination';
+import { PossibleFilter } from '@/core/models/possible-filter';
+import { TableFilterOption } from '@/core/models/table-filter-option';
 import { ArrayFilterPipe } from '@/shared/pipes/array-filter.pipe';
 import { EnumKeyValuePairPipe } from '@/shared/pipes/enum-key-value-pair.pipe';
 import { uniqueId } from '@/shared/unique-id';
@@ -118,10 +118,10 @@ function removeFilterRecursive<T>(
     AppPagination,
     TranslatePipe,
     NgTemplateOutlet,
-    ArrayFilterPipe,
-    EnumKeyValuePairPipe,
     FormsModule,
     NgClass,
+    ArrayFilterPipe,
+    EnumKeyValuePairPipe,
   ],
   standalone: true,
   templateUrl: './table.component.html',
