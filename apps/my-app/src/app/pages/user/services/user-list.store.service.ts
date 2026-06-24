@@ -24,7 +24,7 @@ export class UserListStoreService {
   public readonly canDelete = signal(this._authService.isAdmin());
   public readonly canApplyAdditionalFlags = signal(this._authService.isAdmin());
   public readonly additionalFlags = signal<AdditionalFlagsRequest>({
-    includeDeletedItems: true,
+    includeDeletedItems: false,
   });
 
   public readonly usersResource = paginationContainer<MinimalUserResponse>({
