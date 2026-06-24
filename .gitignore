@@ -358,3 +358,8 @@ $RECYCLE.BIN/
 
 # Dependency graph generation
 dependency-graph.svg
+
+.claude/worktrees
+.nx/polygraph
+.nx/self-healing
+.nx/migrate-runs
